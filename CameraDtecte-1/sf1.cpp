@@ -9,7 +9,7 @@ sf1::~sf1()
 
 void sf1::draw()
 {
-
+	qDebug() << "sf1  draw";
 }
 
 void sf1::action()

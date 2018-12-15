@@ -79,6 +79,8 @@ public:
 
         retranslateUi(GetSF);
         QObject::connect(pushButton, SIGNAL(clicked()), GetSF, SLOT(getname()));
+        QObject::connect(pushButton_5, SIGNAL(clicked()), GetSF, SLOT(accept()));
+        QObject::connect(pushButton_6, SIGNAL(clicked()), GetSF, SLOT(reject()));
 
         QMetaObject::connectSlotsByName(GetSF);
     } // setupUi
