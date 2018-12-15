@@ -32,6 +32,12 @@
     <ClCompile Include="PathHelper.cpp">
       <Filter>Source Files\helper</Filter>
     </ClCompile>
+    <ClCompile Include="GetSF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sf1.cpp">
+      <Filter>Source Files\tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -95,6 +101,9 @@
     <QtMoc Include="CCamera.h">
       <Filter>Header Files\camera</Filter>
     </QtMoc>
+    <QtMoc Include="GetSF.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="CameraDtecte1.ui">
@@ -110,6 +119,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="SetProduct.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="GetSF.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -139,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="Card.h">
       <Filter>Header Files\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="sf1.h">
+      <Filter>Header Files\Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

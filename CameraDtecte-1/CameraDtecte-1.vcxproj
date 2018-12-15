@@ -123,6 +123,7 @@
     <ClCompile Include="CameraDtecte1.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="DataHelper.cpp" />
+    <ClCompile Include="GetSF.cpp" />
     <ClCompile Include="imageregion.cpp" />
     <ClCompile Include="imagetools.cpp" />
     <ClCompile Include="main.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="SetCamera.cpp" />
     <ClCompile Include="SetMotion.cpp" />
     <ClCompile Include="SetProduct.cpp" />
+    <ClCompile Include="sf1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CameraDtecte1.h">
@@ -140,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="CameraDtecte1.ui" />
+    <QtUic Include="GetSF.ui" />
     <QtUic Include="SetAlgorithm.ui" />
     <QtUic Include="SetCamera.ui" />
     <QtUic Include="SetMotion.ui" />
@@ -149,6 +152,7 @@
     <QtRcc Include="CameraDtecte1.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="sf1.h" />
     <QtMoc Include="CCamera.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\basler\Development\include;C:\Program Files\MVTec\HALCON-12.0\include\halconcpp;C:\Program Files\MVTec\HALCON-12.0\include;.\GeneratedFiles;.;D:\Qt\Qt5.6.0\5.6\msvc2015\include;.\GeneratedFiles\$(ConfigurationName)\.;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtCore;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtGui;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtANGLE;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtWidgets</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB</Define>
@@ -157,6 +161,12 @@
     </QtMoc>
     <ClInclude Include="Card.h" />
     <ClInclude Include="DataHelper.h" />
+    <QtMoc Include="GetSF.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\basler\Development\include;C:\Program Files\MVTec\HALCON-12.0\include\halconcpp;C:\Program Files\MVTec\HALCON-12.0\include;.\GeneratedFiles;.;D:\Qt\Qt5.6.0\5.6\msvc2015\include;.\GeneratedFiles\$(ConfigurationName)\.;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtCore;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtGui;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtANGLE;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtWidgets;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtXml</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles;.;D:\Qt\Qt5.6.0\5.6\msvc2015\include;.\GeneratedFiles\$(ConfigurationName)\.;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtCore;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtGui;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtANGLE;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtWidgets;D:\Qt\Qt5.6.0\5.6\msvc2015\include\QtXml</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB</Define>
+    </QtMoc>
     <ClInclude Include="imageregion.h" />
     <ClInclude Include="imagetools.h" />
     <ClInclude Include="para.h" />

@@ -189,6 +189,9 @@ public:
         retranslateUi(SetAlgorithm);
         QObject::connect(pushButton_4, SIGNAL(clicked()), SetAlgorithm, SLOT(sintial()));
         QObject::connect(pushButton_8, SIGNAL(clicked()), SetAlgorithm, SLOT(readhimage()));
+        QObject::connect(tableWidget, SIGNAL(itemChanged(QTableWidgetItem*)), SetAlgorithm, SLOT(gettab(QTableWidgetItem*)));
+        QObject::connect(horizontalSlider, SIGNAL(valueChanged(int)), SetAlgorithm, SLOT(getrollnum(int)));
+        QObject::connect(pushButton_5, SIGNAL(clicked()), SetAlgorithm, SLOT(selectsuanfa()));
 
         QMetaObject::connectSlotsByName(SetAlgorithm);
     } // setupUi
@@ -208,7 +211,7 @@ public:
         pushButton_4->setText(QApplication::translate("SetAlgorithm", "\345\210\235\345\247\213\345\214\226", 0));
         pushButton_5->setText(QApplication::translate("SetAlgorithm", "\347\256\227\346\263\225\351\200\211\346\213\251", 0));
         pushButton_6->setText(QApplication::translate("SetAlgorithm", "\344\277\235\345\255\230\347\256\227\346\263\225", 0));
-        pushButton_7->setText(QApplication::translate("SetAlgorithm", "PushButton", 0));
+        pushButton_7->setText(QApplication::translate("SetAlgorithm", "\350\257\273\345\217\226\347\256\227\346\263\225", 0));
         pushButton_3->setText(QApplication::translate("SetAlgorithm", "\346\230\276\347\244\272\347\273\223\346\236\234", 0));
         pushButton_8->setText(QApplication::translate("SetAlgorithm", "\350\257\273\345\217\226\345\233\276\347\211\207", 0));
         groupBox_5->setTitle(QApplication::translate("SetAlgorithm", "5 \347\273\223\346\236\234", 0));

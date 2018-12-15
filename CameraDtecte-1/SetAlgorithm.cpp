@@ -63,6 +63,8 @@ void SetAlgorithm::intial()
 	ui.horizontalSlider->setMaximum(127);
 	ui.radioButton->setChecked(true);
 
+	// 4
+
 
 }
 
@@ -76,18 +78,84 @@ void SetAlgorithm::readhimage()
 	HalconCpp::DispObj(CurrentImage, hv_WindowID);
 }
 
-void SetAlgorithm::sdetect()
+void SetAlgorithm::selectsuanfa()
 {
+	GetSF *Gs = new GetSF();
+	Qt::WindowFlags flags = Gs->windowFlags();
+	Gs->setWindowFlags(flags | Qt::MSWindowsFixedSizeDialogHint);
+	imagetools * currettool;
+	int ret = Gs->exec();
+	bool isgood = true;
+	if (ret == QDialog::Accepted)
+	{
+		if (Gs->sfname =="sf1")
+		{
+			currettool = new sf1();
+		}
+		else 
+		{
+			isgood = false;
+		}
+		if (isgood)
+		{
+			currettool->draw();
 
+			currettool->action();
+
+
+
+			tools->push_back(currettool);
+		}
+	}
+	
 }
 
-void SetAlgorithm::getrollnum()
+void SetAlgorithm::sdetect()
 {
+	list<imagetools *>::iterator it;
+	for (it = tools->begin() ; it != tools->end(); it++)
+	{
+		(*it)->image = CurrentImage;
+		(*it)->action();
+		//(*it)->result;
+	}
+}
 
+void SetAlgorithm::getrollnum(int kk)
+{
+	if ((ui.radioButton)->isChecked())
+	{
+		scrollnum = kk;
+	}
+	else if (ui.radioButton_2->isChecked())
+	{
+		scrollnum = kk;
+		scrollnum += 128;
+	}
+	ui.label_2->setText(QStringLiteral("值：") + QString::number(scrollnum));
 }
 
 void SetAlgorithm::gettab(QTableWidgetItem * kkk)
 {
+	ui.label_2->setText(kkk->text());
+	int rowNum = kkk->row();
+	// use d to delete a row
+	if (rowNum != 0 && (kkk->text().trimmed() == "d" || kkk->text().trimmed() == "D"))
+	{
+		ui.tableWidget->removeRow(rowNum);
+		return;
+	}
+	//if last line then create a new row
+	if (rowNum == ui.tableWidget->rowCount() - 1)
+	{
+		ui.tableWidget->setRowCount(rowNum + 2);
+
+		QComboBox *comBox = new QComboBox();
+		comBox->addItem("area");
+		comBox->addItem("height");
+		comBox->addItem("width");
+		ui.tableWidget->setCellWidget(rowNum + 1, 0, comBox);
+	}
 }
 
 void SetAlgorithm::sintial()

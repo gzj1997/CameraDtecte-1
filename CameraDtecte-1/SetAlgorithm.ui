@@ -306,11 +306,44 @@ border -radius:15px;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>SetAlgorithm</receiver>
+   <slot>getrollnum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>438</x>
+     <y>242</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>772</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>SetAlgorithm</receiver>
+   <slot>selectsuanfa()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>194</x>
+     <y>363</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>sintial()</slot>
   <slot>readhimage()</slot>
   <slot>gettab(QTableWidgetItem*)</slot>
-  <slot>slot2()</slot>
+  <slot>getrollnum(int)</slot>
+  <slot>selectsuanfa()</slot>
  </slots>
 </ui>

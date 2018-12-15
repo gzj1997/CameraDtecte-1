@@ -41,12 +41,6 @@ public:
 
 		Para *a = new  Para();
 		*a = *this;
-		//a->thr = this->thr;
-		//a->dth = this->thr;
-		//a->area_max = this->area_max;
-		//a->area_min = this->area_min;
-		//a->width_max = this->width_max;
-		//a->width_min = this->width_min;
 		return a;
 	}
 private:
