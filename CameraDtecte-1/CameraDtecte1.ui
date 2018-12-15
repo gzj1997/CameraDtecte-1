@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CameraDtecte1Class</class>
+ <widget class="QMainWindow" name="CameraDtecte1Class">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1225</width>
+    <height>601</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CameraDtecte1</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="CameraDtecte1.qrc">
+    <normaloff>:/CameraDtecte1/Resources/公司LOG.jpg</normaloff>:/CameraDtecte1/Resources/公司LOG.jpg</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">#centralWidget { 
+border-image:url(:/CameraDtecte1/Resources/back1.jpg);
+}  
+# centralWidget * { 
+border-image:url(); 
+}</string>
+   </property>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>1171</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QToolButton" name="toolButton_3">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>开始</string>
+       </property>
+       <property name="icon">
+        <iconset resource="CameraDtecte1.qrc">
+         <normaloff>:/CameraDtecte1/Resources/start.png</normaloff>:/CameraDtecte1/Resources/start.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>64</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton_4">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>停止</string>
+       </property>
+       <property name="icon">
+        <iconset resource="CameraDtecte1.qrc">
+         <normaloff>:/CameraDtecte1/Resources/stop.jpg</normaloff>:/CameraDtecte1/Resources/stop.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>64</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton_6">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>产品设定</string>
+       </property>
+       <property name="icon">
+        <iconset resource="CameraDtecte1.qrc">
+         <normaloff>:/CameraDtecte1/Resources/product.png</normaloff>:/CameraDtecte1/Resources/product.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>64</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton_2">
+       <property name="text">
+        <string>运动设定</string>
+       </property>
+       <property name="icon">
+        <iconset resource="CameraDtecte1.qrc">
+         <normaloff>:/CameraDtecte1/Resources/motion.jpg</normaloff>:/CameraDtecte1/Resources/motion.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>64</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton">
+       <property name="text">
+        <string>算法设定</string>
+       </property>
+       <property name="icon">
+        <iconset resource="CameraDtecte1.qrc">
+         <normaloff>:/CameraDtecte1/Resources/algorithm.jpg</normaloff>:/CameraDtecte1/Resources/algorithm.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>64</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton_5">
+       <property name="text">
+        <string>相机设定</string>
+       </property>
+       <property name="icon">
+        <iconset resource="CameraDtecte1.qrc">
+         <normaloff>:/CameraDtecte1/Resources/camera.png</normaloff>:/CameraDtecte1/Resources/camera.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>64</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>130</y>
+      <width>601</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Tab 1</string>
+     </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>561</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>561</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>TextLabel2</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>150</y>
+      <width>551</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent</string>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="tab_3">
+     <property name="styleSheet">
+      <string notr="true">background-color:transparent</string>
+     </property>
+     <attribute name="title">
+      <string>Tab 1</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <property name="styleSheet">
+      <string notr="true">background-color:transparent</string>
+     </property>
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>410</y>
+      <width>591</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>410</y>
+      <width>551</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1225</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="styleSheet">
+    <string notr="true">background-color:transparent</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="CameraDtecte1.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>toolButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>CameraDtecte1Class</receiver>
+   <slot>StartBtn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>43</x>
+     <y>60</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>75</x>
+     <y>38</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>CameraDtecte1Class</receiver>
+   <slot>StopBtn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>151</x>
+     <y>68</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>192</x>
+     <y>39</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>CameraDtecte1Class</receiver>
+   <slot>ProductSet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>64</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>252</x>
+     <y>37</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>CameraDtecte1Class</receiver>
+   <slot>MotionSet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>292</x>
+     <y>61</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>45</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CameraDtecte1Class</receiver>
+   <slot>AlgorithmSet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>377</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>402</x>
+     <y>38</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>CameraDtecte1Class</receiver>
+   <slot>CameraSet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>459</x>
+     <y>63</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>46</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>StartBtn()</slot>
+  <slot>StopBtn()</slot>
+  <slot>AlgorithmSet()</slot>
+  <slot>MotionSet()</slot>
+  <slot>CameraSet()</slot>
+  <slot>ProductSet()</slot>
+ </slots>
+</ui>
