@@ -41,6 +41,9 @@
     <ClCompile Include="chartdata.cpp">
       <Filter>Source Files\tools</Filter>
     </ClCompile>
+    <ClCompile Include="turntable.cpp">
+      <Filter>Source Files\turntable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -83,6 +86,12 @@
     </Filter>
     <Filter Include="Header Files\Card">
       <UniqueIdentifier>{e81a7da2-738b-4208-92ce-6657aa6ef50e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\turntable">
+      <UniqueIdentifier>{12e3427f-183e-424c-a219-1e97e8735cd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\turntable">
+      <UniqueIdentifier>{a517da54-bb90-4e34-a357-aa738b48009e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="chartdata.h">
       <Filter>Header Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="turntable.h">
+      <Filter>Header Files\turntable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

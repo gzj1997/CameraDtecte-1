@@ -8,7 +8,7 @@
 #include"SetMotion.h"
 #include"SetProduct.h"
 #include"CCamera.h"
-
+#include"turntable.h"
 #include"DMC2210.h"
 
 #include<qmessagebox.h>
@@ -28,7 +28,7 @@ private:
 	Ui::CameraDtecte1Class ui;
 
    
-	
+	turntable *TurnTable;
 	
 	string CurrentCCD;
 
@@ -36,7 +36,6 @@ private:
 	// Local control variables 
 	HTuple  hv_Width, hv_Height;
 	HTuple  hv_WindowID;
-
 
 	void intial();
 	void LinkCamera();

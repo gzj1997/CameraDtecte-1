@@ -132,6 +132,7 @@ void CameraDtecte1::StartBtn()
 
 	Cameras->front()->Start();
 
+	
 
 }
 

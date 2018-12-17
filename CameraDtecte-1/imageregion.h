@@ -20,6 +20,8 @@ public:
 	int srcollnum;
 	bool color;
 
+	void	draw();
+
 	ImageRegion * cloner() {
 		ImageRegion *a = new ImageRegion();
 		*a = *this;

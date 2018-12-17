@@ -164,6 +164,7 @@ void SetAlgorithm::readsuanfa()
 
 void SetAlgorithm::showresult()
 {
+
 }
 
 void SetAlgorithm::getrollnum(int kk)
@@ -177,10 +178,11 @@ void SetAlgorithm::getrollnum(int kk)
 
 
 	ct->checktype(ui.tableWidget->rowCount() - 1);
-
+	imageregion->image = CurrentImage;
 	imageregion->color = colortype;
 	imageregion->srcollnum = scrollnum;
 	imageregion->chartdata = ct;
+	imageregion->draw();
 }
 
 void SetAlgorithm::gettab(QTableWidgetItem * kkk)

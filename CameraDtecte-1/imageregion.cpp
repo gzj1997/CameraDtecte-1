@@ -14,3 +14,7 @@ ImageRegion::ImageRegion(HalconCpp::HObject image, Para* pa)
 ImageRegion::~ImageRegion()
 {
 }
+
+void ImageRegion::draw()
+{
+}
