@@ -1,6 +1,10 @@
 #pragma once
 #include"HalconCpp.h"
 #include"imageregion.h"
+#include<sstream>
+#include<iostream>
+#include <fstream> 
+using namespace std;
 using namespace HalconCpp;
 
 class imagetools
@@ -23,7 +27,6 @@ private:
 	{
 		ar & imageregion;
 	}
-
 };
 
 

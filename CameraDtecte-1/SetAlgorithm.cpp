@@ -27,9 +27,10 @@ void SetAlgorithm::display(HObject image)
 void SetAlgorithm::intial()
 {
 	tools = new list<imagetools *>();
-	para = new Para();
+	para1 = new Para();
 	imageregion = new ImageRegion();
-
+	ct = new chartdata();
+	isondetect = false;
 	//2
 	QTableWidgetItem *aItem;
 	aItem = new QTableWidgetItem(QString("字符内容"));
@@ -60,8 +61,11 @@ void SetAlgorithm::intial()
 	//3
 
 	ui.horizontalSlider->setMinimum(0);
-	ui.horizontalSlider->setMaximum(127);
+	ui.horizontalSlider->setMaximum(255);
+	scrollnum = 0;
+	colortype = false;
 	ui.radioButton->setChecked(true);
+
 
 	// 4
 
@@ -78,12 +82,35 @@ void SetAlgorithm::readhimage()
 	HalconCpp::DispObj(CurrentImage, hv_WindowID);
 }
 
+
 void SetAlgorithm::selectsuanfa()
 {
+	//1
+	ct->checktype(ui.tableWidget->rowCount() - 1);
+
+	//2
+	if (!CurrentImage.IsInitialized())
+	{
+		return;
+	}
+	if (!isondetect)
+	{
+		isondetect = true;
+	}
+	else
+	{
+		return;
+	}
+	imagetools * currettool;
+	currettool->image = CurrentImage;
+	currettool->imageregion = *(imageregion->cloner());
+
+	//3
+
 	GetSF *Gs = new GetSF();
 	Qt::WindowFlags flags = Gs->windowFlags();
 	Gs->setWindowFlags(flags | Qt::MSWindowsFixedSizeDialogHint);
-	imagetools * currettool;
+	
 	int ret = Gs->exec();
 	bool isgood = true;
 	if (ret == QDialog::Accepted)
@@ -98,16 +125,14 @@ void SetAlgorithm::selectsuanfa()
 		}
 		if (isgood)
 		{
+			// get para and draw
 			currettool->draw();
 
 			currettool->action();
-
-
-
 			tools->push_back(currettool);
 		}
 	}
-	
+	isondetect = false;
 }
 
 void SetAlgorithm::sdetect()
@@ -121,24 +146,48 @@ void SetAlgorithm::sdetect()
 	}
 }
 
+void SetAlgorithm::savesuanfa()
+{
+
+	std::ofstream ofs("store.dat");
+	boost::archive::text_oarchive ar(ofs);
+	ofs << tools;
+}
+
+void SetAlgorithm::readsuanfa()
+{
+	tools->clear();
+	std::ifstream ifs("filename", std::ios::binary);
+	boost::archive::text_iarchive ia(ifs);
+	ia >> tools;
+}
+
+void SetAlgorithm::showresult()
+{
+}
+
 void SetAlgorithm::getrollnum(int kk)
 {
 	if ((ui.radioButton)->isChecked())
 	{
-		scrollnum = kk;
+		 colortype = false;
 	}
-	else if (ui.radioButton_2->isChecked())
-	{
-		scrollnum = kk;
-		scrollnum += 128;
-	}
-	ui.label_2->setText(QStringLiteral("值：") + QString::number(scrollnum));
+	scrollnum = kk;
+	ui.label_2->setText(u8"值：" + QString::number(scrollnum));
+
+
+	ct->checktype(ui.tableWidget->rowCount() - 1);
+
+	imageregion->color = colortype;
+	imageregion->srcollnum = scrollnum;
+	imageregion->chartdata = ct;
 }
 
 void SetAlgorithm::gettab(QTableWidgetItem * kkk)
 {
 	ui.label_2->setText(kkk->text());
 	int rowNum = kkk->row();
+	int columnnum = kkk->column();
 	// use d to delete a row
 	if (rowNum != 0 && (kkk->text().trimmed() == "d" || kkk->text().trimmed() == "D"))
 	{
@@ -156,6 +205,11 @@ void SetAlgorithm::gettab(QTableWidgetItem * kkk)
 		comBox->addItem("width");
 		ui.tableWidget->setCellWidget(rowNum + 1, 0, comBox);
 	}
+
+	ct->getdata(columnnum, rowNum, kkk->text());
+	QWidget *widget = ui.tableWidget->cellWidget(rowNum, 0);
+	QComboBox *combox = (QComboBox*)widget;
+	ct->gettype(rowNum, combox->currentText());
 }
 
 void SetAlgorithm::sintial()

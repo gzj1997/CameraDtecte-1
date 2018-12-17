@@ -11,6 +11,7 @@
 #include<qcombobox.h>
 #include"PathHelper.h"
 #include"sf1.h"
+#include"chartdata.h"
 class SetAlgorithm : public QDialog
 {
 	Q_OBJECT
@@ -20,15 +21,19 @@ public:
 	~SetAlgorithm();
 	
 	list<imagetools *> *tools;
-	
+	chartdata *ct;
 
 	HObject CurrentImage;
 	ImageRegion* imageregion;
-	Para* para;
+	Para* para1;
 	Hlong MainWndID;
 	HTuple  hv_WindowID;
 	QString CurrentCCD;
 	int scrollnum;
+	bool colortype;
+
+
+	bool isondetect ;
 
 	void display(HObject image);
 	void intial();
@@ -39,6 +44,9 @@ private:
 	void readhimage();
 	void selectsuanfa();
 	void sdetect();
+	void savesuanfa();
+	void readsuanfa();
+	void showresult();
 	void getrollnum(int kk );
 	void gettab(QTableWidgetItem * kkk);
 };

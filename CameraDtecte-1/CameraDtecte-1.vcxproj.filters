@@ -38,6 +38,9 @@
     <ClCompile Include="sf1.cpp">
       <Filter>Source Files\tools</Filter>
     </ClCompile>
+    <ClCompile Include="chartdata.cpp">
+      <Filter>Source Files\tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -153,6 +156,9 @@
       <Filter>Header Files\Card</Filter>
     </ClInclude>
     <ClInclude Include="sf1.h">
+      <Filter>Header Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="chartdata.h">
       <Filter>Header Files\Tools</Filter>
     </ClInclude>
   </ItemGroup>

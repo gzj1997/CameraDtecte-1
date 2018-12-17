@@ -105,10 +105,10 @@ border -radius:15px;
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>20</y>
-      <width>321</width>
-      <height>111</height>
+      <width>341</width>
+      <height>121</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -254,6 +254,11 @@ border -radius:15px;
     </property>
    </widget>
   </widget>
+  <zorder>groupBox_4</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>groupBox_2</zorder>
+  <zorder>groupBox_3</zorder>
+  <zorder>groupBox_5</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
@@ -307,22 +312,6 @@ border -radius:15px;
    </hints>
   </connection>
   <connection>
-   <sender>horizontalSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>SetAlgorithm</receiver>
-   <slot>getrollnum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>438</x>
-     <y>242</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>772</x>
-     <y>242</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_5</sender>
    <signal>clicked()</signal>
    <receiver>SetAlgorithm</receiver>
@@ -338,6 +327,54 @@ border -radius:15px;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>SetAlgorithm</receiver>
+   <slot>savesuanfa()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>49</x>
+     <y>436</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>11</x>
+     <y>434</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>SetAlgorithm</receiver>
+   <slot>readsuanfa()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>223</x>
+     <y>435</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>SetAlgorithm</receiver>
+   <slot>showresult()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>371</x>
+     <y>365</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>282</x>
+     <y>494</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>sintial()</slot>
@@ -345,5 +382,8 @@ border -radius:15px;
   <slot>gettab(QTableWidgetItem*)</slot>
   <slot>getrollnum(int)</slot>
   <slot>selectsuanfa()</slot>
+  <slot>savesuanfa()</slot>
+  <slot>readsuanfa()</slot>
+  <slot>showresult()</slot>
  </slots>
 </ui>

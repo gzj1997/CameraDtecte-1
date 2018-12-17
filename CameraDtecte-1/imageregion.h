@@ -2,6 +2,7 @@
 #pragma once
 #include"HalconCpp.h"
 #include"para.h"
+#include"chartdata.h"
 using namespace HalconCpp;
 
 class ImageRegion
@@ -11,14 +12,18 @@ public:
 	ImageRegion(HalconCpp::HObject image, Para* pa);
 	~ImageRegion();
 
-	Para pa;
+	//Para pa;
+
+	chartdata *chartdata;
 	HalconCpp::HObject image;
+	HalconCpp::HObject region;
+	int srcollnum;
+	bool color;
 
 	ImageRegion * cloner() {
 		ImageRegion *a = new ImageRegion();
 		*a = *this;
 		return a;
-		
 	}
 private:
 	friend class boost::serialization::access;
@@ -26,7 +31,9 @@ private:
 	template <typename Archive>
 	void serialize(Archive &ar, const unsigned int version)
 	{
-		ar & pa;
+		//ar & pa;
+		ar &color;
+		ar &srcollnum;
 	}
 };
 

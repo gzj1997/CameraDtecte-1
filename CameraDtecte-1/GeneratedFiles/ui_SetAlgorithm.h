@@ -96,7 +96,7 @@ public:
 "}"));
         gridLayoutWidget = new QWidget(groupBox_3);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(10, 20, 321, 111));
+        gridLayoutWidget->setGeometry(QRect(0, 20, 341, 121));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
@@ -185,13 +185,20 @@ public:
         tableView = new QTableView(groupBox_5);
         tableView->setObjectName(QStringLiteral("tableView"));
         tableView->setGeometry(QRect(10, 20, 321, 121));
+        groupBox_4->raise();
+        groupBox->raise();
+        groupBox_2->raise();
+        groupBox_3->raise();
+        groupBox_5->raise();
 
         retranslateUi(SetAlgorithm);
         QObject::connect(pushButton_4, SIGNAL(clicked()), SetAlgorithm, SLOT(sintial()));
         QObject::connect(pushButton_8, SIGNAL(clicked()), SetAlgorithm, SLOT(readhimage()));
         QObject::connect(tableWidget, SIGNAL(itemChanged(QTableWidgetItem*)), SetAlgorithm, SLOT(gettab(QTableWidgetItem*)));
-        QObject::connect(horizontalSlider, SIGNAL(valueChanged(int)), SetAlgorithm, SLOT(getrollnum(int)));
         QObject::connect(pushButton_5, SIGNAL(clicked()), SetAlgorithm, SLOT(selectsuanfa()));
+        QObject::connect(pushButton_6, SIGNAL(clicked()), SetAlgorithm, SLOT(savesuanfa()));
+        QObject::connect(pushButton_7, SIGNAL(clicked()), SetAlgorithm, SLOT(readsuanfa()));
+        QObject::connect(pushButton_3, SIGNAL(clicked()), SetAlgorithm, SLOT(showresult()));
 
         QMetaObject::connectSlotsByName(SetAlgorithm);
     } // setupUi
