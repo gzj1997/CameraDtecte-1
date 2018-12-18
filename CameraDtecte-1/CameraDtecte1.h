@@ -10,7 +10,7 @@
 #include"CCamera.h"
 #include"turntable.h"
 #include"DMC2210.h"
-
+#include"Card.h"
 #include<qmessagebox.h>
 #include<qdebug.h>
 #include<qdir.h>

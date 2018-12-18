@@ -9,12 +9,13 @@ CameraDtecte1::CameraDtecte1(QWidget *parent)
 CameraDtecte1::~CameraDtecte1()
 {
 	Cameras->front()->Close();
+	Pylon::PylonTerminate();
 	
 }
 void CameraDtecte1::intial()
 {
 	Cameras =new list< CCamera *>();
-
+	TurnTable = new turntable();
 	 int card = d2210_board_init();
 	 if (card== 0)
 	 {
@@ -131,8 +132,11 @@ void CameraDtecte1::StartBtn()
 		LinkCamera();
 
 	Cameras->front()->Start();
-
-	
+	if (isfirstrun)
+	{
+		d2210_set_encoder(Card::Axis0, 0);
+	}
+	TurnTable->startrun();
 
 }
 

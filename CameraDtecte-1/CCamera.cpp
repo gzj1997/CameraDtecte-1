@@ -200,8 +200,8 @@ void CCamera::Close()
 		//        OutputDebugString(LPCWSTR(e.GetDescription()));
 		qDebug() << "CloseCamera Error:" << QString(e.GetDescription());
 	}
-	Pylon::PylonInitialize();
-	Pylon::PylonTerminate();
+//	Pylon::PylonInitialize();
+//	Pylon::PylonTerminate();
 }
 
 bool CCamera::CheckCamera()

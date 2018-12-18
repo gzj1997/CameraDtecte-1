@@ -102,8 +102,7 @@ void SetAlgorithm::selectsuanfa()
 		return;
 	}
 	imagetools * currettool;
-	currettool->image = CurrentImage;
-	currettool->imageregion = *(imageregion->cloner());
+	
 
 	//3
 
@@ -123,8 +122,11 @@ void SetAlgorithm::selectsuanfa()
 		{
 			isgood = false;
 		}
+
 		if (isgood)
 		{
+			currettool->image = CurrentImage;
+			currettool->imageregion = *(imageregion->cloner());
 			// get para and draw
 			currettool->draw();
 
