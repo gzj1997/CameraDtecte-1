@@ -15,7 +15,8 @@ void CCamera::intial()
 
 	imagelist = new queue<HObject>();
 	tools = new list<imagetools*>();
-
+	good =* new list<int>();
+	bad =* new list<int>();
 
 	qDebug() << "SBaslerCameraControl: PylonInitialize initSome";
 	Pylon::PylonInitialize();

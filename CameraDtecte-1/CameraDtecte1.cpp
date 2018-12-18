@@ -95,8 +95,11 @@ void CameraDtecte1::readcameraset()
 				i++;
 			}
 		}
+		
 		reader.readNext();
 	}
+	cameracount = i;
+	TurnTable->CameraCount = i;
 	file.close();
 	if (reader.hasError()) {
 		std::cerr << "Error: Failed to parse file "

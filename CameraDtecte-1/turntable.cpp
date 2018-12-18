@@ -4,6 +4,10 @@ turntable::turntable()
 {
 	isrun = false;
 	nutlist = new list<nut>();
+	for (int i = 0; i < 6; i++)
+	{
+		CameraNut[i] = new cameranut();
+	}
 }
 
 turntable::~turntable()
@@ -22,7 +26,9 @@ void turntable::startrun()
 
 void turntable::stoprun()
 {
+	
 	isrun = false;
+	this_thread::sleep_for(std::chrono::milliseconds(20));
 }
 
 void turntable::run()
@@ -34,7 +40,7 @@ void turntable::run()
 	{
 		currentPos = d2210_get_encoder(Card::Axis0);
 		csignal = d2210_read_inbit(Card::Axis0, 0);
-
+		
 		if (presignal ==1 && csignal == 0)
 		{
 			// timer
@@ -42,9 +48,6 @@ void turntable::run()
 
 			nutlist->push_back(*Cnut);
 		}
-
-
-
 		//check camera
 		//check result
 		
@@ -57,12 +60,13 @@ void turntable::run()
 				{
 					if ( it->posNo< CameraCount )
 					{
-						if ( CameraNut[i].onwrite = false  )
+						if ( CameraNut[i]->onwrite = false  )
 						{
-							CameraNut[i].onwrite = true;
-							CameraNut[i].initialPos = it->initialPos;
+							CameraNut[i]->onwrite = true;
+							CameraNut[i]->initialPos = it->initialPos;
 
 							d2210_write_outbit(Card::Axis0, IOs[i], Card::ON);
+							this_thread::sleep_for(std::chrono::milliseconds(1));
 							d2210_write_outbit(Card::Axis0, IOs[i], Card::OFF);
 						}
 
@@ -92,6 +96,56 @@ void turntable::run()
 
 void turntable::readconsole()
 {
+	QString dpath = QDir::currentPath() + "/Data/Position.xml";
+	QFile file(dpath);
+	if (!file.open(QFile::ReadOnly | QFile::Text)) {
+		qDebug() << "Error: Cannot read file " << qPrintable(dpath)
+			<< ": " << qPrintable(file.errorString());
+			
+	}
+	QXmlStreamReader reader(&file);
+	reader.readNext();
+	int i = 0;
+	int k = 0;
+	int j = 0;
+	while (!reader.atEnd()) {
+		if (reader.isStartElement()) {
+			if (reader.name() != "camera")
+			{
+				j = reader.attributes().value("Count").toInt();
+			}
+			if (reader.name() != "valve")
+			{
+				ValveCount = reader.attributes().value("Count").toInt();
+			}
+			if (reader.name() != "Out")
+			{
+				IOs[i] = reader.attributes().value("IO").toInt();
+				i++;
+			}
+			if (reader.name() != "Position")
+			{
+				position[i] = reader.attributes().value("Pos").toInt();
+				k++;
+			}
+		}
+		reader.readNext();
+	}
+	file.close();
+	if (k!= ValveCount || i!= k+ CameraCount || j!= CameraCount )
+	{
+		qDebug() << "position xml is wrong";
+	}
+	if (reader.hasError()) {
+		qDebug() << "Error: Failed to parse file "
+			<< qPrintable(dpath) << ": "
+			<< qPrintable(reader.errorString());
+	}
+	else if (file.error() != QFile::NoError) {
+		qDebug() << "Error: Cannot read file " << qPrintable(dpath)
+			<< ": " << qPrintable(file.errorString());
+			
+	}
 }
 
 

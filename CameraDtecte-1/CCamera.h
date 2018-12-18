@@ -63,6 +63,11 @@ public:
 	bool isoncatch = false;
 	std::thread * tthread;
 
+	int posmin;
+
+	list<int>good;
+	list<int>bad;
+
 	void LinkCamera();
 	void GetImage();
 	void intial();

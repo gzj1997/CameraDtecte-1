@@ -6,7 +6,10 @@
 #include"nut.h"
 #include"Card.h"
 #include<list>
-
+#include<qxmlstream.h>
+#include<qdir.h>
+#include<ostream>
+#include<qdebug.h>
 using namespace std;
 class turntable
 {
@@ -19,7 +22,7 @@ public:
 	int ValveCount;
 	int IOs[6];
 	int position[6];
-	cameranut CameraNut[6];
+	cameranut* CameraNut[6];
 	list<nut> *nutlist;
 
 	static turntable * instance;

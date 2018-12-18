@@ -37,6 +37,7 @@ private:
 	HTuple  hv_Width, hv_Height;
 	HTuple  hv_WindowID;
 
+	int cameracount;
 	void intial();
 	void LinkCamera();
 	void GetProduct();
