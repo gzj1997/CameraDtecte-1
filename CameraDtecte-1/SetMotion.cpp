@@ -112,7 +112,7 @@ void SetMotion::getmachinery(bool ok)
 }
 void SetMotion::getspeed()
 {
-	//machinerylist[currentEM] = ui.dial->value();
+	machinerylist[currentEM] = ui.dial->value();
 	ui.lineEdit->setText(QString::number(ui.dial->value()));
 }
 void SetMotion::startmotion()
@@ -131,6 +131,7 @@ void SetMotion::startmotion()
 void SetMotion::savequit()
 {
 	onrun = false;
+	DateHelper::saveSpeed( machinerylist[1]);
 	this->accept();
 }
 void SetMotion::changestate() {

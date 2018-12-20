@@ -10,6 +10,7 @@
 #include<qdir.h>
 #include<ostream>
 #include<qdebug.h>
+#include"DataHelper.h"
 using namespace std;
 class turntable
 {

@@ -21,7 +21,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
-#include <QtWidgets/QTableView>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QWidget>
 
@@ -52,7 +51,7 @@ public:
     QPushButton *pushButton_3;
     QPushButton *pushButton_8;
     QGroupBox *groupBox_5;
-    QTableView *tableView;
+    QTableWidget *tableWidget_2;
 
     void setupUi(QDialog *SetAlgorithm)
     {
@@ -182,9 +181,9 @@ public:
 "border -radius:15px; \n"
 "\n"
 "}"));
-        tableView = new QTableView(groupBox_5);
-        tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(10, 20, 321, 121));
+        tableWidget_2 = new QTableWidget(groupBox_5);
+        tableWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
+        tableWidget_2->setGeometry(QRect(10, 20, 321, 131));
         groupBox_4->raise();
         groupBox->raise();
         groupBox_2->raise();
@@ -199,6 +198,7 @@ public:
         QObject::connect(pushButton_6, SIGNAL(clicked()), SetAlgorithm, SLOT(savesuanfa()));
         QObject::connect(pushButton_7, SIGNAL(clicked()), SetAlgorithm, SLOT(readsuanfa()));
         QObject::connect(pushButton_3, SIGNAL(clicked()), SetAlgorithm, SLOT(showresult()));
+        QObject::connect(horizontalSlider, SIGNAL(valueChanged(int)), SetAlgorithm, SLOT(getrollnum(int)));
 
         QMetaObject::connectSlotsByName(SetAlgorithm);
     } // setupUi

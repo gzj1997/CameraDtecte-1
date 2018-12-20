@@ -13,18 +13,24 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
+#include <qchatview.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -41,16 +47,41 @@ public:
     QToolButton *toolButton;
     QToolButton *toolButton_5;
     QSpacerItem *horizontalSpacer;
+    QGroupBox *groupBox;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout;
+    QCheckBox *checkBox_3;
+    QCheckBox *checkBox_4;
+    QLabel *label_3;
+    QLabel *label_4;
+    QLabel *label_5;
+    QLabel *label_6;
+    QCheckBox *checkBox;
+    QLabel *label_8;
+    QCheckBox *checkBox_2;
+    QLineEdit *lineEdit_4;
+    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_2;
+    QLineEdit *lineEdit_3;
+    QLineEdit *lineEdit_5;
+    QLineEdit *lineEdit_6;
+    QLineEdit *lineEdit_7;
+    QLineEdit *lineEdit_8;
+    QLineEdit *lineEdit_9;
+    QLineEdit *lineEdit_10;
+    QLineEdit *lineEdit_11;
+    QLineEdit *lineEdit_12;
+    QGroupBox *groupBox_2;
+    QTableWidget *tableWidget_2;
+    QGroupBox *groupBox_3;
+    QListWidget *listWidget_2;
+    QGroupBox *groupBox_4;
     QTabWidget *tabWidget;
     QWidget *tab;
     QLabel *label;
     QWidget *tab_2;
     QLabel *label_2;
-    QTabWidget *tabWidget_2;
-    QWidget *tab_3;
-    QWidget *tab_4;
-    QListWidget *listWidget;
-    QListWidget *listWidget_2;
+    QChatView *graphicsView;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -148,9 +179,142 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        tabWidget = new QTabWidget(centralWidget);
+        groupBox = new QGroupBox(centralWidget);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setGeometry(QRect(10, 380, 621, 161));
+        gridLayoutWidget = new QWidget(groupBox);
+        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(0, 30, 621, 131));
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        checkBox_3 = new QCheckBox(gridLayoutWidget);
+        checkBox_3->setObjectName(QStringLiteral("checkBox_3"));
+
+        gridLayout->addWidget(checkBox_3, 2, 1, 1, 1);
+
+        checkBox_4 = new QCheckBox(gridLayoutWidget);
+        checkBox_4->setObjectName(QStringLiteral("checkBox_4"));
+
+        gridLayout->addWidget(checkBox_4, 5, 1, 1, 1);
+
+        label_3 = new QLabel(gridLayoutWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        gridLayout->addWidget(label_3, 5, 0, 1, 1);
+
+        label_4 = new QLabel(gridLayoutWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        gridLayout->addWidget(label_4, 4, 0, 1, 1);
+
+        label_5 = new QLabel(gridLayoutWidget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        gridLayout->addWidget(label_5, 2, 0, 1, 1);
+
+        label_6 = new QLabel(gridLayoutWidget);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        gridLayout->addWidget(label_6, 3, 0, 1, 1);
+
+        checkBox = new QCheckBox(gridLayoutWidget);
+        checkBox->setObjectName(QStringLiteral("checkBox"));
+
+        gridLayout->addWidget(checkBox, 4, 1, 1, 1);
+
+        label_8 = new QLabel(gridLayoutWidget);
+        label_8->setObjectName(QStringLiteral("label_8"));
+
+        gridLayout->addWidget(label_8, 1, 1, 1, 1);
+
+        checkBox_2 = new QCheckBox(gridLayoutWidget);
+        checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
+
+        gridLayout->addWidget(checkBox_2, 3, 1, 1, 1);
+
+        lineEdit_4 = new QLineEdit(gridLayoutWidget);
+        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+
+        gridLayout->addWidget(lineEdit_4, 2, 2, 1, 1);
+
+        lineEdit = new QLineEdit(gridLayoutWidget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+
+        gridLayout->addWidget(lineEdit, 2, 3, 1, 1);
+
+        lineEdit_2 = new QLineEdit(gridLayoutWidget);
+        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+
+        gridLayout->addWidget(lineEdit_2, 2, 4, 1, 1);
+
+        lineEdit_3 = new QLineEdit(gridLayoutWidget);
+        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+
+        gridLayout->addWidget(lineEdit_3, 3, 2, 1, 1);
+
+        lineEdit_5 = new QLineEdit(gridLayoutWidget);
+        lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
+
+        gridLayout->addWidget(lineEdit_5, 3, 3, 1, 1);
+
+        lineEdit_6 = new QLineEdit(gridLayoutWidget);
+        lineEdit_6->setObjectName(QStringLiteral("lineEdit_6"));
+
+        gridLayout->addWidget(lineEdit_6, 3, 4, 1, 1);
+
+        lineEdit_7 = new QLineEdit(gridLayoutWidget);
+        lineEdit_7->setObjectName(QStringLiteral("lineEdit_7"));
+
+        gridLayout->addWidget(lineEdit_7, 4, 2, 1, 1);
+
+        lineEdit_8 = new QLineEdit(gridLayoutWidget);
+        lineEdit_8->setObjectName(QStringLiteral("lineEdit_8"));
+
+        gridLayout->addWidget(lineEdit_8, 4, 3, 1, 1);
+
+        lineEdit_9 = new QLineEdit(gridLayoutWidget);
+        lineEdit_9->setObjectName(QStringLiteral("lineEdit_9"));
+
+        gridLayout->addWidget(lineEdit_9, 5, 2, 1, 1);
+
+        lineEdit_10 = new QLineEdit(gridLayoutWidget);
+        lineEdit_10->setObjectName(QStringLiteral("lineEdit_10"));
+
+        gridLayout->addWidget(lineEdit_10, 5, 3, 1, 1);
+
+        lineEdit_11 = new QLineEdit(gridLayoutWidget);
+        lineEdit_11->setObjectName(QStringLiteral("lineEdit_11"));
+
+        gridLayout->addWidget(lineEdit_11, 4, 4, 1, 1);
+
+        lineEdit_12 = new QLineEdit(gridLayoutWidget);
+        lineEdit_12->setObjectName(QStringLiteral("lineEdit_12"));
+
+        gridLayout->addWidget(lineEdit_12, 5, 4, 1, 1);
+
+        groupBox_2 = new QGroupBox(centralWidget);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        groupBox_2->setGeometry(QRect(640, 10, 561, 261));
+        tableWidget_2 = new QTableWidget(groupBox_2);
+        tableWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
+        tableWidget_2->setGeometry(QRect(10, 30, 541, 221));
+        tableWidget_2->raise();
+        tableWidget_2->raise();
+        groupBox_3 = new QGroupBox(centralWidget);
+        groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
+        groupBox_3->setGeometry(QRect(650, 390, 571, 151));
+        listWidget_2 = new QListWidget(groupBox_3);
+        listWidget_2->setObjectName(QStringLiteral("listWidget_2"));
+        listWidget_2->setGeometry(QRect(10, 20, 541, 121));
+        groupBox_4 = new QGroupBox(centralWidget);
+        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
+        groupBox_4->setGeometry(QRect(10, 120, 621, 261));
+        tabWidget = new QTabWidget(groupBox_4);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(20, 130, 601, 251));
+        tabWidget->setGeometry(QRect(10, 20, 611, 251));
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         label = new QLabel(tab);
@@ -164,24 +328,11 @@ public:
         label_2->setGeometry(QRect(10, 10, 561, 291));
         label_2->setAutoFillBackground(true);
         tabWidget->addTab(tab_2, QString());
-        tabWidget_2 = new QTabWidget(centralWidget);
-        tabWidget_2->setObjectName(QStringLiteral("tabWidget_2"));
-        tabWidget_2->setGeometry(QRect(650, 150, 551, 231));
-        tabWidget_2->setStyleSheet(QStringLiteral("background-color:transparent"));
-        tab_3 = new QWidget();
-        tab_3->setObjectName(QStringLiteral("tab_3"));
-        tab_3->setStyleSheet(QStringLiteral("background-color:transparent"));
-        tabWidget_2->addTab(tab_3, QString());
-        tab_4 = new QWidget();
-        tab_4->setObjectName(QStringLiteral("tab_4"));
-        tab_4->setStyleSheet(QStringLiteral("background-color:transparent"));
-        tabWidget_2->addTab(tab_4, QString());
-        listWidget = new QListWidget(centralWidget);
-        listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(20, 410, 591, 111));
-        listWidget_2 = new QListWidget(centralWidget);
-        listWidget_2->setObjectName(QStringLiteral("listWidget_2"));
-        listWidget_2->setGeometry(QRect(650, 410, 551, 111));
+        tabWidget->raise();
+        tabWidget->raise();
+        graphicsView = new QChatView(centralWidget);
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        graphicsView->setGeometry(QRect(650, 280, 541, 101));
         CameraDtecte1Class->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(CameraDtecte1Class);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -204,7 +355,6 @@ public:
         QObject::connect(toolButton_5, SIGNAL(clicked()), CameraDtecte1Class, SLOT(CameraSet()));
 
         tabWidget->setCurrentIndex(0);
-        tabWidget_2->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(CameraDtecte1Class);
@@ -219,12 +369,23 @@ public:
         toolButton_2->setText(QApplication::translate("CameraDtecte1Class", "\350\277\220\345\212\250\350\256\276\345\256\232", 0));
         toolButton->setText(QApplication::translate("CameraDtecte1Class", "\347\256\227\346\263\225\350\256\276\345\256\232", 0));
         toolButton_5->setText(QApplication::translate("CameraDtecte1Class", "\347\233\270\346\234\272\350\256\276\345\256\232", 0));
+        groupBox->setTitle(QApplication::translate("CameraDtecte1Class", "GroupBox", 0));
+        checkBox_3->setText(QApplication::translate("CameraDtecte1Class", "CheckBox", 0));
+        checkBox_4->setText(QApplication::translate("CameraDtecte1Class", "CheckBox", 0));
+        label_3->setText(QApplication::translate("CameraDtecte1Class", "TextLabel", 0));
+        label_4->setText(QApplication::translate("CameraDtecte1Class", "TextLabel", 0));
+        label_5->setText(QApplication::translate("CameraDtecte1Class", "TextLabel", 0));
+        label_6->setText(QApplication::translate("CameraDtecte1Class", "TextLabel", 0));
+        checkBox->setText(QApplication::translate("CameraDtecte1Class", "CheckBox", 0));
+        label_8->setText(QApplication::translate("CameraDtecte1Class", "TextLabel", 0));
+        checkBox_2->setText(QApplication::translate("CameraDtecte1Class", "CheckBox", 0));
+        groupBox_2->setTitle(QApplication::translate("CameraDtecte1Class", "GroupBox", 0));
+        groupBox_3->setTitle(QApplication::translate("CameraDtecte1Class", "GroupBox", 0));
+        groupBox_4->setTitle(QApplication::translate("CameraDtecte1Class", "GroupBox", 0));
         label->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("CameraDtecte1Class", "Tab 1", 0));
         label_2->setText(QApplication::translate("CameraDtecte1Class", "TextLabel2", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("CameraDtecte1Class", "Tab 2", 0));
-        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QApplication::translate("CameraDtecte1Class", "Tab 1", 0));
-        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("CameraDtecte1Class", "Tab 2", 0));
     } // retranslateUi
 
 };

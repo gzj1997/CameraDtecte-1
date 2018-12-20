@@ -32,17 +32,17 @@ void SetAlgorithm::intial()
 	ct = new chartdata();
 	isondetect = false;
 	//2
-	QTableWidgetItem *aItem;
-	aItem = new QTableWidgetItem(QString("字符内容"));
+	//QTableWidgetItem *aItem;
+	//aItem = new QTableWidgetItem(QString("字符内容"));
 
 	//ui.tableWidget->resizeColumnsToContents();//根据内容自动改变列的大小
 	//ui.tableWidget->resizeRowsToContents();//根据内容自动改变行的大小
 	ui.tableWidget->setColumnCount(3);//设置列数为10
 	ui.tableWidget->setRowCount(1);//设置行数为10
 
-	ui.tableWidget->setColumnWidth(0, 90);
-	ui.tableWidget->setColumnWidth(1, 86);
-	ui.tableWidget->setColumnWidth(2, 86);
+	//ui.tableWidget->setColumnWidth(0, 90);
+	//ui.tableWidget->setColumnWidth(1, 86);
+	//ui.tableWidget->setColumnWidth(2, 86);
 
 	for (size_t i = 0; i < 3; i++)
 	{
@@ -69,6 +69,19 @@ void SetAlgorithm::intial()
 
 	// 4
 
+	//5
+	//ui.tableWidget->resizeColumnsToContents();//根据内容自动改变列的大小
+	//ui.tableWidget->resizeRowsToContents();//根据内容自动改变行的大小
+	ui.tableWidget_2->setColumnCount(3);//设置列数为10
+	ui.tableWidget_2->setRowCount(1);//设置行数为10
+
+	for (size_t i = 0; i < 3; i++)
+	{
+		ui.tableWidget_2->setColumnWidth(i, 100);
+	}
+	QStringList header2;
+	header2 << "type" << "result" << "check";
+	ui.tableWidget_2->setHorizontalHeaderLabels(header2);
 
 }
 

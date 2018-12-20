@@ -16,6 +16,7 @@
 #include<qdir.h>
 #include<qxmlstream.h>
 
+
 class CameraDtecte1 : public QMainWindow
 {
 	Q_OBJECT

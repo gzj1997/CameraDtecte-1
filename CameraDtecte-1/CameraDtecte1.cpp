@@ -10,12 +10,14 @@ CameraDtecte1::~CameraDtecte1()
 {
 	Cameras->front()->Close();
 	Pylon::PylonTerminate();
-	
 }
 void CameraDtecte1::intial()
 {
 	Cameras =new list< CCamera *>();
 	TurnTable = new turntable();
+
+	DateHelper Dh = *new DateHelper();
+
 	 int card = d2210_board_init();
 	 if (card== 0)
 	 {
@@ -58,6 +60,9 @@ void CameraDtecte1::GetProduct()
 }
 void CameraDtecte1::readcameraset()
 {
+
+
+
 	QString dpath = QDir::currentPath() + "/Data/CameraSettings.xml";
 	QFile file(dpath);
 	if (!file.open(QFile::ReadOnly | QFile::Text)) {
@@ -87,12 +92,16 @@ void CameraDtecte1::readcameraset()
 					imageProgress(img);
 					//DispObj(img, hv_WindowID);
 				});
-				if (! camera->CheckCamera())
+				bool kk = camera->CheckCamera();
+				if (!kk )
 				{
 						 QMessageBox::warning(this, "warning", QString::fromStdString(camera->devicename) + u8"Î´Á¬½Ó", QMessageBox::Ok, QMessageBox::NoButton);
 				}
-				Cameras->push_back(camera);
-				i++;
+				else
+				{
+					
+				}
+				
 			}
 		}
 		
@@ -138,8 +147,9 @@ void CameraDtecte1::StartBtn()
 	if (isfirstrun)
 	{
 		d2210_set_encoder(Card::Axis0, 0);
+		isfirstrun = false;
 	}
-	TurnTable->startrun();
+//	TurnTable->startrun();
 
 }
 

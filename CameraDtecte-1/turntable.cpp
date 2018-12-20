@@ -8,6 +8,7 @@ turntable::turntable()
 	{
 		CameraNut[i] = new cameranut();
 	}
+
 }
 
 turntable::~turntable()
@@ -21,7 +22,10 @@ void turntable::startrun()
 		isrun = true;
 		std::thread thread3(std::bind(&turntable::run, this));
 	}
-	
+	//d2210_write_SEVON_PIN(Card::Axis0, Card::ON);
+	//d2210_set_profile(Card::Axis0, Card::minspeed, DateHelper::speed_1, Card::acc, Card::acc);
+	//d2210_set_position(Card::Axis0, 200000);
+	//d2210_set_encoder(Card::Axis0, 200000);
 }
 
 void turntable::stoprun()
@@ -36,6 +40,7 @@ void turntable::run()
 	int presignal =0;
 	int csignal = d2210_read_inbit(Card::Axis0,0);
 	int currentPos = d2210_get_encoder(Card::Axis0);
+
 	while (isrun)
 	{
 		currentPos = d2210_get_encoder(Card::Axis0);

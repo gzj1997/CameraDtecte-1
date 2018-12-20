@@ -27,6 +27,7 @@ public:
 
 	static void setconsole();
 	static void readSpeed();
+	static void saveSpeed(int k);
 	static void savecamera();
 	static void setcamera(QString name,int g,int p,double e );
 private:

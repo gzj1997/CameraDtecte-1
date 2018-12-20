@@ -29,7 +29,8 @@ private:
 enum Hole
 {
 	thefirst = 1,
-	thesecond = 2
+	thesecond = 2,
+	thethrid
 };
 
 

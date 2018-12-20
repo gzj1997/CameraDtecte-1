@@ -54,6 +54,35 @@ void DateHelper::readSpeed()
 	}
 }
 
+void DateHelper::saveSpeed(int k)
+{
+	QString dpath = QDir::currentPath() + "/Data/Position.xml";
+	QFile file(dpath); //相对路径、绝对路径、资源路径都可以
+	if (!file.open(QFile::ReadOnly))
+		return;
+	//更新一个标签项,如果知道xml的结构，直接定位到那个标签上定点更新
+	//或者用遍历的方法去匹配tagname或者attribut，value来更新
+	QDomDocument doc;
+	if (!doc.setContent(&file))
+	{
+		file.close();
+		return;
+	}
+	file.close();
+
+	QDomElement root = doc.documentElement();
+	QDomNodeList list = root.elementsByTagName("Speed");
+	QDomNode node = list.at(0);
+	node.toElement().setAttribute("speed_1", k);
+	speed_1 = k;
+	if (!file.open(QFile::WriteOnly | QFile::Truncate))
+		return;
+	//输出到文件
+	QTextStream out_stream(&file);
+	doc.save(out_stream, 4); //缩进4格
+	file.close();
+}
+
 void DateHelper::savecamera()
 {
 	QString dpath = QDir::currentPath() + "/Data/CameraSettings.xml";
