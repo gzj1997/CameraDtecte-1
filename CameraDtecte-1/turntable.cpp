@@ -1,8 +1,10 @@
 #include"turntable.h"
 
+turntable * turntable::instance = nullptr;
 turntable::turntable()
 {
 	isrun = false;
+	instance = this;
 	nutlist = new list<nut>();
 	for (int i = 0; i < 6; i++)
 	{

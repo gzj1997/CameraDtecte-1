@@ -49,10 +49,10 @@ public:
     QGroupBox *groupBox;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
+    QLabel *label_5;
     QLabel *label_4;
     QRadioButton *radioButton_4;
     QLabel *label_3;
-    QLabel *label_5;
     QLabel *label_6;
     QRadioButton *radioButton_3;
     QLineEdit *lineEdit_4;
@@ -200,12 +200,17 @@ public:
         groupBox->setGeometry(QRect(700, 280, 621, 161));
         gridLayoutWidget = new QWidget(groupBox);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(0, 30, 621, 131));
+        gridLayoutWidget->setGeometry(QRect(10, 30, 601, 121));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
+        label_5 = new QLabel(gridLayoutWidget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        gridLayout->addWidget(label_5, 2, 0, 1, 1);
+
         label_4 = new QLabel(gridLayoutWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
 
@@ -213,6 +218,7 @@ public:
 
         radioButton_4 = new QRadioButton(gridLayoutWidget);
         radioButton_4->setObjectName(QStringLiteral("radioButton_4"));
+        radioButton_4->setAutoExclusive(false);
 
         gridLayout->addWidget(radioButton_4, 5, 1, 1, 1);
 
@@ -221,11 +227,6 @@ public:
 
         gridLayout->addWidget(label_3, 5, 0, 1, 1);
 
-        label_5 = new QLabel(gridLayoutWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
-
-        gridLayout->addWidget(label_5, 2, 0, 1, 1);
-
         label_6 = new QLabel(gridLayoutWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
 
@@ -233,6 +234,7 @@ public:
 
         radioButton_3 = new QRadioButton(gridLayoutWidget);
         radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
+        radioButton_3->setAutoExclusive(false);
 
         gridLayout->addWidget(radioButton_3, 4, 1, 1, 1);
 
@@ -298,11 +300,13 @@ public:
 
         radioButton = new QRadioButton(gridLayoutWidget);
         radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setAutoExclusive(false);
 
         gridLayout->addWidget(radioButton, 2, 1, 1, 1);
 
         radioButton_2 = new QRadioButton(gridLayoutWidget);
         radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+        radioButton_2->setAutoExclusive(false);
 
         gridLayout->addWidget(radioButton_2, 3, 1, 1, 1);
 
@@ -326,8 +330,6 @@ public:
 
         gridLayout->addWidget(label_20, 1, 5, 1, 1);
 
-        gridLayoutWidget->raise();
-        label_8->raise();
         groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setGeometry(QRect(700, 20, 621, 251));
@@ -451,10 +453,10 @@ public:
         toolButton->setText(QApplication::translate("CameraDtecte1Class", "\347\256\227\346\263\225\350\256\276\345\256\232", 0));
         toolButton_5->setText(QApplication::translate("CameraDtecte1Class", "\347\233\270\346\234\272\350\256\276\345\256\232", 0));
         groupBox->setTitle(QApplication::translate("CameraDtecte1Class", "GroupBox", 0));
+        label_5->setText(QApplication::translate("CameraDtecte1Class", "CCD1", 0));
         label_4->setText(QApplication::translate("CameraDtecte1Class", "CCD3", 0));
         radioButton_4->setText(QString());
         label_3->setText(QApplication::translate("CameraDtecte1Class", "CCD4", 0));
-        label_5->setText(QApplication::translate("CameraDtecte1Class", "CCD1", 0));
         label_6->setText(QApplication::translate("CameraDtecte1Class", "CCD2", 0));
         radioButton_3->setText(QString());
         radioButton->setText(QString());
