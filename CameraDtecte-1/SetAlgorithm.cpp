@@ -1,5 +1,5 @@
 #include "SetAlgorithm.h"
-
+BOOST_CLASS_EXPORT(sf1)
 SetAlgorithm::SetAlgorithm(QWidget *parent)
 	: QDialog(parent)
 {
@@ -65,7 +65,7 @@ void SetAlgorithm::intial()
 	scrollnum = 0;
 	colortype = false;
 	ui.radioButton->setChecked(true);
-
+	
 
 	// 4
 
@@ -73,7 +73,7 @@ void SetAlgorithm::intial()
 	//ui.tableWidget->resizeColumnsToContents();//根据内容自动改变列的大小
 	//ui.tableWidget->resizeRowsToContents();//根据内容自动改变行的大小
 	ui.tableWidget_2->setColumnCount(3);//设置列数为10
-	ui.tableWidget_2->setRowCount(1);//设置行数为10
+	ui.tableWidget_2->setRowCount(0);//设置行数为10
 
 	for (size_t i = 0; i < 3; i++)
 	{
@@ -82,7 +82,8 @@ void SetAlgorithm::intial()
 	QStringList header2;
 	header2 << "type" << "result" << "check";
 	ui.tableWidget_2->setHorizontalHeaderLabels(header2);
-
+//	ui.tableWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	ui.tableWidget_2->setSelectionBehavior(QAbstractItemView::SelectRows);
 }
 
 void SetAlgorithm::readhimage()
@@ -104,6 +105,7 @@ void SetAlgorithm::selectsuanfa()
 	//2
 	if (!CurrentImage.IsInitialized())
 	{
+		qDebug() << "no image";
 		return;
 	}
 	if (!isondetect)
@@ -138,12 +140,23 @@ void SetAlgorithm::selectsuanfa()
 
 		if (isgood)
 		{
+			imageregion->chartdata = ct->cloner();
+
 			currettool->image = CurrentImage;
 			currettool->imageregion = *(imageregion->cloner());
 			// get para and draw
 			currettool->draw();
 
 			currettool->action();
+
+			toolresult *tr = currettool->Toolresult.cloner();
+			for (int i = 0; !tr->name[i].empty(); i++)
+			{
+				ui.tableWidget_2->setRowCount(i+1);
+				ui.tableWidget_2->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(tr->name[i])));
+				ui.tableWidget_2->setItem(i, 1, new QTableWidgetItem(QString::number(tr->data[i])));
+				ui.tableWidget_2->setCellWidget(i, 2, new QCheckBox());
+			}
 			tools->push_back(currettool);
 		}
 	}
@@ -163,18 +176,23 @@ void SetAlgorithm::sdetect()
 
 void SetAlgorithm::savesuanfa()
 {
-
-	std::ofstream ofs("store.dat");
-	boost::archive::text_oarchive ar(ofs);
-	ofs << tools;
+	//tools->clear();
+	//imagetools * t = new sf1();
+	//((sf1*)t)->mianji = 122;
+	//tools->push_back(t);
+	std::ofstream file("archiv.txt");
+	boost::archive::text_oarchive oa(file);
+	oa << tools;
 }
 
 void SetAlgorithm::readsuanfa()
 {
 	tools->clear();
-	std::ifstream ifs("filename", std::ios::binary);
-	boost::archive::text_iarchive ia(ifs);
+//	std::ifstream ifs("filename", std::ios::binary);
+	std::ifstream file("archiv.txt");
+	boost::archive::text_iarchive ia(file);
 	ia >> tools;
+
 }
 
 void SetAlgorithm::showresult()
@@ -184,14 +202,9 @@ void SetAlgorithm::showresult()
 
 void SetAlgorithm::getrollnum(int kk)
 {
-	if ((ui.radioButton)->isChecked())
-	{
-		 colortype = false;
-	}
+    colortype = (ui.radioButton)->isChecked();
 	scrollnum = kk;
-	ui.label_2->setText(u8"值：" + QString::number(scrollnum));
-
-
+	ui.label_2->setText("num:" + QString::number(scrollnum));
 	ct->checktype(ui.tableWidget->rowCount() - 1);
 	imageregion->image = CurrentImage;
 	imageregion->color = colortype;

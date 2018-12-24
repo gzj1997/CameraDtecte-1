@@ -20,6 +20,7 @@ public:
 		*a = *this;
 		return a;
 	}
+
 private:
 
 };

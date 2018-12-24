@@ -17,6 +17,7 @@ void CCamera::intial()
 	tools = new list<imagetools*>();
 	good =* new list<int>();
 	bad =* new list<int>();
+	tresult = new list< toolresult>();
 
 	qDebug() << "SBaslerCameraControl: PylonInitialize initSome";
 	Pylon::PylonInitialize();
@@ -67,7 +68,7 @@ void CCamera::GetImage()
 		while (instantcamera.IsGrabbing() && isoncatch)
 		{
 			// Wait for an image and then retrieve it. A timeout of 5000 ms is used.
-			instantcamera.RetrieveResult(50, ptrGrabResult, TimeoutHandling_ThrowException);
+			instantcamera.RetrieveResult(5000, ptrGrabResult, TimeoutHandling_ThrowException);
 
 			// Image grabbed successfully?
 			if (ptrGrabResult->GrabSucceeded())
@@ -118,7 +119,12 @@ void CCamera::disposeimage()
 				qDebug() << "no image ";
 				break;
 			}
-
+			for each (imagetools * it in *tools)
+			{
+				it->image = Himage;
+				it->action();
+				tresult->push_back(it->Toolresult);
+			}
 				emit sigCurrentImage(Himage);
 
 		}

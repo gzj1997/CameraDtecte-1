@@ -33,7 +33,8 @@ void chartdata::gettype(int y, QString type)
 
 double chartdata::checktype(int num)
 {
-	for (int i = 0; !typelist[i].isEmpty() && i<num ; i++)
+	int i;
+	for ( i= 0; !typelist[i].isEmpty() && i<num ; i++)
 	{
 		if (minlist[i].isEmpty())
 		{
@@ -44,5 +45,6 @@ double chartdata::checktype(int num)
 			maxlist[i] = QString::number(99999999);
 		}
 	}
+	n3 = i;
 	return 0;
 }

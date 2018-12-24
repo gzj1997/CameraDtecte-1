@@ -47,6 +47,9 @@
     <ClCompile Include="nut.cpp">
       <Filter>Source Files\turntable</Filter>
     </ClCompile>
+    <ClCompile Include="toolresult.cpp">
+      <Filter>Source Files\tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -178,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="nut.h">
       <Filter>Header Files\turntable</Filter>
+    </ClInclude>
+    <ClInclude Include="toolresult.h">
+      <Filter>Source Files\tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

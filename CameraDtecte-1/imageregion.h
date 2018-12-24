@@ -3,6 +3,14 @@
 #include"HalconCpp.h"
 #include"para.h"
 #include"chartdata.h"
+#include <boost/archive/text_oarchive.hpp> 
+#include <boost/archive/text_iarchive.hpp> 
+#include <boost/serialization/string.hpp> 
+#include <boost/serialization/export.hpp> 
+#include <boost/serialization/list.hpp> 
+#include <iostream> 
+#include <sstream> 
+#include <string> 
 using namespace HalconCpp;
 
 class ImageRegion
@@ -20,7 +28,7 @@ public:
 	int srcollnum;
 	bool color;
 
-	void	draw();
+	void draw();
 
 	ImageRegion * cloner() {
 		ImageRegion *a = new ImageRegion();

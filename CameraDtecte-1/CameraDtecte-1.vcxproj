@@ -135,6 +135,7 @@
     <ClCompile Include="SetMotion.cpp" />
     <ClCompile Include="SetProduct.cpp" />
     <ClCompile Include="sf1.cpp" />
+    <ClCompile Include="toolresult.cpp" />
     <ClCompile Include="turntable.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +159,7 @@
     <ClInclude Include="chartdata.h" />
     <ClInclude Include="nut.h" />
     <ClInclude Include="sf1.h" />
+    <ClInclude Include="toolresult.h" />
     <ClInclude Include="turntable.h" />
     <QtMoc Include="CCamera.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\basler\Development\include;C:\Program Files\MVTec\HALCON-12.0\include\halconcpp;C:\Program Files\MVTec\HALCON-12.0\include;.\GeneratedFiles;.;D:\Qt\5.6\msvc2015\include;.\GeneratedFiles\$(ConfigurationName)\.;D:\Qt\5.6\msvc2015\include\QtCore;D:\Qt\5.6\msvc2015\include\QtGui;D:\Qt\5.6\msvc2015\include\QtANGLE;D:\Qt\5.6\msvc2015\include\QtWidgets</IncludePath>

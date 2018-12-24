@@ -49,6 +49,7 @@ public:
 
 
 	list<imagetools*> *tools;
+	list< toolresult> *tresult;
 	string logicname;
 	string devicename;
 
@@ -67,6 +68,9 @@ public:
 
 	list<int>good;
 	list<int>bad;
+
+
+
 
 	void LinkCamera();
 	void GetImage();

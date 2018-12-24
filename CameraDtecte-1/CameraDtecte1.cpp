@@ -34,14 +34,15 @@ void CameraDtecte1::intial()
 	 QString str = QDir::currentPath() + "/Data/I1.bmp";
 	 HalconCpp::ReadImage(&himage1, str.toStdString().c_str());
 	 MainWndID = (Hlong)this->ui.label->winId();
-	 OpenWindow(0, 0, 561, 291, MainWndID, "visible", "", &hv_WindowID);
+	 OpenWindow(0, 0, 611, 441, MainWndID, "visible", "", &hv_WindowID);
 	 HTuple win2;
-	 OpenWindow(0, 0, 561, 291, (Hlong)this->ui.label_2->winId(), "visible", "", &win2);
+	 OpenWindow(0, 0, 611, 441, (Hlong)this->ui.label_2->winId(), "visible", "", &win2);
 	 DispObj(himage1, hv_WindowID);
 	 DispObj(himage1, win2);
 	 readcameraset();
 
-	 move(50,50);
+	
+	 move(5,10);
 	 this->show();
 }
 
@@ -60,8 +61,6 @@ void CameraDtecte1::GetProduct()
 }
 void CameraDtecte1::readcameraset()
 {
-
-
 
 	QString dpath = QDir::currentPath() + "/Data/CameraSettings.xml";
 	QFile file(dpath);
@@ -97,10 +96,8 @@ void CameraDtecte1::readcameraset()
 				{
 						 QMessageBox::warning(this, "warning", QString::fromStdString(camera->devicename) + u8"Î´Á¬½Ó", QMessageBox::Ok, QMessageBox::NoButton);
 				}
-				else
-				{
-					
-				}
+				Cameras->push_back(camera);
+					i++;
 				
 			}
 		}
@@ -127,6 +124,7 @@ void CameraDtecte1::imageProgress(HObject image)
 {
 	qDebug() << "ssssss";
 	DispObj(image,hv_WindowID);
+	ui.lineEdit_4->setText("233333333");
 	if (kk % 100 ==1)
 	{
 		QString str = QDir::currentPath() + "/Data/I1.bmp";
@@ -146,10 +144,12 @@ void CameraDtecte1::StartBtn()
 	Cameras->front()->Start();
 	if (isfirstrun)
 	{
-		d2210_set_encoder(Card::Axis0, 0);
+	//	d2210_set_encoder(Card::Axis0, 0);
 		isfirstrun = false;
 	}
-//	TurnTable->startrun();
+	std::thread thread5(std::bind(&turntable::startrun, TurnTable));
+	thread5.detach();
+	//TurnTable->startrun();
 
 }
 

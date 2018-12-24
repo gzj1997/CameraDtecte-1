@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1225</width>
-    <height>601</height>
+    <width>1339</width>
+    <height>683</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
     <string notr="true">#centralWidget { 
-border-image:url(:/CameraDtecte1/Resources/back1.jpg);
+border-image:url(:/CameraDtecte1/Resources/back2.jpg);
 }  
 # centralWidget * { 
 border-image:url(); 
@@ -189,8 +189,8 @@ border-image:url();
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>380</y>
+      <x>700</x>
+      <y>280</y>
       <width>621</width>
       <height>161</height>
      </rect>
@@ -208,115 +208,138 @@ border-image:url();
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="2" column="1">
-       <widget class="QCheckBox" name="checkBox_3">
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>CheckBox</string>
+         <string>CCD3</string>
         </property>
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QCheckBox" name="checkBox_4">
+       <widget class="QRadioButton" name="radioButton_4">
         <property name="text">
-         <string>CheckBox</string>
+         <string/>
         </property>
        </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>TextLabel</string>
+         <string>CCD4</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>TextLabel</string>
+         <string>CCD1</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_6">
         <property name="text">
-         <string>TextLabel</string>
+         <string>CCD2</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QRadioButton" name="radioButton_3">
         <property name="text">
-         <string>CheckBox</string>
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLineEdit" name="lineEdit_4"/>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLineEdit" name="lineEdit"/>
+      </item>
+      <item row="2" column="5">
+       <widget class="QLineEdit" name="lineEdit_2"/>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="lineEdit_3"/>
+      </item>
+      <item row="3" column="4">
+       <widget class="QLineEdit" name="lineEdit_5"/>
+      </item>
+      <item row="3" column="5">
+       <widget class="QLineEdit" name="lineEdit_6"/>
+      </item>
+      <item row="4" column="3">
+       <widget class="QLineEdit" name="lineEdit_7"/>
+      </item>
+      <item row="4" column="4">
+       <widget class="QLineEdit" name="lineEdit_8"/>
+      </item>
+      <item row="5" column="3">
+       <widget class="QLineEdit" name="lineEdit_9"/>
+      </item>
+      <item row="5" column="4">
+       <widget class="QLineEdit" name="lineEdit_10"/>
+      </item>
+      <item row="4" column="5">
+       <widget class="QLineEdit" name="lineEdit_11"/>
+      </item>
+      <item row="5" column="5">
+       <widget class="QLineEdit" name="lineEdit_12"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QRadioButton" name="radioButton">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QRadioButton" name="radioButton_2">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLabel" name="label_18">
+        <property name="text">
+         <string>良品数量</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
        <widget class="QLabel" name="label_8">
         <property name="text">
-         <string>TextLabel</string>
+         <string>状态</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QCheckBox" name="checkBox_2">
+      <item row="1" column="4">
+       <widget class="QLabel" name="label_19">
         <property name="text">
-         <string>CheckBox</string>
+         <string>良品数量</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
-       <widget class="QLineEdit" name="lineEdit_4"/>
-      </item>
-      <item row="2" column="3">
-       <widget class="QLineEdit" name="lineEdit"/>
-      </item>
-      <item row="2" column="4">
-       <widget class="QLineEdit" name="lineEdit_2"/>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLineEdit" name="lineEdit_3"/>
-      </item>
-      <item row="3" column="3">
-       <widget class="QLineEdit" name="lineEdit_5"/>
-      </item>
-      <item row="3" column="4">
-       <widget class="QLineEdit" name="lineEdit_6"/>
-      </item>
-      <item row="4" column="2">
-       <widget class="QLineEdit" name="lineEdit_7"/>
-      </item>
-      <item row="4" column="3">
-       <widget class="QLineEdit" name="lineEdit_8"/>
-      </item>
-      <item row="5" column="2">
-       <widget class="QLineEdit" name="lineEdit_9"/>
-      </item>
-      <item row="5" column="3">
-       <widget class="QLineEdit" name="lineEdit_10"/>
-      </item>
-      <item row="4" column="4">
-       <widget class="QLineEdit" name="lineEdit_11"/>
-      </item>
-      <item row="5" column="4">
-       <widget class="QLineEdit" name="lineEdit_12"/>
+      <item row="1" column="5">
+       <widget class="QLabel" name="label_20">
+        <property name="text">
+         <string>良品数量</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
+    <zorder>gridLayoutWidget</zorder>
+    <zorder>label_8</zorder>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>10</y>
-      <width>561</width>
-      <height>261</height>
+      <x>700</x>
+      <y>20</y>
+      <width>621</width>
+      <height>251</height>
      </rect>
     </property>
     <property name="title">
@@ -325,23 +348,21 @@ border-image:url();
     <widget class="QTableWidget" name="tableWidget_2">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>0</x>
        <y>30</y>
-       <width>541</width>
+       <width>621</width>
        <height>221</height>
       </rect>
      </property>
     </widget>
-    <zorder>tableWidget_2</zorder>
-    <zorder>tableWidget_2</zorder>
    </widget>
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>390</y>
-      <width>571</width>
-      <height>151</height>
+      <x>700</x>
+      <y>470</y>
+      <width>621</width>
+      <height>141</height>
      </rect>
     </property>
     <property name="title">
@@ -352,7 +373,7 @@ border-image:url();
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>541</width>
+       <width>611</width>
        <height>121</height>
       </rect>
      </property>
@@ -363,8 +384,8 @@ border-image:url();
      <rect>
       <x>10</x>
       <y>120</y>
-      <width>621</width>
-      <height>261</height>
+      <width>631</width>
+      <height>491</height>
      </rect>
     </property>
     <property name="title">
@@ -376,41 +397,41 @@ border-image:url();
        <x>10</x>
        <y>20</y>
        <width>611</width>
-       <height>251</height>
+       <height>461</height>
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
-       <string>Tab 1</string>
+       <string>CCD1</string>
       </attribute>
       <widget class="QLabel" name="label">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>561</width>
-         <height>291</height>
+         <x>0</x>
+         <y>0</y>
+         <width>611</width>
+         <height>441</height>
         </rect>
        </property>
        <property name="text">
-        <string/>
+        <string>1</string>
        </property>
       </widget>
      </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
-       <string>Tab 2</string>
+       <string>CCD2</string>
       </attribute>
       <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>561</width>
-         <height>291</height>
+         <x>0</x>
+         <y>0</y>
+         <width>611</width>
+         <height>441</height>
         </rect>
        </property>
        <property name="autoFillBackground">
@@ -421,19 +442,192 @@ border-image:url();
        </property>
       </widget>
      </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>CCD3</string>
+      </attribute>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>611</width>
+         <height>441</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>CCD4</string>
+      </attribute>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>611</width>
+         <height>441</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>CCD5</string>
+      </attribute>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>611</width>
+         <height>441</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="title">
+       <string>CCD6</string>
+      </attribute>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>611</width>
+         <height>441</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>6</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_7">
+      <attribute name="title">
+       <string>所有</string>
+      </attribute>
+      <widget class="QLabel" name="label_12">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>171</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_15">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>230</y>
+         <width>171</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_16">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>230</y>
+         <width>171</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>0</y>
+         <width>171</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>10</y>
+         <width>171</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_17">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>230</y>
+         <width>171</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>6</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
-    <zorder>tabWidget</zorder>
-    <zorder>tabWidget</zorder>
-   </widget>
-   <widget class="QChatView" name="graphicsView">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>280</y>
-      <width>541</width>
-      <height>101</height>
-     </rect>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -441,7 +635,7 @@ border-image:url();
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1225</width>
+     <width>1339</width>
      <height>23</height>
     </rect>
    </property>
@@ -460,13 +654,6 @@ border-image:url();
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>QChatView</class>
-   <extends>QGraphicsView</extends>
-   <header location="global">qchatview.h</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="CameraDtecte1.qrc"/>
  </resources>

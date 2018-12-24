@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include<string.h>
 #include<qwindow.h>
 #include<iostream>

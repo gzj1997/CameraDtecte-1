@@ -9,6 +9,7 @@
 #include<qdir.h>
 #include<qfiledialog.h>
 #include<qcombobox.h>
+#include<qcheckbox.h>
 #include"PathHelper.h"
 #include"sf1.h"
 #include"chartdata.h"

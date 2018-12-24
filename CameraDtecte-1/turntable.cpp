@@ -19,8 +19,9 @@ void turntable::startrun()
 {
 	if (!isrun)
 	{
-		isrun = true;
-		std::thread thread3(std::bind(&turntable::run, this));
+		//isrun = true;
+		run();
+	//	std::thread thread3(std::bind(&turntable::run, this));
 	}
 	//d2210_write_SEVON_PIN(Card::Axis0, Card::ON);
 	//d2210_set_profile(Card::Axis0, Card::minspeed, DateHelper::speed_1, Card::acc, Card::acc);
