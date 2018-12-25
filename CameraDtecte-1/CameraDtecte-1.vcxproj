@@ -65,7 +65,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>D:\local\boost_1_68_0\lib32-msvc-14.0;D:\basler\Development\lib\Win32;C:\Program Files\MVTec\HALCON-12.0\lib\x86sse2-win32;D:\Qt\5.6\msvc2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>GCBase_MD_VC120_v3_0_Basler_pylon_v5_0.lib;GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib;PylonBase_MD_VC120_v5_0.lib;PylonC_MD_VC120.lib;PylonGUI_MD_VC120_v5_0.lib;PylonUtility_MD_VC120_v5_0.lib;DMC2210.lib;halconcpp.lib;halcon.lib;D:\Qt\5.6\msvc2015\lib\qtmaind.lib;D:\Qt\5.6\msvc2015\lib\Qt5Cored.lib;D:\Qt\5.6\msvc2015\lib\Qt5Guid.lib;D:\Qt\5.6\msvc2015\lib\Qt5Widgetsd.lib;D:\Qt\5.6\msvc2015\lib\Qt5Xmld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GCBase_MD_VC120_v3_0_Basler_pylon_v5_0.lib;GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib;PylonBase_MD_VC120_v5_0.lib;PylonC_MD_VC120.lib;PylonGUI_MD_VC120_v5_0.lib;PylonUtility_MD_VC120_v5_0.lib;DMC2210.lib;PCI408.lib;halconcpp.lib;halcon.lib;D:\Qt\5.6\msvc2015\lib\qtmaind.lib;D:\Qt\5.6\msvc2015\lib\Qt5Cored.lib;D:\Qt\5.6\msvc2015\lib\Qt5Guid.lib;D:\Qt\5.6\msvc2015\lib\Qt5Widgetsd.lib;D:\Qt\5.6\msvc2015\lib\Qt5Xmld.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
