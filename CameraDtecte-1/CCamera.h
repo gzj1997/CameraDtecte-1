@@ -27,7 +27,9 @@ class CCamera : public QObject
 {
 	Q_OBJECT
 signals :
-		void sigCurrentImage(HObject img);
+		void sigCurrentImage(ImageResult img);
+signals:
+		void sigCurrentImage2(HObject img);
 public:
 	CCamera(QObject *parent);
 	~CCamera();

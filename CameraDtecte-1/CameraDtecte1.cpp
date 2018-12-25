@@ -19,7 +19,7 @@ void CameraDtecte1::intial()
 	DateHelper Dh = *new DateHelper();
 
 	onrun = false;
-	 int card = d2210_board_init();
+	int card = PCI408_card_init();
 	 if (card== 0)
 	 {
 	//	 QMessageBox::warning(this, "warning", u8"运动控制卡未连接", QMessageBox::Ok, QMessageBox::NoButton);
@@ -53,7 +53,6 @@ void CameraDtecte1::intial()
 		 DispObj(himage1, hv_WindowID[i]);
 	 }
 	 readcameraset();
-
 	
 	 move(5,10);
 	 this->show();
@@ -100,7 +99,7 @@ void CameraDtecte1::readcameraset()
 				qDebug() << reader.name() << reader.attributes().value("PhotoWidth").toInt();
 
 				//connect(camera, &CCamera::sigCurrentImage,this,&CameraDtecte1::imageProgress);
-				connect(camera, &CCamera::sigCurrentImage, [=](HObject img) {
+				connect(camera, &CCamera::sigCurrentImage, [=](ImageResult img) {
 					imageProgress(img);
 					//DispObj(img, hv_WindowID);
 				});
@@ -133,10 +132,10 @@ void CameraDtecte1::readcameraset()
 }
 
 int kk = 0;
-void CameraDtecte1::imageProgress(HObject image)
+void CameraDtecte1::imageProgress(ImageResult ir)
 {
 	qDebug() << "ssssss";
-	DispObj(image,hv_WindowID[0]);
+	DispObj(ir.Imagepos->image,hv_WindowID[0]);
 	ui.lineEdit_4->setText("233333333");
 	if (kk % 100 ==1)
 	{
@@ -177,7 +176,7 @@ void CameraDtecte1::StartBtn()
 	Cameras->front()->Start();
 	if (isfirstrun)
 	{
-	//	d2210_set_encoder(Card::Axis0, 0);
+		PCI408_set_encoder(Card::Axis0, 0);
 		isfirstrun = false;
 	}
 	std::thread thread5(std::bind(&turntable::startrun, TurnTable));

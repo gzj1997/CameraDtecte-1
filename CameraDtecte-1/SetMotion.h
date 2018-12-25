@@ -3,6 +3,7 @@
 #include <QDialog>
 #include "ui_SetMotion.h"
 #include"DMC2210.h"
+#include"PCI408.h"
 #include"Card.h"
 #include"DataHelper.h"
 #include<qdebug.h>

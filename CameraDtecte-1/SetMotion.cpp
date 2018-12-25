@@ -58,7 +58,8 @@ void SetMotion::read_inbitatate()
 	for (size_t i = 0; i < Card::inbitnum; i++)
 	{
 		QString Sname = buttonname + QString::number(i);
-		int state = d2210_read_inbit(Card::Axis0, i);
+		int state = PCI408_read_inbit(Card::Axis0, i);
+
 		set_icon(Sname,state);
 	}
 }
@@ -69,7 +70,7 @@ void SetMotion::read_inoutbitstate()
 	for (size_t i = 0; i < Card::outbitnum; i++)
 	{
 		QString Sname = buttonname + QString::number(i);
-		int state = d2210_read_outbit(Card::Axis0, i);
+		int state = PCI408_read_outbit(Card::Axis0, i);
 		set_icon(Sname, state);
 	}
 }
@@ -92,14 +93,14 @@ void SetMotion::set_icon(QString name, int state)
 void SetMotion::run()
 {
 	onrun = true;
-	int currentPos = (int)d2210_get_encoder(Card::Axis0);
+	int currentPos =  PCI408_get_encoder(Card::Axis0);
 	int p0 = currentPos;
-	d2210_t_vmove(Card::Axis0, ui.radioButtonplus->isChecked());
+	PCI408_vmove(Card::Axis0, ui.radioButtonplus->isChecked(), machinerylist[currentEM]);
 	while (currentPos < p0 + distance || currentPos > p0 - distance || onrun ==false )
 	{
-		currentPos = (int)d2210_get_encoder(Card::Axis0);
+		currentPos = (int)PCI408_get_encoder(Card::Axis0);
 	}
-	d2210_imd_stop(Card::Axis0);
+	PCI408_imd_stop(Card::Axis0);
 	onrun = false;
 }
 void SetMotion::getmachinery(bool ok)
@@ -118,15 +119,20 @@ void SetMotion::getspeed()
 void SetMotion::startmotion()
 {
 	machinerylist[currentEM] = ui.lineEdit->text().trimmed().toInt();
-	d2210_write_SEVON_PIN(Card::Axis0, Card::ON);
-	d2210_set_profile(Card::Axis0, Card::minspeed, machinerylist[currentEM], Card::acc, Card::acc);
-	d2210_set_position(Card::Axis0, 200000);
-	d2210_set_encoder(Card::Axis0, 200000);
+	PCI408_write_SEVON_PIN(Card::Axis0, Card::ON);
+	PCI408_set_profile(Card::Axis0, Card::minspeed, machinerylist[currentEM], Card::acc, Card::acc);
+	PCI408_set_position(Card::Axis0, 200000);
+	PCI408_set_encoder(Card::Axis0, 200000);
+
+	//d2210_write_SEVON_PIN(Card::Axis0, Card::ON);
+	//d2210_set_profile(Card::Axis0, Card::minspeed, machinerylist[currentEM], Card::acc, Card::acc);
+	//d2210_set_position(Card::Axis0, 200000);
+	//d2210_set_encoder(Card::Axis0, 200000);
 	distance = ui.lineEdit_3->text().trimmed().toInt();
 	std::thread t(&SetMotion::run, this);
 	t.detach();
 	
-	qDebug() << d2210_get_encoder(Card::Axis0);
+	qDebug() << PCI408_get_encoder(Card::Axis0);
 }
 void SetMotion::savequit()
 {
@@ -139,11 +145,11 @@ void SetMotion::changestate() {
 	QToolButton *tempButton = (QToolButton *)sender();
 	int  name = tempButton->text().trimmed().toInt();
 	qDebug() << name;
-	int state = d2210_read_outbit(Card::Axis0, name);
+	int state = PCI408_read_outbit(Card::Axis0, name);
 
 	int newstate = (state != 0) ? 0 : 1;
 
-	d2210_write_outbit(Card::Axis0, name, newstate);
+	PCI408_write_outbit(Card::Axis0, name, newstate);
 
 	if (state == Card::ON)
 	{

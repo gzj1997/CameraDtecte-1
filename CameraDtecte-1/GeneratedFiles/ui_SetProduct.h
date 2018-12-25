@@ -30,6 +30,7 @@ public:
     QGroupBox *groupBox;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
+    QPushButton *pushButton_6;
     QGroupBox *groupBox_2;
     QWidget *widget;
     QLabel *label;
@@ -81,13 +82,18 @@ public:
         groupBox->setAlignment(Qt::AlignCenter);
         pushButton = new QPushButton(groupBox);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(10, 40, 121, 61));
+        pushButton->setGeometry(QRect(10, 20, 121, 61));
         pushButton->setFont(font);
         pushButton_2 = new QPushButton(groupBox);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(10, 140, 121, 51));
+        pushButton_2->setGeometry(QRect(10, 110, 121, 51));
         pushButton_2->setFont(font);
         pushButton_2->setStyleSheet(QStringLiteral(""));
+        pushButton_6 = new QPushButton(groupBox);
+        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+        pushButton_6->setGeometry(QRect(10, 180, 121, 51));
+        pushButton_6->setFont(font);
+        pushButton_6->setStyleSheet(QStringLiteral(""));
         groupBox_2 = new QGroupBox(SetProduct);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setGeometry(QRect(200, 80, 391, 251));
@@ -165,6 +171,7 @@ public:
         QObject::connect(pushButton_2, SIGNAL(clicked()), SetProduct, SLOT(selectproduct()));
         QObject::connect(pushButton, SIGNAL(clicked()), SetProduct, SLOT(newproduct()));
         QObject::connect(pushButton_3, SIGNAL(clicked()), SetProduct, SLOT(savenewproduct()));
+        QObject::connect(pushButton_6, SIGNAL(clicked()), SetProduct, SLOT(reject()));
 
         QMetaObject::connectSlotsByName(SetProduct);
     } // setupUi
@@ -175,6 +182,7 @@ public:
         groupBox->setTitle(QString());
         pushButton->setText(QApplication::translate("SetProduct", "\346\226\260\344\272\247\345\223\201", 0));
         pushButton_2->setText(QApplication::translate("SetProduct", "\351\200\211\346\213\251\344\272\247\345\223\201", 0));
+        pushButton_6->setText(QApplication::translate("SetProduct", "\351\200\200\345\207\272", 0));
         groupBox_2->setTitle(QString());
         label->setText(QApplication::translate("SetProduct", "\344\272\247\345\223\201\345\220\215\347\247\260:", 0));
         pushButton_3->setText(QApplication::translate("SetProduct", "\344\277\235\345\255\230", 0));

@@ -73,9 +73,9 @@ void SetCamera::readcamera()
 				qDebug() << reader.name() << reader.attributes().value("PhotoWidth").toInt();
 
 				//connect(camera, &CCamera::sigCurrentImage,this,&CameraDtecte1::imageProgress);
-				connect(camera, &CCamera::sigCurrentImage, [=](HObject img) {
+				connect(camera, &CCamera::sigCurrentImage, [=](ImageResult img) {
 					
-					DispObj(img, hv_WindowID);
+					DispObj(img.Imagepos->image, hv_WindowID);
 				});
 				if (!camera->CheckCamera())
 				{

@@ -9,6 +9,7 @@
 #include<qxmlstream.h>
 #include<qmessagebox.h>
 #include"DataHelper.h"
+
 using namespace std;
 class SetCamera : public QDialog
 {

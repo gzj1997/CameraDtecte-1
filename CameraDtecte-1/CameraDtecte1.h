@@ -47,7 +47,7 @@ private:
 	void LinkCamera();
 	void GetProduct();
 	void readcameraset();
-	void imageProgress(HObject image);
+	void imageProgress(ImageResult image);
 	void testimage();
 private slots:
 	void StartBtn();

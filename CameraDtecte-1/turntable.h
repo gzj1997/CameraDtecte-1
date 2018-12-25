@@ -24,9 +24,13 @@ public:
 	int ValveCount;
 	int IOs[6];
 	int position[6];
+	int callcamera[6];
+	int precallcamera[6];
+	int cameracallIO[6];
 	cameranut* CameraNut[6];
 	list<nut> *nutlist;
 	
+	list<int>*  allpos[6];
 
 	static turntable * instance;
 	void startrun();

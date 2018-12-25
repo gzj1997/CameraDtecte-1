@@ -85,7 +85,7 @@ void CCamera::GetImage()
 
 					//	delete newimage;
 					//imagelist->push(*newimage);
-					turntable::instance->CameraNut[sort]->onwrite = false;
+				//	turntable::instance->CameraNut[sort]->onwrite = false;
 					//posmin 有问题可能会卡
 					posmin =  turntable::instance->CameraNut[sort]->initialPos;
 					imagepos* ip = new imagepos(posmin, *newimage);
@@ -145,6 +145,7 @@ void CCamera::disposeimage()
 				break;
 			}*/
 			list<imagetools*>::iterator it;
+			tresult->clear();
 			for ( it = tools->begin(); it != tools->end(); it++)
 			{
 				(*it)->image = Himage;
@@ -158,8 +159,8 @@ void CCamera::disposeimage()
 			imageresult->Imagepos = &imagePos;
 			
 			imagePoS->pop_front();
-			imageresults->push_back(*imageresult);
-			//	emit sigCurrentImage(Himage);
+			//imageresults->push_back(*imageresult);
+				emit sigCurrentImage(*imageresult);
 
 		}
 		this_thread::sleep_for(std::chrono::milliseconds(1));

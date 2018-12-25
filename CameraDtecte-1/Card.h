@@ -3,6 +3,8 @@ class Card
 {
 public:
 
+	static  const unsigned short card0 = 0;
+
 	static  const unsigned short Axis0 = 0;
 	static  const unsigned short Axis1 = 1;
 	static const int minspeed = 1000;
