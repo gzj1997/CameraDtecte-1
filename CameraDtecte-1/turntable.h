@@ -25,7 +25,7 @@ public:
 	int position[6];
 	cameranut* CameraNut[6];
 	list<nut> *nutlist;
-
+	
 
 	static turntable * instance;
 	void startrun();

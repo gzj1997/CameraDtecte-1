@@ -36,7 +36,11 @@ private:
 	Hlong MainWndID;
 	// Local control variables 
 	HTuple  hv_Width, hv_Height;
-	HTuple  hv_WindowID;
+	//HTuple  hv_WindowID;
+
+	HTuple hv_WindowID[6];
+	HTuple hv_WindowID2[6];
+	bool onrun;
 
 	int cameracount;
 	void intial();
@@ -44,6 +48,7 @@ private:
 	void GetProduct();
 	void readcameraset();
 	void imageProgress(HObject image);
+	void testimage();
 private slots:
 	void StartBtn();
 	void StopBtn();

@@ -5,6 +5,8 @@
 #include"HalconCpp.h"
 #include"pylon\PylonIncludes.h"
 #include"imagetools.h"
+#include"turntable.h"
+#include"imageresult.h"
 
 #include<string.h>
 #include<list>
@@ -49,7 +51,13 @@ public:
 
 
 	list<imagetools*> *tools;
+
 	list< toolresult> *tresult;
+	list< imagepos> * imagePoS;
+	imagepos  imagePos;
+
+	list<ImageResult> *imageresults;
+	ImageResult * imageresult;
 	string logicname;
 	string devicename;
 

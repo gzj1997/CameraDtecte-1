@@ -50,6 +50,9 @@
     <ClCompile Include="toolresult.cpp">
       <Filter>Source Files\tools</Filter>
     </ClCompile>
+    <ClCompile Include="imageresult.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="toolresult.h">
       <Filter>Source Files\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="imageresult.h">
+      <Filter>Header Files\camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

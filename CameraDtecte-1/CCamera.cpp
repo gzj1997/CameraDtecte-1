@@ -18,7 +18,8 @@ void CCamera::intial()
 	good =* new list<int>();
 	bad =* new list<int>();
 	tresult = new list< toolresult>();
-
+	imageresults = new list<ImageResult>();
+	imagePoS = new list< imagepos>();
 	qDebug() << "SBaslerCameraControl: PylonInitialize initSome";
 	Pylon::PylonInitialize();
 	CTlFactory &TlFactory = CTlFactory::GetInstance();
@@ -67,24 +68,37 @@ void CCamera::GetImage()
 
 		while (instantcamera.IsGrabbing() && isoncatch)
 		{
-			// Wait for an image and then retrieve it. A timeout of 5000 ms is used.
-			instantcamera.RetrieveResult(5000, ptrGrabResult, TimeoutHandling_ThrowException);
-
-			// Image grabbed successfully?
-			if (ptrGrabResult->GrabSucceeded())
+			try
 			{
-				HObject * newimage = new HObject();
-				// Access the image data.
-				qDebug() << "SizeX: " << ptrGrabResult->GetWidth() << endl;
-				qDebug() << "SizeY: " << ptrGrabResult->GetHeight() << endl;
+				// Wait for an image and then retrieve it. A timeout of 5000 ms is used.
+				instantcamera.RetrieveResult(5000, ptrGrabResult, TimeoutHandling_ThrowException);
 
-				CopyToImage(ptrGrabResult, newimage);
-			//	delete newimage;
-				imagelist->push(*newimage);
+				// Image grabbed successfully?
+				if (ptrGrabResult->GrabSucceeded())
+				{
+					HObject * newimage = new HObject();
+					// Access the image data.
+					qDebug() << "SizeX: " << ptrGrabResult->GetWidth() << endl;
+					qDebug() << "SizeY: " << ptrGrabResult->GetHeight() << endl;
+
+					CopyToImage(ptrGrabResult, newimage);
+
+					//	delete newimage;
+					//imagelist->push(*newimage);
+					turntable::instance->CameraNut[sort]->onwrite = false;
+					//posmin 有问题可能会卡
+					posmin =  turntable::instance->CameraNut[sort]->initialPos;
+					imagepos* ip = new imagepos(posmin, *newimage);
+					imagePoS->push_back(*ip);
+				}
+				else
+				{
+					qDebug() << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
+
+				}
 			}
-			else
-			{
-				qDebug() << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
+			catch (exception e) {
+				qDebug() << e.what();
 			}
 		}
 	}
@@ -92,6 +106,8 @@ void CCamera::GetImage()
 		qDebug() << e.what();
 	}
 }
+
+
 void CCamera::CopyToImage(CGrabResultPtr pInBuffer, HObject * OutImage)
 {
 	try {
@@ -103,29 +119,47 @@ void CCamera::CopyToImage(CGrabResultPtr pInBuffer, HObject * OutImage)
 
 	}
 	  
-
 }
 
 void CCamera::disposeimage()
 {
 	while (isoncatch)
 	{
-		while (!imagelist->empty())
+		while (!imagePoS->empty())
 		{
-			Himage = imagelist->front();
-			imagelist->pop();
-			if (!Himage.IsInitialized())
+
+			imagePos = imagePoS->front();
+			
+			if (!imagePos.image.IsInitialized())
 			{
 				qDebug() << "no image ";
 				break;
 			}
-			for each (imagetools * it in *tools)
+
+			/*Himage = imagelist->front();
+			imagelist->pop();
+
+			if (!Himage.IsInitialized())
 			{
-				it->image = Himage;
-				it->action();
-				tresult->push_back(it->Toolresult);
+				qDebug() << "no image ";
+				break;
+			}*/
+			list<imagetools*>::iterator it;
+			for ( it = tools->begin(); it != tools->end(); it++)
+			{
+				(*it)->image = Himage;
+				(*it)->action();
+				tresult->push_back((*it)->Toolresult);
 			}
-				emit sigCurrentImage(Himage);
+
+			
+			imageresult = new ImageResult();
+			imageresult->tresult = tresult;
+			imageresult->Imagepos = &imagePos;
+			
+			imagePoS->pop_front();
+			imageresults->push_back(*imageresult);
+			//	emit sigCurrentImage(Himage);
 
 		}
 		this_thread::sleep_for(std::chrono::milliseconds(1));

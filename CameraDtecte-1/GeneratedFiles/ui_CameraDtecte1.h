@@ -437,7 +437,7 @@ public:
         QObject::connect(toolButton, SIGNAL(clicked()), CameraDtecte1Class, SLOT(AlgorithmSet()));
         QObject::connect(toolButton_5, SIGNAL(clicked()), CameraDtecte1Class, SLOT(CameraSet()));
 
-        tabWidget->setCurrentIndex(6);
+        tabWidget->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(CameraDtecte1Class);

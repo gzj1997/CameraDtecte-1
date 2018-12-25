@@ -126,6 +126,7 @@
     <ClCompile Include="DataHelper.cpp" />
     <ClCompile Include="GetSF.cpp" />
     <ClCompile Include="imageregion.cpp" />
+    <ClCompile Include="imageresult.cpp" />
     <ClCompile Include="imagetools.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="nut.cpp" />
@@ -157,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="chartdata.h" />
+    <ClInclude Include="imageresult.h" />
     <ClInclude Include="nut.h" />
     <ClInclude Include="sf1.h" />
     <ClInclude Include="toolresult.h" />

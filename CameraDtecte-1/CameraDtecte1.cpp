@@ -18,6 +18,7 @@ void CameraDtecte1::intial()
 
 	DateHelper Dh = *new DateHelper();
 
+	onrun = false;
 	 int card = d2210_board_init();
 	 if (card== 0)
 	 {
@@ -33,12 +34,24 @@ void CameraDtecte1::intial()
 	 HObject himage1;
 	 QString str = QDir::currentPath() + "/Data/I1.bmp";
 	 HalconCpp::ReadImage(&himage1, str.toStdString().c_str());
+
 	 MainWndID = (Hlong)this->ui.label->winId();
-	 OpenWindow(0, 0, 611, 441, MainWndID, "visible", "", &hv_WindowID);
-	 HTuple win2;
-	 OpenWindow(0, 0, 611, 441, (Hlong)this->ui.label_2->winId(), "visible", "", &win2);
-	 DispObj(himage1, hv_WindowID);
-	 DispObj(himage1, win2);
+	 OpenWindow(0, 0, 611, 441, MainWndID, "visible", "", &hv_WindowID[0]);
+	 MainWndID = (Hlong)this->ui.label_2->winId();
+	 OpenWindow(0, 0, 611, 441, MainWndID, "visible", "", &hv_WindowID[1]);
+	 MainWndID = (Hlong)this->ui.label_7->winId();
+	 OpenWindow(0, 0, 611, 441, MainWndID, "visible", "", &hv_WindowID[2]);
+	 MainWndID = (Hlong)this->ui.label_9->winId();
+	 OpenWindow(0, 0, 611, 441, MainWndID, "visible", "", &hv_WindowID[3]);	 
+	 MainWndID = (Hlong)this->ui.label_10->winId();
+	 OpenWindow(0, 0, 611, 441, MainWndID, "visible", "", &hv_WindowID[4]);
+	 MainWndID = (Hlong)this->ui.label_11->winId();
+	 OpenWindow(0, 0, 611, 441, MainWndID, "visible", "", &hv_WindowID[5]);
+
+	 for (int i = 0; i < 6; i++)
+	 {
+		 DispObj(himage1, hv_WindowID[i]);
+	 }
 	 readcameraset();
 
 	
@@ -123,7 +136,7 @@ int kk = 0;
 void CameraDtecte1::imageProgress(HObject image)
 {
 	qDebug() << "ssssss";
-	DispObj(image,hv_WindowID);
+	DispObj(image,hv_WindowID[0]);
 	ui.lineEdit_4->setText("233333333");
 	if (kk % 100 ==1)
 	{
@@ -133,12 +146,32 @@ void CameraDtecte1::imageProgress(HObject image)
 	kk++;
 }
 
+void CameraDtecte1::testimage()
+{
+	ImageResult * ir;
+	while (onrun) {
+
+		list<CCamera*>::iterator it;
+		for (it = Cameras->begin(); it != Cameras->end(); it++)
+		{
+			if (! (*it)->imageresults->empty())
+			{
+
+				ir = & (*it)->imageresults->front();
+
+				DispObj(ir->Imagepos->image, hv_WindowID[(*it)->sort]);
+
+			}
+		}
+	}
+}
+
 
 bool isfirstrun = true;
 void CameraDtecte1::StartBtn()
 {
 	ui.toolButton_3->setDisabled(true);
-
+	onrun = true;
 		LinkCamera();
 
 	Cameras->front()->Start();
@@ -149,13 +182,18 @@ void CameraDtecte1::StartBtn()
 	}
 	std::thread thread5(std::bind(&turntable::startrun, TurnTable));
 	thread5.detach();
+	/*std::thread thread6(std::bind(&CameraDtecte1::testimage , this));
+	thread6.detach();*/
 	//TurnTable->startrun();
 
 }
 
 void CameraDtecte1::StopBtn()
 {
+	onrun = false;
 	ui.toolButton_3->setDisabled(false);
+//	this_thread::sleep_for(std::chrono::milliseconds(100));
+
 	Cameras->front()->Stop();
 	Cameras->front()->Close();
 }
