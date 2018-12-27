@@ -21,9 +21,9 @@ public:
 	SetAlgorithm(QWidget *parent = Q_NULLPTR);
 	~SetAlgorithm();
 	
-	list<imagetools *> *tools;
+	//list<imagetools *> *tools;
 	chartdata *ct;
-
+	imagetools * currettool;
 	HObject CurrentImage;
 	ImageRegion* imageregion;
 	Para* para1;
@@ -50,4 +50,6 @@ private:
 	void showresult();
 	void getrollnum(int kk );
 	void gettab(QTableWidgetItem * kkk);
+	void getresulttoshow(int x, int y);
+	void savequit();
 };

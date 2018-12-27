@@ -1,6 +1,6 @@
 #include "imageresult.h"
 
-ImageResult::ImageResult()
+ImageResult::ImageResult(int i):CCD(i)
 {
 	Imagepos = nullptr;
 	tresult = nullptr;

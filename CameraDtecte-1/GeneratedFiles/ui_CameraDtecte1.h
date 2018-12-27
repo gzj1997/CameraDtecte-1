@@ -26,7 +26,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
@@ -74,7 +74,7 @@ public:
     QLabel *label_19;
     QLabel *label_20;
     QGroupBox *groupBox_2;
-    QTableWidget *tableWidget_2;
+    QTableView *tableView;
     QGroupBox *groupBox_3;
     QListWidget *listWidget_2;
     QGroupBox *groupBox_4;
@@ -333,9 +333,9 @@ public:
         groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setGeometry(QRect(700, 20, 621, 251));
-        tableWidget_2 = new QTableWidget(groupBox_2);
-        tableWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
-        tableWidget_2->setGeometry(QRect(0, 30, 621, 221));
+        tableView = new QTableView(groupBox_2);
+        tableView->setObjectName(QStringLiteral("tableView"));
+        tableView->setGeometry(QRect(0, 40, 621, 211));
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setGeometry(QRect(700, 470, 621, 141));
@@ -436,8 +436,9 @@ public:
         QObject::connect(toolButton_2, SIGNAL(clicked()), CameraDtecte1Class, SLOT(MotionSet()));
         QObject::connect(toolButton, SIGNAL(clicked()), CameraDtecte1Class, SLOT(AlgorithmSet()));
         QObject::connect(toolButton_5, SIGNAL(clicked()), CameraDtecte1Class, SLOT(CameraSet()));
+        QObject::connect(tabWidget, SIGNAL(currentChanged(int)), CameraDtecte1Class, SLOT(tabchange(int)));
 
-        tabWidget->setCurrentIndex(5);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(CameraDtecte1Class);

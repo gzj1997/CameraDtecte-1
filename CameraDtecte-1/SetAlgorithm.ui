@@ -179,6 +179,13 @@ border -radius:15px;
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
+     <item row="2" column="0">
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="text">
+        <string>保存算法</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="0">
       <widget class="QPushButton" name="pushButton_4">
        <property name="text">
@@ -190,13 +197,6 @@ border -radius:15px;
       <widget class="QPushButton" name="pushButton_5">
        <property name="text">
         <string>算法选择</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="pushButton_6">
-       <property name="text">
-        <string>保存算法</string>
        </property>
       </widget>
      </item>
@@ -218,6 +218,20 @@ border -radius:15px;
       <widget class="QPushButton" name="pushButton_8">
        <property name="text">
         <string>读取图片</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>批量检测</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QPushButton" name="pushButton_9">
+       <property name="text">
+        <string>保存退出</string>
        </property>
       </widget>
      </item>
@@ -286,7 +300,7 @@ border -radius:15px;
    <slot>readhimage()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>331</x>
+     <x>266</x>
      <y>434</y>
     </hint>
     <hint type="destinationlabel">
@@ -350,7 +364,7 @@ border -radius:15px;
    <slot>readsuanfa()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>223</x>
+     <x>190</x>
      <y>435</y>
     </hint>
     <hint type="destinationlabel">
@@ -366,7 +380,7 @@ border -radius:15px;
    <slot>showresult()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>371</x>
+     <x>306</x>
      <y>365</y>
     </hint>
     <hint type="destinationlabel">
@@ -391,6 +405,54 @@ border -radius:15px;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>tableWidget_2</sender>
+   <signal>cellChanged(int,int)</signal>
+   <receiver>SetAlgorithm</receiver>
+   <slot>getresulttoshow(int,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>541</x>
+     <y>476</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>533</x>
+     <y>497</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SetAlgorithm</receiver>
+   <slot>sdetect()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>347</x>
+     <y>359</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>276</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_9</sender>
+   <signal>clicked()</signal>
+   <receiver>SetAlgorithm</receiver>
+   <slot>savequit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>341</x>
+     <y>436</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>508</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>sintial()</slot>
@@ -401,5 +463,8 @@ border -radius:15px;
   <slot>savesuanfa()</slot>
   <slot>readsuanfa()</slot>
   <slot>showresult()</slot>
+  <slot>getresulttoshow(int,int)</slot>
+  <slot>sdetect()</slot>
+  <slot>savequit()</slot>
  </slots>
 </ui>

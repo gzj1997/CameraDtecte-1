@@ -15,7 +15,7 @@
 #include<qdebug.h>
 #include<qdir.h>
 #include<qxmlstream.h>
-
+#include<qstandarditemmodel.h>
 
 class CameraDtecte1 : public QMainWindow
 {
@@ -31,7 +31,9 @@ private:
    
 	turntable *TurnTable;
 	
-	string CurrentCCD;
+	QStandardItemModel  *model;
+	QStringList header;
+	QString CurrentCCD;
 
 	Hlong MainWndID;
 	// Local control variables 
@@ -49,6 +51,12 @@ private:
 	void readcameraset();
 	void imageProgress(ImageResult image);
 	void testimage();
+	void initialgrid();
+	void updatagrid(QString ccd);
+	void readcameratools();
+	void readshowdata();
+	//void updatecamera(QString ccd);
+	void savegird();
 private slots:
 	void StartBtn();
 	void StopBtn();
@@ -56,5 +64,5 @@ private slots:
 	void MotionSet();
 	void CameraSet();
 	void ProductSet();
-
+	void tabchange(int num);
 };

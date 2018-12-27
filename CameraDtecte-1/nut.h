@@ -10,7 +10,7 @@ public:
 	int state;
 	// 零件位置
 	int posNo;
-
+	int outnum;
 	// 相机个数
 	int cnum;
 	int gethole();

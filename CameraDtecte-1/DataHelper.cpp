@@ -32,6 +32,7 @@ void DateHelper::readSpeed()
 	while (!reader.atEnd()) {
 		reader.readNext();
 		if (reader.isStartElement()) {
+			
 			if (reader.name() == "Speed")
 			{
 				speed_1 = reader.attributes().value("speed_1").toInt();

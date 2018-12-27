@@ -44,12 +44,14 @@ public:
     QGroupBox *groupBox_4;
     QWidget *gridLayoutWidget_2;
     QGridLayout *gridLayout_2;
+    QPushButton *pushButton_6;
     QPushButton *pushButton_4;
     QPushButton *pushButton_5;
-    QPushButton *pushButton_6;
     QPushButton *pushButton_7;
     QPushButton *pushButton_3;
     QPushButton *pushButton_8;
+    QPushButton *pushButton;
+    QPushButton *pushButton_9;
     QGroupBox *groupBox_5;
     QTableWidget *tableWidget_2;
 
@@ -143,6 +145,11 @@ public:
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
+        pushButton_6 = new QPushButton(gridLayoutWidget_2);
+        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+
+        gridLayout_2->addWidget(pushButton_6, 2, 0, 1, 1);
+
         pushButton_4 = new QPushButton(gridLayoutWidget_2);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
 
@@ -152,11 +159,6 @@ public:
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
 
         gridLayout_2->addWidget(pushButton_5, 0, 1, 1, 1);
-
-        pushButton_6 = new QPushButton(gridLayoutWidget_2);
-        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-
-        gridLayout_2->addWidget(pushButton_6, 2, 0, 1, 1);
 
         pushButton_7 = new QPushButton(gridLayoutWidget_2);
         pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
@@ -172,6 +174,16 @@ public:
         pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
 
         gridLayout_2->addWidget(pushButton_8, 2, 2, 1, 1);
+
+        pushButton = new QPushButton(gridLayoutWidget_2);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        gridLayout_2->addWidget(pushButton, 0, 3, 1, 1);
+
+        pushButton_9 = new QPushButton(gridLayoutWidget_2);
+        pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
+
+        gridLayout_2->addWidget(pushButton_9, 2, 3, 1, 1);
 
         groupBox_5 = new QGroupBox(SetAlgorithm);
         groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
@@ -199,6 +211,9 @@ public:
         QObject::connect(pushButton_7, SIGNAL(clicked()), SetAlgorithm, SLOT(readsuanfa()));
         QObject::connect(pushButton_3, SIGNAL(clicked()), SetAlgorithm, SLOT(showresult()));
         QObject::connect(horizontalSlider, SIGNAL(valueChanged(int)), SetAlgorithm, SLOT(getrollnum(int)));
+        QObject::connect(tableWidget_2, SIGNAL(cellChanged(int,int)), SetAlgorithm, SLOT(getresulttoshow(int,int)));
+        QObject::connect(pushButton, SIGNAL(clicked()), SetAlgorithm, SLOT(sdetect()));
+        QObject::connect(pushButton_9, SIGNAL(clicked()), SetAlgorithm, SLOT(savequit()));
 
         QMetaObject::connectSlotsByName(SetAlgorithm);
     } // setupUi
@@ -215,12 +230,14 @@ public:
         pushButton_2->setText(QApplication::translate("SetAlgorithm", "PushButton", 0));
         label_2->setText(QApplication::translate("SetAlgorithm", "\346\225\260\345\200\274\357\274\232", 0));
         groupBox_4->setTitle(QApplication::translate("SetAlgorithm", "4 \351\200\211\346\213\251\347\256\227\346\263\225", 0));
+        pushButton_6->setText(QApplication::translate("SetAlgorithm", "\344\277\235\345\255\230\347\256\227\346\263\225", 0));
         pushButton_4->setText(QApplication::translate("SetAlgorithm", "\345\210\235\345\247\213\345\214\226", 0));
         pushButton_5->setText(QApplication::translate("SetAlgorithm", "\347\256\227\346\263\225\351\200\211\346\213\251", 0));
-        pushButton_6->setText(QApplication::translate("SetAlgorithm", "\344\277\235\345\255\230\347\256\227\346\263\225", 0));
         pushButton_7->setText(QApplication::translate("SetAlgorithm", "\350\257\273\345\217\226\347\256\227\346\263\225", 0));
         pushButton_3->setText(QApplication::translate("SetAlgorithm", "\346\230\276\347\244\272\347\273\223\346\236\234", 0));
         pushButton_8->setText(QApplication::translate("SetAlgorithm", "\350\257\273\345\217\226\345\233\276\347\211\207", 0));
+        pushButton->setText(QApplication::translate("SetAlgorithm", "\346\211\271\351\207\217\346\243\200\346\265\213", 0));
+        pushButton_9->setText(QApplication::translate("SetAlgorithm", "\344\277\235\345\255\230\351\200\200\345\207\272", 0));
         groupBox_5->setTitle(QApplication::translate("SetAlgorithm", "5 \347\273\223\346\236\234", 0));
     } // retranslateUi
 

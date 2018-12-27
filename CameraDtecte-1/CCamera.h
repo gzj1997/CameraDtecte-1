@@ -7,7 +7,7 @@
 #include"imagetools.h"
 #include"turntable.h"
 #include"imageresult.h"
-
+#include"PathHelper.h"
 #include<string.h>
 #include<list>
 #include<queue>
@@ -92,6 +92,7 @@ public:
 	void CopyToImage(CGrabResultPtr pInBuffer, HObject* OutImage);
 	void disposeimage();
 
+	void gettools();
 	//camera set
 	void setcameraset(CCamera_Type index, double tmpValue= 0.0);
 	double getcameraset(CCamera_Type index);

@@ -355,13 +355,13 @@ border-image:url();
     <property name="title">
      <string>GroupBox</string>
     </property>
-    <widget class="QTableWidget" name="tableWidget_2">
+    <widget class="QTableView" name="tableView">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>30</y>
+       <y>40</y>
        <width>621</width>
-       <height>221</height>
+       <height>211</height>
       </rect>
      </property>
     </widget>
@@ -411,7 +411,7 @@ border-image:url();
       </rect>
      </property>
      <property name="currentIndex">
-      <number>5</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -764,6 +764,22 @@ border-image:url();
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>tabWidget</sender>
+   <signal>currentChanged(int)</signal>
+   <receiver>CameraDtecte1Class</receiver>
+   <slot>tabchange(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>184</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>StartBtn()</slot>
@@ -772,5 +788,6 @@ border-image:url();
   <slot>MotionSet()</slot>
   <slot>CameraSet()</slot>
   <slot>ProductSet()</slot>
+  <slot>tabchange(int)</slot>
  </slots>
 </ui>

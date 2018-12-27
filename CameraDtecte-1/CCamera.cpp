@@ -144,27 +144,38 @@ void CCamera::disposeimage()
 				qDebug() << "no image ";
 				break;
 			}*/
+			tresult = new list< toolresult>();
 			list<imagetools*>::iterator it;
-			tresult->clear();
+			
 			for ( it = tools->begin(); it != tools->end(); it++)
 			{
 				(*it)->image = Himage;
 				(*it)->action();
-				tresult->push_back((*it)->Toolresult);
+				tresult->push_back((*(*it)->Toolresult.cloner()));
 			}
 
 			
-			imageresult = new ImageResult();
+			imageresult = new ImageResult(sort);
 			imageresult->tresult = tresult;
 			imageresult->Imagepos = &imagePos;
 			
 			imagePoS->pop_front();
-			//imageresults->push_back(*imageresult);
+		//	imageresults->push_back(*imageresult);
 				emit sigCurrentImage(*imageresult);
-
+		//	imageresults->pop_front();
 		}
 		this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
+}
+
+void CCamera::gettools()
+{
+	tools->clear();
+	QString pt = PathHelper::currentproductpath + "/" + QString::fromStdString(logicname) + ".txt";
+	//	std::ifstream ifs("filename", std::ios::binary);
+	std::ifstream file(pt.toStdString());
+	boost::archive::text_iarchive ia(file);
+	ia >> tools;
 }
 
 

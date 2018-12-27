@@ -23,9 +23,11 @@ private:
 class ImageResult
 {
 public:
-	ImageResult();
+	ImageResult(int i);
 	~ImageResult();
 
+	int CCD;
+	int allresult;
 	imagepos *Imagepos;
 	list< toolresult > *tresult;
 

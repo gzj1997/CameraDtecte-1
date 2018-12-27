@@ -9,6 +9,7 @@ CameraDtecte1::CameraDtecte1(QWidget *parent)
 CameraDtecte1::~CameraDtecte1()
 {
 	Cameras->front()->Close();
+	savegird();
 	Pylon::PylonTerminate();
 }
 void CameraDtecte1::intial()
@@ -31,6 +32,9 @@ void CameraDtecte1::intial()
 		 //	 this->close();
 	 }
 
+	 ui.tabWidget->setCurrentIndex(0);
+	 CurrentCCD = "CCD1";
+
 	 HObject himage1;
 	 QString str = QDir::currentPath() + "/Data/I1.bmp";
 	 HalconCpp::ReadImage(&himage1, str.toStdString().c_str());
@@ -52,8 +56,12 @@ void CameraDtecte1::intial()
 	 {
 		 DispObj(himage1, hv_WindowID[i]);
 	 }
+	 initialgrid();
 	 readcameraset();
 	
+
+	 ProductSet();
+
 	 move(5,10);
 	 this->show();
 }
@@ -87,6 +95,7 @@ void CameraDtecte1::readcameraset()
 	//Cameras->clear();
 	while (!reader.atEnd()) {
 		if (reader.isStartElement()) {
+			qDebug() << reader.name();
 			if (reader.name() != "CCD")
 			{
 				CCamera *camera = new CCamera(this);
@@ -134,15 +143,92 @@ void CameraDtecte1::readcameraset()
 int kk = 0;
 void CameraDtecte1::imageProgress(ImageResult ir)
 {
-	qDebug() << "ssssss";
-	DispObj(ir.Imagepos->image,hv_WindowID[0]);
-	ui.lineEdit_4->setText("233333333");
-	if (kk % 100 ==1)
-	{
-		QString str = QDir::currentPath() + "/Data/I1.bmp";
-	//	HalconCpp::WriteImage(image, "bmp", 0, str.toStdString().c_str());
+	try {
+		qDebug() << "ssssss";
+		DispObj(ir.Imagepos->image, hv_WindowID[ir.CCD]);
+
+		//ui.lineEdit_4->setText("233333333");
+		if (kk % 1000 == 1)
+		{
+			QString str = QDir::currentPath() + "/Data/I1.bmp";
+			//	HalconCpp::WriteImage(image, "bmp", 0, str.toStdString().c_str());
+		}
+		int row = model->rowCount();
+		QString ccd = "CCD" + QString::number(ir.CCD + 1);
+
+		int rnum2 = 0;
+		for (int i = 0; i < row; i++)
+		{
+			QModelIndex ind = model->index(i, 0);
+			//需要保持同一个ccd的值在一起
+			if (model->data(ind).toString() == ccd)
+			{
+				int rnum = 0;
+				int allresult1 = 1;
+				list< toolresult >::iterator it;
+				for (it = ir.tresult->begin(); it != ir.tresult->end(); it++)
+				{
+					bool isg = true;
+					for (int j = 0; !it->name->empty(); j++)
+					{
+						double min, max;
+						try {
+							min = model->data(model->index(i + rnum, 2)).toDouble();
+							max = model->data(model->index(i + rnum, 3)).toDouble();
+						}
+						catch (exception e) {
+							min = 0;
+							max = 0;
+						}
+						model->setData(model->index(rnum + i, 4), it->data[j]);
+						QModelIndex ind2 = model->index(rnum + i, 5);
+
+						if (min<it->data[j] && max>it->data[j])
+						{
+							model->setData(ind2, "OK");
+							//model->item(rnum + i, 5)->setForeground(QBrush(QColor(0, 255, 0)));
+						}
+						else
+						{
+							model->setData(ind2, "NG");
+							//	model->item(rnum + i, 5)->setForeground(QBrush(QColor(255, 0, 0)));
+							isg = false;
+						}
+						rnum++;
+						it->isgood = isg;
+						if (!isg)
+						{
+							allresult1 = 0;
+						}
+
+					}
+				}
+				ir.allresult = allresult1;
+				break;
+			}
+		}
+		kk++;
+
+		//checkdata
+		list<nut>::iterator it;
+		for (it = turntable::instance->nutlist->begin(); it != turntable::instance->nutlist->end(); it++)
+		{
+			if (it->initialPos == ir.Imagepos->pos &&it->state== ir.CCD)
+			{
+				if (ir.allresult ==0 )
+				{
+					it->outnum = 0;
+				}
+				it->state++;
+			}
+		}
 	}
-	kk++;
+	catch (exception e) {
+
+	}
+
+
+
 }
 
 void CameraDtecte1::testimage()
@@ -164,6 +250,268 @@ void CameraDtecte1::testimage()
 		}
 	}
 }
+
+int cll = 7;
+
+void CameraDtecte1::initialgrid()
+{
+	
+	model = new QStandardItemModel(2, cll, this);
+
+	
+	header << "CCD" << QString::fromLocal8Bit("检测项") << QString::fromLocal8Bit("上限")
+		<< QString::fromLocal8Bit("下限") << QString::fromLocal8Bit("测量") << "OKorNG" << QString::fromLocal8Bit("良率");
+	for (int i = 0; i < cll; i++)
+	{
+		model->setHeaderData(i, Qt::Horizontal, header[i]);
+	}
+	ui.tableView->setModel(model);
+
+	for (int i = 0; i < cll; i++)
+	{
+		ui.tableView->setColumnWidth(i, 88);
+		
+	}
+	for (int i = 0; i < cll; i++)
+	{
+		//设置字符颜色
+		model->setItem(0, i, new QStandardItem("2009441676"));
+		model->item(0, i)->setForeground(QBrush(QColor(255, 0, 0)));
+	}
+	QList<QStandardItem*> itemlist;
+	QStandardItem *item;
+	item = new QStandardItem(CurrentCCD);
+	itemlist << item;
+	item = new QStandardItem("111");
+	itemlist << item;
+	model->insertRow(0,itemlist);
+	qDebug() << itemlist;
+	QModelIndex ind = model->index(0,2);
+	model->setData(ind, "qq");
+	qDebug() << model->data(ind).toString()<<"QModelIndex";
+	//model->removeRow(1);
+	//model->removeRow(1);
+	//savegird();
+	model->setRowCount(0);
+}
+
+void CameraDtecte1::updatagrid(QString ccd)
+{
+	// 修改值
+	// 删除ccd
+	int row = model->rowCount();
+	int kk;
+	bool isccd =true;
+	for (int i = 0; i < row; i++)
+	{	
+		QModelIndex ind = model->index(i,0);
+		if (model->data(ind).toString() == ccd)
+		{
+			if (isccd)
+			{
+				kk = i;
+				isccd =false;
+			}
+			
+			model->removeRow(i);
+			i--;
+		}
+	}
+	if (isccd)
+	{
+		kk = row;
+	}
+	//添加新的
+	list< CCamera *>::iterator it;
+	for (it = Cameras->begin(); it != Cameras->end(); it++)
+	{
+		if ((*it)->logicname == CurrentCCD.toStdString())
+		{
+			toolresult *tr;
+			list<imagetools*>::iterator iter;
+			for (iter = (*it)->tools->begin()  ; iter != (*it)->tools->end(); iter++)
+			{
+				tr = &(*iter)->Toolresult;
+				for (int j = 0; !tr->name[j].empty(); j++)
+				{
+					QList<QStandardItem*> itemlist;
+					QStandardItem *item;
+					item = new QStandardItem(CurrentCCD);
+					itemlist << item;
+					item = new QStandardItem(QString::fromStdString( tr->name[j]));
+					itemlist << item;
+					model->insertRow(kk, itemlist);
+					kk++;
+				}
+				
+			}
+		}
+
+	};
+
+	//保存值
+	savegird();
+}
+
+void CameraDtecte1::readcameratools()
+{
+	list< CCamera *>::iterator it;
+	for (it = Cameras->begin(); it != Cameras->end(); it++)
+	{
+		(*it)->gettools();
+	}
+}
+
+void CameraDtecte1::readshowdata()
+{
+	
+	QString dpath = QDir::currentPath() + "/Product.xml";
+
+	QFile file(dpath);
+	if (!file.open(QFile::ReadOnly | QFile::Text)) {
+		qDebug() << "Error: Cannot read file " << qPrintable(dpath)
+			<< ": " << qPrintable(file.errorString());
+	}
+	QXmlStreamReader reader(&file);
+	while (!reader.atEnd()) {
+		reader.readNext();
+		//qDebug() << reader.name()<< reader.tokenType();
+		if (reader.isStartElement()) {
+			int kk=0;
+			if (reader.name() == "config")
+			{
+				kk++;
+				//model->setRowCount(kk);
+				int i = 0;
+				QList<QStandardItem*> itemlist;
+				QStandardItem *item;
+				while (reader.readNextStartElement()) {
+					if (reader.name() == header[i])
+					{
+						item=  new QStandardItem(reader.readElementText());
+						itemlist << item;
+						i++;
+					}
+					
+				}
+				model->insertRow(model->rowCount(), itemlist);
+				// qDebug() << reader.readElementText();
+			}
+		}
+	}
+	file.close();
+	if (reader.hasError()) {
+		qDebug() << "Error: Failed to parse file "
+			<< qPrintable(dpath) << ": "
+			<< qPrintable(reader.errorString());
+	}
+	else if (file.error() != QFile::NoError) {
+		qDebug() << "Error: Cannot read file " << qPrintable(dpath)
+			<< ": " << qPrintable(file.errorString());
+	}
+
+//	QString dpath = QDir::currentPath() + "/Data/CameraSettings.xml";
+	
+	/*QFile file(dpath);
+	if (!file.open(QIODevice::ReadOnly | QFile::Text)) {
+		qDebug() << "open for read error...";
+	}
+	QString errorStr;
+	int errorLine;
+	int errorColumn;
+
+	QDomDocument doc;
+	if (!doc.setContent(&file, false, &errorStr, &errorLine, &errorColumn)) {
+		qDebug() << "setcontent error...";
+		file.close();
+	}
+	file.close();
+	QDomElement root = doc.documentElement();
+	if (root.tagName() != "allitem") {
+		qDebug() << "root.tagname != ipconfig...";
+	}
+	QDomNode node = root.firstChild();
+	while (!node.isNull())
+	{
+		if (node.isElement())
+		{
+			QDomElement element = node.toElement();
+			qDebug() << qPrintable(element.tagName()) << qPrintable(element.attribute(header[0]));
+			
+		}
+		node = node.nextSibling();
+	}*/
+	//QDomElement root = doc.documentElement();
+	//QDomNodeList list = root.elementsByTagName("item");
+	//for (int i = 0; i < list.count(); i++)
+	//{
+	//	QDomElement elem = list.at(i).toElement();
+	//	qDebug() << elem.attribute(header[0]);
+	//}
+	//if (!file.open(QFile::WriteOnly | QFile::Truncate))
+	//	return;
+	////输出到文件
+	//QTextStream out_stream(&file);
+	//doc.save(out_stream, 4); //缩进4格
+	//file.close();
+}
+
+
+
+
+void CameraDtecte1::savegird()
+{
+	//QString dpath = PathHelper::currentproductpath + "/Product.xml";
+	QString dpath = QDir::currentPath()+ "/Product.xml";
+	QFile file(dpath);
+	file.open(QIODevice::WriteOnly);
+	//QXmlStreamWriter xmlWriter(&file);
+	QXmlStreamWriter writer(&file);
+	writer.setAutoFormatting(true);//自动化格式
+	//	writer.writeStartDocument("1.0", true); //开始文档（xml声明）
+	writer.writeStartElement("root");//开始根元素
+	int row = model->rowCount();
+	for (int j = 0; j < row; j++)
+	{
+
+		writer.writeStartElement("config");//开始子元素
+		writer.writeAttribute("id", "iddd");
+		for (int i = 0; i < header.size(); i++)
+		{
+			QModelIndex ind = model->index(j, i);
+			writer.writeTextElement(header.at(i), model->data(ind).toString());
+		}
+		writer.writeEndElement();//结束子元素
+	}
+
+	writer.writeEndElement();//结束根元素
+	writer.writeEndDocument();//结束文档
+
+
+	//QFile file(dpath);
+	//file.open(QIODevice::WriteOnly);
+	//QXmlStreamWriter xmlWriter(&file);
+	//xmlWriter.setAutoFormatting(true);
+	//xmlWriter.writeStartDocument();
+	//xmlWriter.writeStartElement("allitem");
+	//int row = model->rowCount();
+
+	//for (int i = 0; i < row; i++)
+	//{
+	//	xmlWriter.writeStartElement("item");
+	//	for (int j = 0; j < header.size(); j++)
+	//	{
+	//		QModelIndex ind = model->index(i, j);
+	//		xmlWriter.writeAttribute(header[j], model->data(ind).toString());
+	//	}
+	//	//xmlWriter.writeTextElement("title", "Qt Home"); //文本元素   使用这个关闭前一个打开的元素	
+	//	xmlWriter.writeEndElement();
+	//}
+	//xmlWriter.writeEndElement();
+	//xmlWriter.writeEndDocument();
+	file.close();
+}
+
 
 
 bool isfirstrun = true;
@@ -199,16 +547,33 @@ void CameraDtecte1::StopBtn()
 
 void CameraDtecte1::AlgorithmSet()
 {
-	SetAlgorithm *SA = new SetAlgorithm(this); 
-
-	if (Cameras->front()->Himage.IsInitialized())
+	if (! ui.toolButton_3->isEnabled())
 	{
-		SA->display(Cameras->front()->Himage);
+		qDebug() << "AlgorithmSet";
+		return ;
+	}
+	SetAlgorithm *SA = new SetAlgorithm(this); 
+	SA->CurrentCCD = CurrentCCD;
+	if (Cameras->front()->imagePos.image.IsInitialized())
+	{
+		SA->display(Cameras->front()->imagePos.image);
 	}
 	int ret = SA->exec();
 
 	if (ret == QDialog::Accepted)
 	{
+
+		
+		list< CCamera *>::iterator it;
+		for (it = Cameras->begin(); it != Cameras->end(); it++)
+		{
+			if ((*it)->logicname ==  CurrentCCD.toStdString())
+			{
+				(*it)->gettools();
+			}
+
+		};
+		updatagrid(CurrentCCD);
 		this->show();
 
 		SA->close();
@@ -279,14 +644,28 @@ void CameraDtecte1::ProductSet()
 
 	if (ret == QDialog::Accepted)
 	{
-		this->show();
+		try {
 
+			 readcameratools();
+			//model->clear();
+		    readshowdata();
+		
+		}
+		catch (exception e) {
+			QMessageBox::warning(this, "warning", e.what(), QMessageBox::Ok, QMessageBox::NoButton);
+		}
+		this->show();
 		SP->close();
 	}
 	else if (ret == QDialog::Rejected)
 	{
 		qDebug() << "reject";
 	}
-
 	delete SP;
+}
+
+void CameraDtecte1::tabchange(int num)
+{
+	qDebug() << num;
+	CurrentCCD = ui.tabWidget->tabText(num);
 }

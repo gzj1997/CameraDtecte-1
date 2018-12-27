@@ -1,4 +1,5 @@
 #include "SetAlgorithm.h"
+list<imagetools *> *tools;
 BOOST_CLASS_EXPORT(sf1)
 SetAlgorithm::SetAlgorithm(QWidget *parent)
 	: QDialog(parent)
@@ -27,6 +28,7 @@ void SetAlgorithm::display(HObject image)
 void SetAlgorithm::intial()
 {
 	tools = new list<imagetools *>();
+	currettool = nullptr;
 	para1 = new Para();
 	imageregion = new ImageRegion();
 	ct = new chartdata();
@@ -116,7 +118,7 @@ void SetAlgorithm::selectsuanfa()
 	{
 		return;
 	}
-	imagetools * currettool;
+	
 	
 
 	//3
@@ -150,12 +152,15 @@ void SetAlgorithm::selectsuanfa()
 			currettool->action();
 
 			toolresult *tr = currettool->Toolresult.cloner();
+			ui.tableWidget_2->clearContents();
 			for (int i = 0; !tr->name[i].empty(); i++)
 			{
 				ui.tableWidget_2->setRowCount(i+1);
 				ui.tableWidget_2->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(tr->name[i])));
 				ui.tableWidget_2->setItem(i, 1, new QTableWidgetItem(QString::number(tr->data[i])));
-				ui.tableWidget_2->setCellWidget(i, 2, new QCheckBox());
+				QTableWidgetItem *item = new QTableWidgetItem();
+				item->setCheckState(Qt::Unchecked);
+				ui.tableWidget_2->setItem(i, 2, item);
 			}
 			tools->push_back(currettool);
 		}
@@ -165,11 +170,30 @@ void SetAlgorithm::selectsuanfa()
 
 void SetAlgorithm::sdetect()
 {
+	currettool = nullptr;
+	ui.tableWidget_2->clearContents();
 	list<imagetools *>::iterator it;
 	for (it = tools->begin() ; it != tools->end(); it++)
 	{
 		(*it)->image = CurrentImage;
 		(*it)->action();
+		toolresult *tr = (*it)->Toolresult.cloner();
+		for (int i = 0; !tr->name[i].empty(); i++)
+		{
+			ui.tableWidget_2->setRowCount(i + 1);
+			ui.tableWidget_2->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(tr->name[i])));
+			ui.tableWidget_2->setItem(i, 1, new QTableWidgetItem(QString::number(tr->data[i])));
+			QTableWidgetItem *item = new QTableWidgetItem();
+			if (tr->isshow[i])
+			{
+				item->setCheckState(Qt::Checked);
+			}
+			else
+			{
+				item->setCheckState(Qt::Unchecked);
+			}
+			ui.tableWidget_2->setItem(i, 2, item);
+		}
 		//(*it)->result;
 	}
 }
@@ -180,7 +204,8 @@ void SetAlgorithm::savesuanfa()
 	//imagetools * t = new sf1();
 	//((sf1*)t)->mianji = 122;
 	//tools->push_back(t);
-	std::ofstream file("archiv.txt");
+	QString pt = PathHelper::currentproductpath +"/"+CurrentCCD +".txt";
+	std::ofstream file(pt.toStdString());
 	boost::archive::text_oarchive oa(file);
 	oa << tools;
 }
@@ -188,8 +213,9 @@ void SetAlgorithm::savesuanfa()
 void SetAlgorithm::readsuanfa()
 {
 	tools->clear();
+	QString pt = PathHelper::currentproductpath + "/" + CurrentCCD + ".txt";
 //	std::ifstream ifs("filename", std::ios::binary);
-	std::ifstream file("archiv.txt");
+	std::ifstream file(pt.toStdString());
 	boost::archive::text_iarchive ia(file);
 	ia >> tools;
 
@@ -197,7 +223,25 @@ void SetAlgorithm::readsuanfa()
 
 void SetAlgorithm::showresult()
 {
-
+	ui.tableWidget_2->clearContents();
+	currettool = tools->front();
+	toolresult *tr = currettool->Toolresult.cloner();
+	for (int i = 0; !tr->name[i].empty(); i++)
+	{
+		ui.tableWidget_2->setRowCount(i + 1);
+		ui.tableWidget_2->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(tr->name[i])));
+		ui.tableWidget_2->setItem(i, 1, new QTableWidgetItem(QString::number(tr->data[i])));
+		QTableWidgetItem *item = new QTableWidgetItem();
+		if (tr->isshow[i])
+		{
+			item->setCheckState(Qt::Checked);
+		}
+		else
+		{
+			item->setCheckState(Qt::Unchecked);
+		}
+		ui.tableWidget_2->setItem(i, 2, item);
+	}
 }
 
 void SetAlgorithm::getrollnum(int kk)
@@ -240,6 +284,44 @@ void SetAlgorithm::gettab(QTableWidgetItem * kkk)
 	QWidget *widget = ui.tableWidget->cellWidget(rowNum, 0);
 	QComboBox *combox = (QComboBox*)widget;
 	ct->gettype(rowNum, combox->currentText());
+}
+
+void SetAlgorithm::getresulttoshow(int x, int y)
+{
+	if (y != 2 )
+	{
+		return;
+	}
+
+	bool ck = ui.tableWidget_2->item(x, y)->checkState() == Qt::Checked;
+	if (currettool != nullptr)
+	{
+		currettool->Toolresult.isshow[x] = ck;
+	}
+	else
+	{
+		int num=0;
+		list<imagetools *>::iterator it;
+		for (it = tools->begin(); it != tools->end(); it++)
+		{
+			for (int i = 0; !(*it)->Toolresult.name[i].empty(); i++)
+			{
+				if (num == x)
+				{
+					(*it)->Toolresult.isshow[x] = ck;
+				}
+				num++;
+			}
+		}
+	}
+	
+	qDebug() << x << y;
+}
+
+void SetAlgorithm::savequit()
+{
+	savesuanfa();
+	this->accept();
 }
 
 void SetAlgorithm::sintial()

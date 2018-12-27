@@ -13,14 +13,14 @@
 #include <sstream> 
 #include<fstream>
 #include <string> 
-#define MAX_LISTNUM1  10
+#define MAX_LISTNUM1  6
 class toolresult
 {
 public:
 	string name[MAX_LISTNUM1];
 	double data[MAX_LISTNUM1];
 	bool isshow[MAX_LISTNUM1];
-
+	bool isgood;
 	toolresult();
 	~toolresult();
 	toolresult * cloner() {

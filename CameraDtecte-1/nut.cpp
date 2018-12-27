@@ -5,6 +5,7 @@ nut::nut(int pos):initialPos(pos)
 	//the fiste state
 	state = 0;
 	posNo = 0;
+	
 }
 
 nut::~nut()
@@ -13,7 +14,13 @@ nut::~nut()
 
 int nut::gethole()
 {
-	return 0;
+	if (state != cnum) {
+		return 1;
+	}
+	else
+	{
+		return 1;
+	}
 }
 
 cameranut::cameranut()

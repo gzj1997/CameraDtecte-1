@@ -1,0 +1,12 @@
+
+<root>
+    <config id="iddd">
+        <CCD>CCD1</CCD>
+        <检测项>area</检测项>
+        <上限></上限>
+        <下限></下限>
+        <测量></测量>
+        <OKorNG></OKorNG>
+        <良率></良率>
+    </config>
+</root>
