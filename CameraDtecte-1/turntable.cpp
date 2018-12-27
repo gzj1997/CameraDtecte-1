@@ -54,6 +54,7 @@ void turntable::run()
 	int presignal =0;
 	int csignal = PCI408_read_inbit(Card::Axis0,0);
 	int currentPos = PCI408_get_encoder(Card::Axis0);
+	int jcqbz;
 	PCI408_counter_config(0, 3);
 
 	PCI408_config_latch_mode(Card::card0, 0);
@@ -66,7 +67,12 @@ void turntable::run()
 	   
 
 		currentPos = PCI408_get_encoder(Card::Axis0);
-		csignal = PCI408_read_inbit(Card::Axis0, 0);
+		jcqbz = PCI408_get_latch_flag(Card::Axis0);//¶ÁÈ¡Ëø´æÆ÷×´Ì¬
+		if ((jcqbz & 0xf00) > 0)
+		{
+			PCI408_reset_latch_flag(Card::Axis0);
+			csignal = PCI408_get_latch_value(Card::Axis0);
+		}
 		
 		for (int i = 0; i < CameraCount; i++)
 		{

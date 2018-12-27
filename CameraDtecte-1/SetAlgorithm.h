@@ -12,6 +12,7 @@
 #include<qcheckbox.h>
 #include"PathHelper.h"
 #include"sf1.h"
+#include"outcircle.h"
 #include"chartdata.h"
 class SetAlgorithm : public QDialog
 {
@@ -21,7 +22,7 @@ public:
 	SetAlgorithm(QWidget *parent = Q_NULLPTR);
 	~SetAlgorithm();
 	
-	//list<imagetools *> *tools;
+	list<imagetools *> *tools;
 	chartdata *ct;
 	imagetools * currettool;
 	HObject CurrentImage;

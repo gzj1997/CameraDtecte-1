@@ -130,6 +130,7 @@
     <ClCompile Include="imagetools.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="nut.cpp" />
+    <ClCompile Include="outcircle.cpp" />
     <ClCompile Include="PathHelper.cpp" />
     <ClCompile Include="SetAlgorithm.cpp" />
     <ClCompile Include="SetCamera.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="chartdata.h" />
     <ClInclude Include="imageresult.h" />
     <ClInclude Include="nut.h" />
+    <ClInclude Include="outcircle.h" />
     <ClInclude Include="sf1.h" />
     <ClInclude Include="toolresult.h" />
     <ClInclude Include="turntable.h" />

@@ -1,6 +1,7 @@
 #include "SetAlgorithm.h"
-list<imagetools *> *tools;
+
 BOOST_CLASS_EXPORT(sf1)
+BOOST_CLASS_EXPORT(outcircle)
 SetAlgorithm::SetAlgorithm(QWidget *parent)
 	: QDialog(parent)
 {
@@ -120,7 +121,6 @@ void SetAlgorithm::selectsuanfa()
 	}
 	
 	
-
 	//3
 
 	GetSF *Gs = new GetSF();
@@ -134,6 +134,10 @@ void SetAlgorithm::selectsuanfa()
 		if (Gs->sfname =="sf1")
 		{
 			currettool = new sf1();
+		}
+		if (Gs->sfname == "outcircle")
+		{
+			currettool = new outcircle();
 		}
 		else 
 		{

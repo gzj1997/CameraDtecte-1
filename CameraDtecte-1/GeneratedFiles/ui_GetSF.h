@@ -90,7 +90,7 @@ public:
         GetSF->setWindowTitle(QApplication::translate("GetSF", "GetSF", 0));
         pushButton->setText(QApplication::translate("GetSF", "sf1", 0));
         pushButton_2->setText(QApplication::translate("GetSF", "PushButton", 0));
-        pushButton_3->setText(QApplication::translate("GetSF", "PushButton", 0));
+        pushButton_3->setText(QApplication::translate("GetSF", "outcircle", 0));
         pushButton_4->setText(QApplication::translate("GetSF", "PushButton", 0));
         pushButton_5->setText(QApplication::translate("GetSF", "\347\241\256\345\256\232", 0));
         pushButton_6->setText(QApplication::translate("GetSF", "\345\217\226\346\266\210", 0));

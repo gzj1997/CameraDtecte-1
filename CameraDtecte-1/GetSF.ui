@@ -40,7 +40,7 @@
     <item row="0" column="1">
      <widget class="QPushButton" name="pushButton_3">
       <property name="text">
-       <string>PushButton</string>
+       <string>outcircle</string>
       </property>
      </widget>
     </item>
