@@ -135,7 +135,7 @@ void SetAlgorithm::selectsuanfa()
 		{
 			currettool = new sf1();
 		}
-		if (Gs->sfname == "outcircle")
+		else if (Gs->sfname == "outcircle")
 		{
 			currettool = new outcircle();
 		}
@@ -176,17 +176,21 @@ void SetAlgorithm::sdetect()
 {
 	currettool = nullptr;
 	ui.tableWidget_2->clearContents();
+	int numk = 0;
 	list<imagetools *>::iterator it;
 	for (it = tools->begin() ; it != tools->end(); it++)
 	{
 		(*it)->image = CurrentImage;
 		(*it)->action();
 		toolresult *tr = (*it)->Toolresult.cloner();
-		for (int i = 0; !tr->name[i].empty(); i++)
+		int i = 0;
+		
+		for (; !tr->name[i].empty(); i++)
 		{
-			ui.tableWidget_2->setRowCount(i + 1);
-			ui.tableWidget_2->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(tr->name[i])));
-			ui.tableWidget_2->setItem(i, 1, new QTableWidgetItem(QString::number(tr->data[i])));
+			
+			ui.tableWidget_2->setRowCount(numk+i + 1);
+			ui.tableWidget_2->setItem(numk + i, 0, new QTableWidgetItem(QString::fromStdString(tr->name[i])));
+			ui.tableWidget_2->setItem(numk + i, 1, new QTableWidgetItem(QString::number(tr->data[i])));
 			QTableWidgetItem *item = new QTableWidgetItem();
 			if (tr->isshow[i])
 			{
@@ -196,8 +200,9 @@ void SetAlgorithm::sdetect()
 			{
 				item->setCheckState(Qt::Unchecked);
 			}
-			ui.tableWidget_2->setItem(i, 2, item);
+			ui.tableWidget_2->setItem(numk + i, 2, item);
 		}
+		numk += i;
 		//(*it)->result;
 	}
 }

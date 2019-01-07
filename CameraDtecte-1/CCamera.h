@@ -15,6 +15,7 @@
 #include <time.h>
 #include<qtimer.h>
 #include<thread>
+#include<qthread.h>
 #include <QObject>
 #include <QtWidgets/QMainWindow>
 #include<qobjectdefs.h>
@@ -23,13 +24,15 @@ using namespace HalconCpp;
 using namespace Pylon;
 using namespace std;
 
-class CCamera : public QObject
+class CCamera : public QThread
 {
 	Q_OBJECT
 signals :
-		void sigCurrentImage(ImageResult img);
+		void sigCurrentImage(ImageResult* img);
 signals:
 		void sigCurrentImage2(HObject img);
+signals:
+		void sigCurrentImage3(int img);
 public:
 	CCamera(QObject *parent);
 	~CCamera();
@@ -90,8 +93,8 @@ public:
 	void Close();
 	bool CheckCamera();
 	void CopyToImage(CGrabResultPtr pInBuffer, HObject* OutImage);
-	void disposeimage();
-
+	void run();
+	//void run();
 	void gettools();
 	//camera set
 	void setcameraset(CCamera_Type index, double tmpValue= 0.0);

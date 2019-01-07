@@ -44,7 +44,8 @@ void turntable::startrun()
 
 void turntable::stoprun()
 {
-	
+	PCI408_decel_stop(Card::Axis0, Card::acc);
+
 	isrun = false;
 	this_thread::sleep_for(std::chrono::milliseconds(20));
 }

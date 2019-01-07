@@ -1,7 +1,7 @@
 ﻿#include "CCamera.h"
 
 CCamera::CCamera(QObject *parent)
-	: QObject(parent)
+	: QThread(parent)
 {
 	intial();
 }
@@ -121,8 +121,9 @@ void CCamera::CopyToImage(CGrabResultPtr pInBuffer, HObject * OutImage)
 	  
 }
 
-void CCamera::disposeimage()
+void CCamera::run()
 {
+	int k=0;
 	while (isoncatch)
 	{
 		while (!imagePoS->empty())
@@ -132,10 +133,10 @@ void CCamera::disposeimage()
 			
 			if (!imagePos.image.IsInitialized())
 			{
-				qDebug() << "no image ";
+				qDebug() << "no image run";
 				break;
 			}
-
+			k++;
 			/*Himage = imagelist->front();
 			imagelist->pop();
 
@@ -149,7 +150,7 @@ void CCamera::disposeimage()
 			
 			for ( it = tools->begin(); it != tools->end(); it++)
 			{
-				(*it)->image = Himage;
+				(*it)->image = imagePos.image;
 				(*it)->action();
 				tresult->push_back((*(*it)->Toolresult.cloner()));
 			}
@@ -161,12 +162,17 @@ void CCamera::disposeimage()
 			
 			imagePoS->pop_front();
 		//	imageresults->push_back(*imageresult);
-				emit sigCurrentImage(*imageresult);
+				emit sigCurrentImage(imageresult);
+			//emit sigCurrentImage3(k);
+
 		//	imageresults->pop_front();
 		}
-		this_thread::sleep_for(std::chrono::milliseconds(1));
+		msleep(1);
+		//this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
+	quit();
 }
+
 
 void CCamera::gettools()
 {
@@ -205,9 +211,10 @@ void CCamera::Start()
 		else if (m_currentMode == "Line2") {
 			instantcamera.StartGrabbing(GrabStrategy_OneByOne);
 		}
-
+/*
 		std::thread thread2(&CCamera::disposeimage, this);
-		thread2.detach();
+		thread2.detach();*/
+		start();
 
 	}
 	catch (GenICam::GenericException &e) {

@@ -49,7 +49,7 @@ private:
 	void LinkCamera();
 	void GetProduct();
 	void readcameraset();
-	void imageProgress(ImageResult image);
+
 	void testimage();
 	void initialgrid();
 	void updatagrid(QString ccd);
@@ -58,6 +58,8 @@ private:
 	//void updatecamera(QString ccd);
 	void savegird();
 private slots:
+void imageProgress(ImageResult* image);
+void imageProgress2(int image);
 	void StartBtn();
 	void StopBtn();
 	void AlgorithmSet();
