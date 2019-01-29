@@ -215,5 +215,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico" />
+    <Image Include="..\..\公司LOG.ico" />
   </ItemGroup>
 </Project>

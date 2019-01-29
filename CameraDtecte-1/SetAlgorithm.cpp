@@ -102,7 +102,7 @@ void SetAlgorithm::intial()
 
 void SetAlgorithm::readhimage()
 {
-	QString title = u8"选择图片";
+	QString title = QString::fromLocal8Bit("选择图片:");
 	QString filter = "image(*.jpg *.png *bmp)";
 	QString imagename = QFileDialog::getOpenFileName(this,
 		title, PathHelper::currentproductpath, filter);

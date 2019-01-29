@@ -91,7 +91,7 @@
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;D:\Qt\5.6\msvc2015\include;.\GeneratedFiles\$(ConfigurationName);D:\Qt\5.6\msvc2015\include\QtCore;D:\Qt\5.6\msvc2015\include\QtGui;D:\Qt\5.6\msvc2015\include\QtANGLE;D:\Qt\5.6\msvc2015\include\QtWidgets;D:\Qt\5.6\msvc2015\include\QtXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\basler\Development\include;C:\Program Files\MVTec\HALCON-12.0\include;C:\Program Files\MVTec\HALCON-12.0\include\halconcpp;.\GeneratedFiles;.;D:\Qt\5.6\msvc2015\include;.\GeneratedFiles\$(ConfigurationName);D:\Qt\5.6\msvc2015\include\QtCore;D:\Qt\5.6\msvc2015\include\QtGui;D:\Qt\5.6\msvc2015\include\QtANGLE;D:\Qt\5.6\msvc2015\include\QtWidgets;D:\Qt\5.6\msvc2015\include\QtXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -99,9 +99,9 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\Qt\5.6\msvc2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\MVTec\HALCON-12.0\lib\x86sse2-win32;D:\basler\Development\lib\Win32;D:\local\boost_1_68_0\lib32-msvc-14.0;D:\Qt\5.6\msvc2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>D:\Qt\5.6\msvc2015\lib\qtmain.lib;D:\Qt\5.6\msvc2015\lib\Qt5Core.lib;D:\Qt\5.6\msvc2015\lib\Qt5Gui.lib;D:\Qt\5.6\msvc2015\lib\Qt5Widgets.lib;D:\Qt\5.6\msvc2015\lib\Qt5Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GCBase_MD_VC120_v3_0_Basler_pylon_v5_0.lib;GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib;PylonBase_MD_VC120_v5_0.lib;PylonC_MD_VC120.lib;PylonGUI_MD_VC120_v5_0.lib;PylonUtility_MD_VC120_v5_0.lib;DMC2210.lib;PCI408.lib;halconcpp.lib;halcon.lib;D:\Qt\5.6\msvc2015\lib\qtmain.lib;D:\Qt\5.6\msvc2015\lib\Qt5Core.lib;D:\Qt\5.6\msvc2015\lib\Qt5Gui.lib;D:\Qt\5.6\msvc2015\lib\Qt5Widgets.lib;D:\Qt\5.6\msvc2015\lib\Qt5Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -219,6 +219,7 @@
     <ResourceCompile Include="CameraDtecte-1.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\公司LOG.ico" />
     <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
