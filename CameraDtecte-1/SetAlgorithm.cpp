@@ -1,6 +1,7 @@
 #include "SetAlgorithm.h"
 
 BOOST_CLASS_EXPORT(sf1)
+BOOST_CLASS_EXPORT(OutBlack)
 BOOST_CLASS_EXPORT(outcircle)
 SetAlgorithm::SetAlgorithm(QWidget *parent)
 	: QDialog(parent)
@@ -11,8 +12,13 @@ SetAlgorithm::SetAlgorithm(QWidget *parent)
 	QString str = QDir::currentPath() + "/Data/I1.bmp";
 	HalconCpp::ReadImage(&himage1, str.toStdString().c_str());
 	MainWndID = (Hlong)this->ui.label->winId();
-	OpenWindow(0, 0, 561, 291, MainWndID, "visible", "", &hv_WindowID);
-
+	OpenWindow(0, 0, ui.label->width(), ui.label->height(), MainWndID, "visible", "", &hv_WindowID);
+	HTuple x, y;
+	GetImageSize(himage1, &x, &y);
+	SetPart(hv_WindowID, 0, 0, y, x);
+	SetColor(hv_WindowID, "red");
+	SetDraw(hv_WindowID, "margin");
+	//DispObj(himage1[i], hv_WindowID[i]);
 	intial();
 }
 
@@ -23,7 +29,12 @@ SetAlgorithm::~SetAlgorithm()
 
 void SetAlgorithm::display(HObject image)
 {
-	DispObj(image, hv_WindowID);
+	CurrentImage = image;
+	HTuple x, y;
+	GetImageSize(CurrentImage, &x, &y);
+	SetPart(hv_WindowID, 0, 0, y, x);
+	HalconCpp::DispObj(CurrentImage, hv_WindowID);
+	DispObj(CurrentImage, hv_WindowID);
 }
 
 void SetAlgorithm::intial()
@@ -96,7 +107,9 @@ void SetAlgorithm::readhimage()
 	QString imagename = QFileDialog::getOpenFileName(this,
 		title, PathHelper::currentproductpath, filter);
 	HalconCpp::ReadImage(&CurrentImage, (HalconCpp::HTuple)(imagename.toStdString().c_str()));
-	HalconCpp::DispObj(CurrentImage, hv_WindowID);
+	display(CurrentImage);
+	//HTuple  hv_Radius, hv_Row, hv_Column;
+	//DrawCircle(hv_WindowID, &hv_Row, &hv_Column, &hv_Radius);
 }
 
 
@@ -135,6 +148,10 @@ void SetAlgorithm::selectsuanfa()
 		{
 			currettool = new sf1();
 		}
+		else if (Gs->sfname == "OutBlack")
+		{
+			currettool = new OutBlack();
+		}
 		else if (Gs->sfname == "outcircle")
 		{
 			currettool = new outcircle();
@@ -149,6 +166,7 @@ void SetAlgorithm::selectsuanfa()
 			imageregion->chartdata = ct->cloner();
 
 			currettool->image = CurrentImage;
+			currettool->window = hv_WindowID;
 			currettool->imageregion = *(imageregion->cloner());
 			// get para and draw
 			currettool->draw();

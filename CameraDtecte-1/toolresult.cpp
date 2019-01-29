@@ -1,5 +1,5 @@
 #include "toolresult.h"
-
+#include<qdebug.h>
 toolresult::toolresult()
 {
 	for (int i = 0; i < MAX_LISTNUM1; i++)
@@ -12,5 +12,5 @@ toolresult::toolresult()
 
 toolresult::~toolresult()
 {
-
+	//qDebug() << "~toolresult";
 }

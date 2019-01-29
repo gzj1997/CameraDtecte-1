@@ -43,4 +43,5 @@ void saveset();
 void changegain();
 void changepixel();
 void changeexpose();
+void changemode(int mmd);
 };

@@ -19,6 +19,7 @@
 #include <QObject>
 #include <QtWidgets/QMainWindow>
 #include<qobjectdefs.h>
+#include <mutex>
 using namespace GenApi;
 using namespace HalconCpp;
 using namespace Pylon;
@@ -53,13 +54,15 @@ public:
 
 	CInstantCamera instantcamera;
 	CDeviceInfo  deviceinfo;
-
+	
 
 	list<imagetools*> *tools;
 
 	list< toolresult> *tresult;
 	list< imagepos> * imagePoS;
 	imagepos  imagePos;
+	mutex mut;
+
 
 	list<ImageResult> *imageresults;
 	ImageResult * imageresult;
@@ -70,15 +73,17 @@ public:
 	int gain;
 	int exposuretime;
 	int pixel;
+	bool tiggerMode;
 
 	QString m_currentMode;
 	bool isopen = false;
 
 	bool isoncatch = false;
+	 bool isgrap = false;
 	std::thread * tthread;
 
-	int posmin;
-
+	int posmin =0;
+	int prepos =-1;
 	list<int>good;
 	list<int>bad;
 
@@ -111,7 +116,12 @@ public:
 	void setFeatureTriggerModeType(bool on); // 设置模式触发
 	bool getFeatureTriggerModeType(); // 获取模式触发
 
-private:
+	void Allcameraset();
+
+	void GrapImage();
+	private slots:
+
+	void onTimerGrabImage();
 
 
 };

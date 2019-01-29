@@ -1,4 +1,10 @@
 #pragma once
+#include<qdebug.h>
+#include<list>
+#include<queue>
+#include <mutex>
+#include<qlist.h>
+using namespace std;
 class nut
 {
 public:
@@ -12,7 +18,8 @@ public:
 	int posNo;
 	//出料口
 	int outnum;
-
+//	QList<double>* result;
+	QStringList result;
 	// 相机个数
 	int cnum;
 	int gethole();
@@ -25,7 +32,10 @@ class cameranut
 public:
 	cameranut();
 	~cameranut();
-	int initialPos;
+//	list<int> *initialPos;
+	QList<int> *initialPos;
+
+	mutex mut2;
 	bool onwrite;
 	
 private:

@@ -24,6 +24,7 @@ public:
 	ImageRegion imageregion;
 	HalconCpp::HObject  image;
 	HTuple result;
+	HTuple window;
 	virtual void action() = 0;
 	virtual void draw() = 0;
 private:

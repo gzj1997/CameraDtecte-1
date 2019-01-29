@@ -6,6 +6,8 @@ turntable::turntable()
 	isrun = false;
 	instance = this;
 	nutlist = new list<nut>();
+	//SaveResult = new QList<double>();
+	SaveToOne = true;
 	for (int i = 0; i < 6; i++)
 	{
 		CameraNut[i] = new cameranut();
@@ -35,7 +37,7 @@ void turntable::startrun()
 	PCI408_set_encoder(Card::Axis0, 200000);
 	if (!isrun)
 	{
-		//isrun = true;
+		isrun = true;
 		run();
 	//	std::thread thread3(std::bind(&turntable::run, this));
 	}
@@ -50,6 +52,8 @@ void turntable::stoprun()
 	this_thread::sleep_for(std::chrono::milliseconds(20));
 }
 
+
+int badkkk = 0;
 void turntable::run()
 {
 	int presignal =0;
@@ -61,6 +65,12 @@ void turntable::run()
 	PCI408_config_latch_mode(Card::card0, 0);
 
 	PCI408_reset_latch_flag(Card::card0);
+	PCI408_vmove(Card::Axis0,1, DateHelper::speed_1);
+
+	for (int i = 0; i < CameraCount+ValveCount; i++)
+	{
+		PCI408_compare_clear_points_Extern(Card::card0, i + 1);
+	}
 
 	while (isrun)
 	{
@@ -68,6 +78,7 @@ void turntable::run()
 	   
 
 		currentPos = PCI408_get_encoder(Card::Axis0);
+	//	qDebug() << currentPos;
 		jcqbz = PCI408_get_latch_flag(Card::Axis0);//¶ÁÈ¡Ëø´æÆ÷×´Ì¬
 		if ((jcqbz & 0xf00) > 0)
 		{
@@ -81,138 +92,200 @@ void turntable::run()
 
 			if (callcamera[i] ==0 && precallcamera[i] ==1)
 			{
-				if (! allpos[i]->empty())
+				AllNum::imagenumn++;
+				SYSTEMTIME sys;
+				GetLocalTime(&sys);
+				qDebug() << sys.wHour << sys.wMinute << sys.wSecond << sys.wMilliseconds;
+			//	if (! allpos[i]->empty())
 				{
-					if ((allpos[i]->front() + position[i] - currentPos  <0))
+					int min_abs = 60000;
+					int min_position = 0;
+					int ks = 0;
+					//if (!allpos[i]->empty())
 					{
-					//	CameraNut[i]->onwrite = false
-						CameraNut[i]->initialPos = allpos[i]->front();
+						list<int>::iterator it;
+						for (it = allpos[i]->begin(); it != allpos[i]->end(); it++)
+						{
+							/*if (true)
+							{
+
+							}*/
+							ks= *it + position[i] - currentPos;
+							int pp = abs(ks);
+							if (pp< min_abs )
+							{
+								min_abs = pp;
+								min_position = *it;
+							}
+						}
 					}
-					else 
+				
+
+					if (min_abs< 5000)
 					{
-						qDebug() << "allpos[i]->front()";
+					
+						CameraNut[i]->mut2.lock();
+				
+						CameraNut[i]->initialPos->append(min_position);
+
+						CameraNut[i]->mut2.unlock();
+				
+					}
+					{
+						list<int>::iterator it2;
+						for (it2 = allpos[i]->begin(); it2 != allpos[i]->end();)
+						{
+
+							if (min_position == *it2)
+							{
+								it2 = allpos[i]->erase(it2);
+							}
+							else {
+
+								it2++;
+							}
+
+						}
 					}
 				}
 
 			}
+			
 			precallcamera[i] = callcamera[i];
 
 
 		}
 		for (int i = 0; i < CameraCount; i++)
 		{
-			list<int>::iterator it;
-			int min = 0;
-			for (it = allpos[i]->begin(); it != allpos[i]->end(); it++)
+			if (!allpos[i]->empty())
 			{
-				min = (*it) + position[i] - currentPos;
-				if (min < 0 )
+				list<int>::iterator it;
+				int min = 0;
+				for (it = allpos[i]->begin(); it != allpos[i]->end(); )
 				{
-					it =allpos[i]->erase(it);
+					min = (*it) + position[i] - currentPos +5000;
+					if (min < 0)
+					{
+						it = allpos[i]->erase(it);
+					}
+					else {
+
+						it++;
+					}
 				}
 			}
+			
 		}
 	
 
 		// new nut and set position
-		if (presignal ==1 && csignal == 0)
+		if (presignal !=csignal )
 		{
 			// timer
 			nut* Cnut = new nut(csignal);
 			Cnut->cnum = CameraCount;
-
+			AllNum::NutCount++;
+			qDebug() << "nut* Cnut "<< csignal;
+			mut1.lock();
 			nutlist->push_back(*Cnut);
-
+			mut1.unlock();
+			delete Cnut;
 			for (int i = 0; i < CameraCount; i++)
 			{
 				PCI408_compare_config_Extern(Card::card0 , (ushort)(i + 1), 1, Card::Axis0, 1);
+				PCI408_compare_set_pulsetimes_Extern(0, (ushort)(i + 1), 20);
 				PCI408_compare_add_point_Extern(Card::card0, (ushort)(i + 1), position[i] + (int)csignal, 1, 9, IOs[i]);
 				allpos[i]->push_back(csignal);
 			}
 		}
 		//check camera
 		//check result
-		
-		list<nut>::iterator it;
-		for (it = nutlist->begin(); it != nutlist->end(); it++)
-		{
-			if (currentPos - it->initialPos  > position[CameraCount] - 1000)
-			{
-				int a = it->gethole(); 
-				switch (a)
-				{
-				case 1:
-					//pn.mnum++;
-					//Console.WriteLine("cipin" + pn.mnum);
-					PCI408_compare_config_Extern(Card::card0, (ushort)(CameraCount + 1), 1, Card::Axis0, 1);
-					PCI408_compare_set_pulsetimes_Extern(0, (ushort)(CameraCount + 1), 10);
-					PCI408_compare_add_point_Extern(Card::card0, (ushort)(CameraCount + 1), position[CameraCount] + it->initialPos, 1, 9, IOs[CameraCount]);
-					break;
-					//case "3":
-					//pn.nnum++;
-					//Console.WriteLine("Î´Ê¶±ð" + pn.nnum);
-					//PCI408.PCI408_compare_config_Extern(Card.cardNo, (ushort)(cameraCount + 1), 1, Card.zhouhao, 1);
-					//PCI408.PCI408_compare_set_pulsetimes_Extern(0, (ushort)(cameraCount + 1), 20);
-					//PCI408.PCI408_compare_add_point_Extern(Card.cardNo, (ushort)(cameraCount + 1), PosArray[cameraCount] + (int)nutc.initialPos, 1, 9, IOs[cameraCount]);
-					//break;
-				case 2:
-					//pn.goodNum++;
-				//	fwjs2 = fwjs1;
-					PCI408_compare_config_Extern(Card::card0, (ushort)(CameraCount + 2), 1, Card::Axis0, 1);
-					PCI408_compare_set_pulsetimes_Extern(0, (ushort)(CameraCount + 2), 10);
-					PCI408_compare_add_point_Extern(Card::card0, (ushort)(CameraCount + 2), position[CameraCount+1] + it->initialPos, 1, 9, IOs[CameraCount+1]);
-					
-					//PCI408.PCI408_compare_config_Extern(Card.cardNo, (ushort)(cameraCount + 2), 1, Card.zhouhao, 1);
-					//PCI408.PCI408_compare_set_pulsetimes_Extern(0, (ushort)(cameraCount + 2), 10);
-					//PCI408.PCI408_compare_add_point_Extern(Card.cardNo, (ushort)(cameraCount + 2), PosArray[cameraCount + 1] + (int)nutc.initialPos, 1, 9, IOs[cameraCount + 1]);
-					break;
-
-
-				}
-			}
-		}
-
-	/*	for (int i = 0; i < CameraCount+ ValveCount; i++)
+		mut1.lock();
+		if (!nutlist->empty())
 		{
 			list<nut>::iterator it;
-			for (it = nutlist->begin(); it != nutlist->end(); it++)
+			for (it = nutlist->begin(); it != nutlist->end(); )
 			{
-				if (currentPos - it->initialPos >position[i] && it->posNo == i)
+				if (currentPos - it->initialPos  > position[CameraCount] - 1000)
 				{
-					if ( it->posNo< CameraCount )
+					int a = it->gethole();
+					AllNum::NutTEST++;
+
+					if (AllNum::NutTEST %10000 ==9999)
 					{
-						if ( CameraNut[i]->onwrite = false  )
+						SaveToOne = false;
+						std::thread thread_3(std::bind(&turntable::saveonetxt, this));
+						thread_3.detach();
+					}
+
+					if (SaveToOne)
+					{
+						if (SaveResult2.size()>0)
 						{
-							CameraNut[i]->onwrite = true;
-							CameraNut[i]->initialPos = it->initialPos;
-
-							d2210_write_outbit(Card::Axis0, IOs[i], Card::ON);
-							this_thread::sleep_for(std::chrono::milliseconds(1));
-							d2210_write_outbit(Card::Axis0, IOs[i], Card::OFF);
+							SaveResult << SaveResult2;
+							SaveResult2.clear();
 						}
-
+						SaveResult << it->result;
+						
 					}
-					else if(it->posNo >= CameraCount)
+					else 
 					{
-						int k = it->gethole();
-
-						if (k==Hole::thefirst &&  k == it->posNo - CameraCount )
-						{
-
-						}
-
+						SaveResult2 << it->result;
 					}
-					it->posNo++;
-					if (it->posNo >= CameraCount+ValveCount)
+
+					 it->result.clear();
+
+					
+					switch (a)
 					{
-						it = nutlist->erase(it);
+					case 1:
+						//pn.mnum++;
+						//Console.WriteLine("cipin" + pn.mnum);
+						qDebug() << "11111";
+						//	AllNum::Goodcount++;
+						PCI408_compare_config_Extern(Card::card0, (ushort)(CameraCount + 1), 1, Card::Axis0, 1);
+						PCI408_compare_set_pulsetimes_Extern(0, (ushort)(CameraCount + 1), 10);
+						PCI408_compare_add_point_Extern(Card::card0, (ushort)(CameraCount + 1), position[CameraCount] + it->initialPos, 1, 9, IOs[CameraCount]);
+						break;
+						//case "3":
+						//pn.nnum++;
+						//Console.WriteLine("Î´Ê¶±ð" + pn.nnum);
+						//PCI408.PCI408_compare_config_Extern(Card.cardNo, (ushort)(cameraCount + 1), 1, Card.zhouhao, 1);
+						//PCI408.PCI408_compare_set_pulsetimes_Extern(0, (ushort)(cameraCount + 1), 20);
+						//PCI408.PCI408_compare_add_point_Extern(Card.cardNo, (ushort)(cameraCount + 1), PosArray[cameraCount] + (int)nutc.initialPos, 1, 9, IOs[cameraCount]);
+						//break;
+					case 2:
+						//pn.goodNum++;
+						//	fwjs2 = fwjs1;
+						AllNum::Goodcount++;
+						PCI408_compare_config_Extern(Card::card0, (ushort)(CameraCount + 2), 1, Card::Axis0, 1);
+						PCI408_compare_set_pulsetimes_Extern(0, (ushort)(CameraCount + 2), 10);
+						PCI408_compare_add_point_Extern(Card::card0, (ushort)(CameraCount + 2), position[CameraCount + 1] + it->initialPos, 1, 9, IOs[CameraCount + 1]);
+						qDebug() << "2222";
+						//PCI408.PCI408_compare_config_Extern(Card.cardNo, (ushort)(cameraCount + 2), 1, Card.zhouhao, 1);
+						//PCI408.PCI408_compare_set_pulsetimes_Extern(0, (ushort)(cameraCount + 2), 10);
+						//PCI408.PCI408_compare_add_point_Extern(Card.cardNo, (ushort)(cameraCount + 2), PosArray[cameraCount + 1] + (int)nutc.initialPos, 1, 9, IOs[cameraCount + 1]);
+						break;
+
+					default:break;
 					}
 
+					it = nutlist->erase(it);
+				}
+				else {
+					it++;
 				}
 			}
-		}*/
+
+		}
+		mut1.unlock();
+
+	
 		presignal = csignal;
 	}
+	std::thread thread_3(std::bind(&turntable::saveonetxt, this));
+	thread_3.detach();
+	//PCI408_decel_stop()
 }
 
 void turntable::readconsole()
@@ -231,29 +304,29 @@ void turntable::readconsole()
 	int j = 0;
 	while (!reader.atEnd()) {
 		if (reader.isStartElement()) {
-			if (reader.name() != "camera")
+			if (reader.name() == "camera")
 			{
 				j = reader.attributes().value("Count").toInt();
 			}
-			if (reader.name() != "valve")
+			if (reader.name() == "valve")
 			{
 				ValveCount = reader.attributes().value("Count").toInt();
 			}
-			if (reader.name() != "Out")
+			if (reader.name() == "Out")
 			{
 				IOs[i] = reader.attributes().value("IO").toInt();
 				i++;
 			}
-			if (reader.name() != "Position")
+			if (reader.name() == "Position")
 			{
-				position[i] = reader.attributes().value("Pos").toInt();
+				position[k] = reader.attributes().value("Pos").toInt();
 				k++;
 			}
 		}
 		reader.readNext();
 	}
 	file.close();
-	if (k!= ValveCount || i!= k+ CameraCount || j!= CameraCount )
+	if (k!= i || i!= ValveCount + CameraCount || j!= CameraCount )
 	{
 		qDebug() << "position xml is wrong";
 	}
@@ -267,6 +340,23 @@ void turntable::readconsole()
 			<< ": " << qPrintable(file.errorString());
 			
 	}
+}
+
+void turntable::saveonetxt()
+{
+	SYSTEMTIME sys;
+	GetLocalTime(&sys);
+	QString str = QString::number(sys.wDay)+"-" + QString::number(sys.wHour) + "-" + QString::number(sys.wMinute) + "-" + QString::number(sys.wSecond)+".txt";
+	QString path =  PathHelper::currentproductpath +"/" +str;
+	QFile file(path);
+	file.open(QIODevice::ReadWrite | QIODevice::Append);
+	QTextStream out(&file);
+	out << ResultName.join("");
+	out << SaveResult.join(" ");
+
+	file.close();
+	SaveResult.clear();
+	SaveToOne = true;
 }
 
 

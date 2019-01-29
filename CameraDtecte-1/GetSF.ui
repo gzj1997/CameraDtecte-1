@@ -33,7 +33,7 @@
     <item row="1" column="0">
      <widget class="QPushButton" name="pushButton_2">
       <property name="text">
-       <string>PushButton</string>
+       <string>OutBlack</string>
       </property>
      </widget>
     </item>
@@ -82,8 +82,8 @@
      <y>80</y>
     </hint>
     <hint type="destinationlabel">
-     <x>18</x>
-     <y>80</y>
+     <x>16</x>
+     <y>81</y>
     </hint>
    </hints>
   </connection>
@@ -116,6 +116,22 @@
     <hint type="destinationlabel">
      <x>316</x>
      <y>262</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>GetSF</receiver>
+   <slot>getname()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>149</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>16</x>
+     <y>147</y>
     </hint>
    </hints>
   </connection>

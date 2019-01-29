@@ -56,6 +56,12 @@
     <ClCompile Include="outcircle.cpp">
       <Filter>Source Files\tools</Filter>
     </ClCompile>
+    <ClCompile Include="AllNum.cpp">
+      <Filter>Source Files\turntable</Filter>
+    </ClCompile>
+    <ClCompile Include="OutBlack.cpp">
+      <Filter>Source Files\tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -195,6 +201,12 @@
       <Filter>Header Files\camera</Filter>
     </ClInclude>
     <ClInclude Include="outcircle.h">
+      <Filter>Header Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="AllNum.h">
+      <Filter>Header Files\turntable</Filter>
+    </ClInclude>
+    <ClInclude Include="OutBlack.h">
       <Filter>Header Files\Tools</Filter>
     </ClInclude>
   </ItemGroup>

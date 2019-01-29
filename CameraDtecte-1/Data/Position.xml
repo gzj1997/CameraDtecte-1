@@ -1,20 +1,25 @@
 <转盘>
     <位置>
-        <Position Posb="24681" Posa="2997" Pos="16070"/>
-		 <Position Posb="24681" Posa="2997" Pos="16070"/>
+        <Position Pos="4900"/>
+        <Position Pos="12700"/>
+        <Position Pos="16388"/>
+        <Position Pos="21370"/>
+        <Position Pos="27070"/>
+        <Position Pos="32331"/>
     </位置>
     <速度>
-        <Speed  speed_1="43672"/>
+        <Speed speed_1="18567"/>
     </速度>
     <相机电磁阀点>
-	    <Out IO="21"/>
-		<Out IO="22"/>
-		<Out IO="23"/>
+        <Out IO="21"/>
+        <Out IO="22"/>
+        <Out IO="23"/>
+        <Out IO="24"/>
         <Out IO="1"/>
         <Out IO="2"/>
     </相机电磁阀点>
     <相机数量>
-        <camera Count="1"/>
+        <camera Count="4"/>
     </相机数量>
     <电磁阀数量>
         <valve Count="2"/>

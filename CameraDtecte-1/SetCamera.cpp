@@ -10,8 +10,14 @@ SetCamera::SetCamera( QWidget *parent)
 
 SetCamera::~SetCamera()
 {
+	list<CCamera*>::iterator it;
+	for (it = cameras->begin(); it != cameras->end(); it++)
+	{
+		(*it)->Close();
+	}
 	delete currentcamera;
 	delete cameras;
+
 }
 
 void SetCamera::intail()
@@ -24,8 +30,7 @@ void SetCamera::intail()
 		setradio(QString::number(i));
 	}
 
-	ui.comboBox->addItem(u8"软件");
-	ui.comboBox->addItem(u8"硬件");
+	
 	readcamera();
 	list<CCamera*>::iterator it;
 	for (it = cameras->begin(); it != cameras->end(); it++)
@@ -37,6 +42,9 @@ void SetCamera::intail()
 	ui.radioButton_1->setChecked(true);
 	setCCD(QString::number(1));
 	//currentcamera = cameras->front();
+	ui.comboBox->addItem(u8"软件");
+	ui.comboBox->addItem(u8"硬件");
+	ui.comboBox->setCurrentIndex(0);
 
 	HObject himage1;
 	QString str = QDir::currentPath() + "/Data/I1.bmp";
@@ -123,7 +131,6 @@ void SetCamera::setCCD(QString num)
 	{
 		if (n == (*it)->sort+1)
 		{
-			
 			ui.lineEdit_name->setText(  QString::fromStdString((*it)->devicename));
 			ui.lineEdit_expose->setText(QString::number((*it)->exposuretime));
 			ui.lineEdit_gain->setText(QString::number((*it)->gain));
@@ -147,7 +154,7 @@ void SetCamera::conshot()
 void SetCamera::stop()
 {
 	currentcamera->Stop();
-	currentcamera->Close();
+	//currentcamera->Close();
 }
 void SetCamera::saveset()
 {
@@ -158,15 +165,21 @@ void SetCamera::saveset()
 }
 void SetCamera::changegain()
 {
-	currentcamera->setgain(ui.lineEdit_gain->text().toInt());
+	currentcamera->gain = (ui.lineEdit_gain->text().toInt());
 }
 void SetCamera::changepixel()
 {
-	currentcamera->setpixel(ui.lineEdit_pixie->text().toInt());
+	currentcamera->pixel = (ui.lineEdit_pixie->text().toInt());
 }
 void SetCamera::changeexpose()
 {
-	currentcamera->setExposureTime(ui.lineEdit_expose->text().toDouble());
+
+	currentcamera->exposuretime = (ui.lineEdit_expose->text().toDouble());
+
+}
+void SetCamera::changemode(int mmd)
+{
+	currentcamera->tiggerMode = mmd == 1;
 }
 void SetCamera::getCCD(bool ison )
 {

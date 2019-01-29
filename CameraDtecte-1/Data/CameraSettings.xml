@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CCD>
-	<CCD1 name="Basler acA640-90gm (22089587)" pixel="1000" ExposureTime="35" Gain="1" PhotoWidth="1024"/>
-	
+	<CCD1 name="Basler acA1920-40gm (22486813)" pixel="1000" ExposureTime="35" Gain="0" PhotoWidth="1024"/>
+	<CCD2 name="Basler acA1300-60gm (22491182)" pixel="1000" ExposureTime="500" Gain="1" PhotoWidth="1024"/>
+	<CCD3 name="Basler acA640-120gm (22004716)" pixel="1000" ExposureTime="800" Gain="300" PhotoWidth="1024"/>
+	<CCD4 name="Basler acA640-120gm (22226002)" pixel="1000" ExposureTime="800" Gain="300" PhotoWidth="1024"/>
 </CCD>

@@ -28,7 +28,7 @@ void SetMotion::intial()
 	machinerylist[1] = DateHelper::speed_1;
 	ui.lineEdit->setText(QString::number(machinerylist[1]));
 
-	distance = 1000;
+	distance = 60000;
 	ui.lineEdit_3->setText(QString::number(distance));
 
 	ui.radioButtonplus->setChecked(true);
@@ -96,7 +96,7 @@ void SetMotion::run()
 	int currentPos =  PCI408_get_encoder(Card::Axis0);
 	int p0 = currentPos;
 	PCI408_vmove(Card::Axis0, ui.radioButtonplus->isChecked(), machinerylist[currentEM]);
-	while (currentPos < p0 + distance || currentPos > p0 - distance || onrun ==false )
+	while (currentPos < p0 + distance ||  onrun ==false )
 	{
 		currentPos = (int)PCI408_get_encoder(Card::Axis0);
 	}
@@ -137,6 +137,7 @@ void SetMotion::startmotion()
 void SetMotion::savequit()
 {
 	onrun = false;
+	machinerylist[currentEM] = ui.lineEdit->text().trimmed().toInt();
 	DateHelper::saveSpeed( machinerylist[1]);
 	this->accept();
 }

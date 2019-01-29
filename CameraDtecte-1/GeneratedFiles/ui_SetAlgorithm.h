@@ -59,10 +59,10 @@ public:
     {
         if (SetAlgorithm->objectName().isEmpty())
             SetAlgorithm->setObjectName(QStringLiteral("SetAlgorithm"));
-        SetAlgorithm->resize(778, 512);
+        SetAlgorithm->resize(1100, 586);
         groupBox = new QGroupBox(SetAlgorithm);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(20, 30, 391, 241));
+        groupBox->setGeometry(QRect(20, 30, 681, 401));
         groupBox->setStyleSheet(QLatin1String("QWidget{\n"
 "border:1px solid#999999;\n"
 "border -radius:15px; \n"
@@ -70,7 +70,7 @@ public:
 "}"));
         label = new QLabel(groupBox);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 20, 371, 211));
+        label->setGeometry(QRect(10, 20, 661, 361));
         label->setStyleSheet(QLatin1String("QWidget{\n"
 "border:1px solid#999999;\n"
 "border -radius:15px; \n"
@@ -78,7 +78,7 @@ public:
 "}"));
         groupBox_2 = new QGroupBox(SetAlgorithm);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(420, 30, 341, 131));
+        groupBox_2->setGeometry(QRect(750, 30, 341, 131));
         groupBox_2->setStyleSheet(QLatin1String("QWidget{\n"
 "border:1px solid#999999;\n"
 "border -radius:15px; \n"
@@ -89,7 +89,7 @@ public:
         tableWidget->setGeometry(QRect(10, 20, 321, 101));
         groupBox_3 = new QGroupBox(SetAlgorithm);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        groupBox_3->setGeometry(QRect(420, 170, 341, 141));
+        groupBox_3->setGeometry(QRect(750, 180, 341, 141));
         groupBox_3->setStyleSheet(QLatin1String("QWidget{\n"
 "border:1px solid#999999;\n"
 "border -radius:15px; \n"
@@ -131,7 +131,7 @@ public:
 
         groupBox_4 = new QGroupBox(SetAlgorithm);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        groupBox_4->setGeometry(QRect(20, 290, 391, 201));
+        groupBox_4->setGeometry(QRect(10, 450, 701, 111));
         groupBox_4->setStyleSheet(QLatin1String("QWidget{\n"
 "border:1px solid#999999;\n"
 "border -radius:15px; \n"
@@ -139,7 +139,7 @@ public:
 "}"));
         gridLayoutWidget_2 = new QWidget(groupBox_4);
         gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(0, 20, 391, 181));
+        gridLayoutWidget_2->setGeometry(QRect(0, 30, 691, 71));
         gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -187,7 +187,7 @@ public:
 
         groupBox_5 = new QGroupBox(SetAlgorithm);
         groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
-        groupBox_5->setGeometry(QRect(420, 330, 341, 161));
+        groupBox_5->setGeometry(QRect(750, 350, 341, 221));
         groupBox_5->setStyleSheet(QLatin1String("QWidget{\n"
 "border:1px solid#999999;\n"
 "border -radius:15px; \n"
@@ -195,7 +195,7 @@ public:
 "}"));
         tableWidget_2 = new QTableWidget(groupBox_5);
         tableWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
-        tableWidget_2->setGeometry(QRect(10, 20, 321, 131));
+        tableWidget_2->setGeometry(QRect(10, 20, 331, 191));
         groupBox_4->raise();
         groupBox->raise();
         groupBox_2->raise();

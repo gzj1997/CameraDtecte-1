@@ -8,11 +8,12 @@ CCamera::CCamera(QObject *parent)
 
 CCamera::~CCamera()
 {
+	
 }
 
 void CCamera::intial()
 {
-
+	isgrap = false;
 	imagelist = new queue<HObject>();
 	tools = new list<imagetools*>();
 	good =* new list<int>();
@@ -25,7 +26,7 @@ void CCamera::intial()
 	CTlFactory &TlFactory = CTlFactory::GetInstance();
 	TlInfoList_t lstInfo;
 	int n = TlFactory.EnumerateTls(lstInfo);
-
+	tiggerMode = true;
 	TlInfoList_t::const_iterator it;
 	for (it = lstInfo.begin(); it != lstInfo.end(); ++it) {
 		qDebug() << "FriendlyName: " << it->GetFriendlyName() << "FullName: " << it->GetFullName();
@@ -39,6 +40,8 @@ void CCamera::LinkCamera()
 {
 	if (isopen)
 	{
+		//setFeatureTriggerModeType(true);
+		Allcameraset();
 		return;
 	}
 	try
@@ -50,7 +53,7 @@ void CCamera::LinkCamera()
 		instantcamera.Open();
 		isopen = true;
 		getFeatureTriggerSourceType();
-		setFeatureTriggerModeType(false);
+		Allcameraset();
 	}
 	catch (const std::exception&)
 	{
@@ -87,9 +90,19 @@ void CCamera::GetImage()
 					//imagelist->push(*newimage);
 				//	turntable::instance->CameraNut[sort]->onwrite = false;
 					//posmin 有问题可能会卡
-					posmin =  turntable::instance->CameraNut[sort]->initialPos;
+
+			/*		posmin =  turntable::instance->CameraNut[sort]->initialPos->front();
+					if (turntable::instance->CameraNut[sort]->initialPos->size() ==1 )
+					{
+						turntable::instance->CameraNut[sort]->initialPos->clear();
+					}
+					else 
+					{
+						turntable::instance->CameraNut[sort]->initialPos->pop_front();
+					}*/
 					imagepos* ip = new imagepos(posmin, *newimage);
 					imagePoS->push_back(*ip);
+					
 				}
 				else
 				{
@@ -98,12 +111,12 @@ void CCamera::GetImage()
 				}
 			}
 			catch (exception e) {
-				qDebug() << e.what();
+				qDebug() << e.what() << "GetImage";
 			}
 		}
 	}
 	catch (exception e) {
-		qDebug() << e.what();
+		qDebug() << e.what()<<"GetImage";
 	}
 }
 
@@ -129,43 +142,65 @@ void CCamera::run()
 		while (!imagePoS->empty())
 		{
 
-			imagePos = imagePoS->front();
-			
-			if (!imagePos.image.IsInitialized())
-			{
-				qDebug() << "no image run";
-				break;
-			}
-			k++;
-			/*Himage = imagelist->front();
-			imagelist->pop();
+			//try {
+			      mut.lock();
+				  imagePos = imagePoS->front();
+				  imagePoS->pop_front();
+				  mut.unlock();
+				if (!imagePos.image.IsInitialized())
+				{
+					qDebug() << "no image run";
+					break;
+				}
+				k++;
 
-			if (!Himage.IsInitialized())
-			{
-				qDebug() << "no image ";
-				break;
-			}*/
-			tresult = new list< toolresult>();
-			list<imagetools*>::iterator it;
-			
-			for ( it = tools->begin(); it != tools->end(); it++)
-			{
-				(*it)->image = imagePos.image;
-				(*it)->action();
-				tresult->push_back((*(*it)->Toolresult.cloner()));
-			}
+				
+		
+				ImageResult* imageresult = new ImageResult(sort);
 
-			
-			imageresult = new ImageResult(sort);
-			imageresult->tresult = tresult;
-			imageresult->Imagepos = &imagePos;
-			
-			imagePoS->pop_front();
-		//	imageresults->push_back(*imageresult);
+				imageresult->tresult = new list< toolresult>();
+				list<imagetools*>::iterator it;
+
+				for (it = tools->begin(); it != tools->end(); it++)
+				{
+					(*it)->image = imagePos.image;
+					(*it)->action();
+					imageresult->tresult->push_back(((*it)->Toolresult));
+				}
+
+				imageresult->Imagepos = new imagepos(imagePos.pos,imagePos.image);;
+				
+				//tresult->clear();
+			//	delete tresult;
+			//	imageresult->tresult->clear();
 				emit sigCurrentImage(imageresult);
-			//emit sigCurrentImage3(k);
 
-		//	imageresults->pop_front();
+				/*imageresults->push_back(*imageresult);
+				if (imageresults->size() >3)
+				{
+					qDebug() <<"ssssssssssssiiiiiiiiiiiiiiiizzze"<< imageresults->size();
+					if (!imageresults->front().tresult->empty())
+					{
+						list< toolresult>::iterator itt;
+						for (itt = imageresults->front().tresult->begin(); itt != imageresults->front().tresult->end(); itt++)
+						{
+							(itt)->~toolresult();
+						}
+					}
+
+					delete imageresults->front().tresult;
+					delete imageresults->front().Imagepos;
+					imageresults->pop_front();
+				}*/
+				qDebug() << "sigCurrentImage";
+			
+
+			
+			//}
+			//catch (exception e) {
+
+			//}
+
 		}
 		msleep(1);
 		//this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -176,12 +211,14 @@ void CCamera::run()
 
 void CCamera::gettools()
 {
-	tools->clear();
-	QString pt = PathHelper::currentproductpath + "/" + QString::fromStdString(logicname) + ".txt";
-	//	std::ifstream ifs("filename", std::ios::binary);
-	std::ifstream file(pt.toStdString());
-	boost::archive::text_iarchive ia(file);
-	ia >> tools;
+	try {
+		tools->clear();
+		QString pt = PathHelper::currentproductpath + "/" + QString::fromStdString(logicname) + ".txt";
+		//	std::ifstream ifs("filename", std::ios::binary);
+		std::ifstream file(pt.toStdString());
+		boost::archive::text_iarchive ia(file);
+		ia >> tools;
+	}catch(exception e){}
 }
 
 
@@ -203,9 +240,10 @@ void CCamera::Start()
 		}
 		else if (m_currentMode == "Line1") {
 			instantcamera.StartGrabbing(GrabStrategy_OneByOne);
-			std::thread thread1(std::bind(&CCamera::GetImage, this));
+			onTimerGrabImage();
+			/*std::thread thread1(std::bind(&CCamera::onTimerGrabImage, this));
 			tthread = &thread1;
-			tthread->detach();
+			tthread->detach();*/
 			//GetImage();
 		}
 		else if (m_currentMode == "Line2") {
@@ -228,6 +266,7 @@ void CCamera::Stop()
 {
 
 	isoncatch = false;
+	
 	//wait for camera grap
 	this_thread::sleep_for(std::chrono::milliseconds(20));
 	try {
@@ -252,8 +291,9 @@ void CCamera::Close()
 	}
 	try {
 		if (instantcamera.IsOpen()) {
-		//	instantcamera.DetachDevice();
+			instantcamera.DestroyDevice();
 			instantcamera.Close();
+			isopen = false;
 		}
 	}
 	catch (GenICam::GenericException &e) {
@@ -280,7 +320,7 @@ bool CCamera::CheckCamera()
 		}
 		DeviceInfoList_t::const_iterator it;
 		for (it = devices.begin(); it != devices.end(); ++it) {
-			//		qDebug() << it->GetFriendlyName().c_str();
+					qDebug() << it->GetFriendlyName().c_str();
 			if (it->GetFriendlyName().c_str() == devicename)
 			{
 
@@ -453,7 +493,132 @@ void CCamera::setFeatureTriggerModeType(bool on)
 
 bool CCamera::getFeatureTriggerModeType()
 {
-	return false;
+	INodeMap &cameraNodeMap = instantcamera.GetNodeMap();
+	CEnumerationPtr  ptrTriggerSel = cameraNodeMap.GetNode("TriggerSelector");
+	ptrTriggerSel->FromString("FrameStart");
+	CEnumerationPtr  ptrTrigger = cameraNodeMap.GetNode("TriggerMode");
+	return ptrTrigger->GetIntValue() == 1;
+}
+void CCamera::Allcameraset()
+{
+	setFeatureTriggerSourceType("Line1");
+	setFeatureTriggerModeType(tiggerMode);
+	setgain(gain);
+	setpixel(pixel);
+	setExposureTime(exposuretime);
+}
+
+//void CCamera::Allcameraset()
+//{
+//	setFeatureTriggerModeType();
+//}
+
+
+
+void CCamera::onTimerGrabImage()
+{
+	if (isoncatch)
+	{
+		GrapImage();
+		QTimer::singleShot(5, this, SLOT(onTimerGrabImage()));
+	}
+	else {
+		qDebug() << "onTimerGrabImage   end";
+	}
+
+}
+
+
+void CCamera::GrapImage()
+{
+	if (isgrap == true)
+	{
+		return;
+
+	}
+	
+	try {
+		
+		//if (!instantcamera.IsGrabbing())
+		//{
+		//	Start();
+		//}
+		// This smart pointer will receive the grab result data.
+		CGrabResultPtr ptrGrabResult;
+
+		
+
+
+		// Wait for an image and then retrieve it. A timeout of 5000 ms is used.
+		//	instantcamera.RetrieveResult(5000, ptrGrabResult, TimeoutHandling_ThrowException);
+		SYSTEMTIME sys;
+		GetLocalTime(&sys);
+		qDebug() << sys.wHour << sys.wMinute << sys.wSecond << sys.wMilliseconds<<"1111111";
+		instantcamera.RetrieveResult(5, ptrGrabResult, TimeoutHandling_Return);
+		if (ptrGrabResult == NULL) {
+			return ;
+		}
+		//SYSTEMTIME sys;
+		//GetLocalTime(&sys);
+		//qDebug() << sys.wHour << sys.wMinute << sys.wSecond << sys.wMilliseconds<<"22222222222222";
+		isgrap = true;
+		// Image grabbed successfully?
+		if (ptrGrabResult->GrabSucceeded())
+		{
+			//SYSTEMTIME sys;
+			GetLocalTime(&sys);
+			qDebug() << sys.wHour << sys.wMinute << sys.wSecond << sys.wMilliseconds<<"33333333333333";
+			
+
+			turntable::instance->CameraNut[sort]->mut2.lock();
+			int posmin1 = 0;
+			if (!turntable::instance->CameraNut[sort]->initialPos->empty())
+			{
+				posmin1 = turntable::instance->CameraNut[sort]->initialPos->front();
+				/*if (posmin%10 ==1)
+				{*/
+					turntable::instance->CameraNut[sort]->initialPos->clear();
+			/*	}
+			 else
+				{
+					turntable::instance->CameraNut[sort]->initialPos->removeFirst();
+				}*/
+				
+				
+			}
+			posmin++;
+			turntable::instance->CameraNut[sort]->mut2.unlock();
+
+			HObject * newimage = new HObject();
+			// Access the image data.
+			/*qDebug() << "SizeX: " << ptrGrabResult->GetWidth() << endl;
+			qDebug() << "SizeY: " << ptrGrabResult->GetHeight() << endl;*/
+
+			CopyToImage(ptrGrabResult, newimage);
+			
+			imagepos* ip = new imagepos(posmin1, *newimage);
+			//qDebug() << posmin1 << sort;
+			//lock_guard<mutex> lock(mut);
+			mut.lock();
+			imagePoS->push_back(*ip);
+		//	prepos = posmin2;
+			delete ip;
+			mut.unlock();
+			delete newimage;
+
+		}
+		else
+		{
+			qDebug() << "Error: " << ptrGrabResult->GetErrorCode() << " " << ptrGrabResult->GetErrorDescription() << endl;
+
+		}
+
+
+	}
+	catch (exception e) {
+		qDebug() << e.what();
+	}
+	isgrap = false;
 }
 
 

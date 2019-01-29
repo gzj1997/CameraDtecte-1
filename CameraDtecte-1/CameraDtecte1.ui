@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1339</width>
+    <width>1335</width>
     <height>683</height>
    </rect>
   </property>
@@ -21,12 +21,17 @@
    <bool>true</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">#centralWidget { 
+border-image:url(:/CameraDtecte1/Resources/back2.jpg);
+}  
+# centralWidget * { 
+border-image:url(); 
+}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
     <string notr="true">#centralWidget { 
-border-image:url(:/CameraDtecte1/Resources/back2.jpg);
+border-image:url(:/CameraDtecte1/Resources/back4.jpg);
 }  
 # centralWidget * { 
 border-image:url(); 
@@ -53,29 +58,6 @@ border-image:url();
        <property name="icon">
         <iconset resource="CameraDtecte1.qrc">
          <normaloff>:/CameraDtecte1/Resources/start.png</normaloff>:/CameraDtecte1/Resources/start.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>64</width>
-         <height>64</height>
-        </size>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextUnderIcon</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="toolButton_4">
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>停止</string>
-       </property>
-       <property name="icon">
-        <iconset resource="CameraDtecte1.qrc">
-         <normaloff>:/CameraDtecte1/Resources/stop.jpg</normaloff>:/CameraDtecte1/Resources/stop.jpg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -172,6 +154,69 @@ border-image:url();
       </widget>
      </item>
      <item>
+      <widget class="QToolButton" name="toolButton_7">
+       <property name="text">
+        <string>清零</string>
+       </property>
+       <property name="icon">
+        <iconset resource="CameraDtecte1.qrc">
+         <normaloff>:/CameraDtecte1/Resources/back1.jpg</normaloff>:/CameraDtecte1/Resources/back1.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>64</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton_8">
+       <property name="text">
+        <string>报表</string>
+       </property>
+       <property name="icon">
+        <iconset resource="CameraDtecte1.qrc">
+         <normaloff>:/CameraDtecte1/Resources/back2.jpg</normaloff>:/CameraDtecte1/Resources/back2.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>64</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton_4">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>停止</string>
+       </property>
+       <property name="icon">
+        <iconset resource="CameraDtecte1.qrc">
+         <normaloff>:/CameraDtecte1/Resources/stop.jpg</normaloff>:/CameraDtecte1/Resources/stop.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>64</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextUnderIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -186,182 +231,25 @@ border-image:url();
      </item>
     </layout>
    </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>280</y>
-      <width>621</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>GroupBox</string>
-    </property>
-    <widget class="QWidget" name="gridLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>601</width>
-       <height>121</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>CCD1</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>CCD3</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QRadioButton" name="radioButton_4">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="autoExclusive">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>CCD4</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>CCD2</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QRadioButton" name="radioButton_3">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="autoExclusive">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="QLineEdit" name="lineEdit_4"/>
-      </item>
-      <item row="2" column="4">
-       <widget class="QLineEdit" name="lineEdit"/>
-      </item>
-      <item row="2" column="5">
-       <widget class="QLineEdit" name="lineEdit_2"/>
-      </item>
-      <item row="3" column="3">
-       <widget class="QLineEdit" name="lineEdit_3"/>
-      </item>
-      <item row="3" column="4">
-       <widget class="QLineEdit" name="lineEdit_5"/>
-      </item>
-      <item row="3" column="5">
-       <widget class="QLineEdit" name="lineEdit_6"/>
-      </item>
-      <item row="4" column="3">
-       <widget class="QLineEdit" name="lineEdit_7"/>
-      </item>
-      <item row="4" column="4">
-       <widget class="QLineEdit" name="lineEdit_8"/>
-      </item>
-      <item row="5" column="3">
-       <widget class="QLineEdit" name="lineEdit_9"/>
-      </item>
-      <item row="5" column="4">
-       <widget class="QLineEdit" name="lineEdit_10"/>
-      </item>
-      <item row="4" column="5">
-       <widget class="QLineEdit" name="lineEdit_11"/>
-      </item>
-      <item row="5" column="5">
-       <widget class="QLineEdit" name="lineEdit_12"/>
-      </item>
-      <item row="2" column="1">
-       <widget class="QRadioButton" name="radioButton">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="autoExclusive">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QRadioButton" name="radioButton_2">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="autoExclusive">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QLabel" name="label_18">
-        <property name="text">
-         <string>良品数量</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>状态</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QLabel" name="label_19">
-        <property name="text">
-         <string>良品数量</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QLabel" name="label_20">
-        <property name="text">
-         <string>良品数量</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
       <x>700</x>
       <y>20</y>
-      <width>621</width>
-      <height>251</height>
+      <width>611</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string/>
     </property>
     <widget class="QTableView" name="tableView">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>40</y>
+       <y>20</y>
        <width>621</width>
-       <height>211</height>
+       <height>411</height>
       </rect>
      </property>
     </widget>
@@ -375,18 +263,86 @@ border-image:url();
       <height>141</height>
      </rect>
     </property>
-    <property name="title">
-     <string>GroupBox</string>
+    <property name="font">
+     <font>
+      <family>黑体</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
-    <widget class="QListWidget" name="listWidget_2">
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget_2">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>0</x>
        <y>20</y>
-       <width>611</width>
+       <width>621</width>
        <height>121</height>
       </rect>
      </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_22">
+        <property name="text">
+         <string>名称</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_23">
+        <property name="text">
+         <string>总量</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_24">
+        <property name="text">
+         <string>速度</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_21">
+        <property name="text">
+         <string>良品率</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_14"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_25">
+        <property name="styleSheet">
+         <string notr="true">#centralWidget { 
+border-image:url(:/CameraDtecte1/Resources/back2.jpg);
+}  
+# centralWidget * { 
+border-image:url(); 
+}</string>
+        </property>
+        <property name="text">
+         <string>良品数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="lineEdit_15"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_16"/>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLineEdit" name="lineEdit_17"/>
+      </item>
+      <item row="0" column="1" colspan="3">
+       <widget class="QLineEdit" name="lineEdit_13"/>
+      </item>
+     </layout>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_4">
@@ -645,7 +601,7 @@ border-image:url();
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1339</width>
+     <width>1335</width>
      <height>23</height>
     </rect>
    </property>
@@ -691,8 +647,8 @@ border-image:url();
    <slot>StopBtn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>151</x>
-     <y>68</y>
+     <x>630</x>
+     <y>105</y>
     </hint>
     <hint type="destinationlabel">
      <x>192</x>
@@ -707,8 +663,8 @@ border-image:url();
    <slot>ProductSet()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>208</x>
-     <y>64</y>
+     <x>168</x>
+     <y>101</y>
     </hint>
     <hint type="destinationlabel">
      <x>252</x>
@@ -723,8 +679,8 @@ border-image:url();
    <slot>MotionSet()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>292</x>
-     <y>61</y>
+     <x>245</x>
+     <y>98</y>
     </hint>
     <hint type="destinationlabel">
      <x>324</x>
@@ -739,8 +695,8 @@ border-image:url();
    <slot>AlgorithmSet()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>377</x>
-     <y>70</y>
+     <x>322</x>
+     <y>107</y>
     </hint>
     <hint type="destinationlabel">
      <x>402</x>
@@ -755,8 +711,8 @@ border-image:url();
    <slot>CameraSet()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>459</x>
-     <y>63</y>
+     <x>399</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
      <x>496</x>
@@ -780,6 +736,38 @@ border-image:url();
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>toolButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>CameraDtecte1Class</receiver>
+   <slot>ReportForm()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>515</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>669</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toolButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>CameraDtecte1Class</receiver>
+   <slot>NumToZero()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>438</x>
+     <y>119</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>675</x>
+     <y>137</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>StartBtn()</slot>
@@ -789,5 +777,7 @@ border-image:url();
   <slot>CameraSet()</slot>
   <slot>ProductSet()</slot>
   <slot>tabchange(int)</slot>
+  <slot>ReportForm()</slot>
+  <slot>NumToZero()</slot>
  </slots>
 </ui>

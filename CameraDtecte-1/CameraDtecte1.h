@@ -28,7 +28,8 @@ public:
 private:
 	Ui::CameraDtecte1Class ui;
 
-   
+	QTimer *m_pTimer;
+
 	turntable *TurnTable;
 	
 	QStandardItemModel  *model;
@@ -67,4 +68,7 @@ void imageProgress2(int image);
 	void CameraSet();
 	void ProductSet();
 	void tabchange(int num);
+	void ReportForm();
+	void NumToZero();
+	void OntimeShowResult();
 };

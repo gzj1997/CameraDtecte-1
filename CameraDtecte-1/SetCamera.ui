@@ -397,6 +397,38 @@ border -radius:15px;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>SetCamera</receiver>
+   <slot>changemode(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>580</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>647</x>
+     <y>136</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_expose</sender>
+   <signal>editingFinished()</signal>
+   <receiver>SetCamera</receiver>
+   <slot>changeexpose()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>601</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>647</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>getCCD(bool)</slot>
@@ -407,5 +439,6 @@ border -radius:15px;
   <slot>changegain()</slot>
   <slot>changeexpose()</slot>
   <slot>changepixel()</slot>
+  <slot>changemode(int)</slot>
  </slots>
 </ui>

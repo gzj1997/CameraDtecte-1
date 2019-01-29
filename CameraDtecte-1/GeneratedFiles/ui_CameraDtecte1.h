@@ -19,10 +19,8 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
@@ -40,43 +38,29 @@ public:
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
     QToolButton *toolButton_3;
-    QToolButton *toolButton_4;
     QToolButton *toolButton_6;
     QToolButton *toolButton_2;
     QToolButton *toolButton;
     QToolButton *toolButton_5;
+    QToolButton *toolButton_7;
+    QToolButton *toolButton_8;
+    QToolButton *toolButton_4;
     QSpacerItem *horizontalSpacer;
-    QGroupBox *groupBox;
-    QWidget *gridLayoutWidget;
-    QGridLayout *gridLayout;
-    QLabel *label_5;
-    QLabel *label_4;
-    QRadioButton *radioButton_4;
-    QLabel *label_3;
-    QLabel *label_6;
-    QRadioButton *radioButton_3;
-    QLineEdit *lineEdit_4;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_2;
-    QLineEdit *lineEdit_3;
-    QLineEdit *lineEdit_5;
-    QLineEdit *lineEdit_6;
-    QLineEdit *lineEdit_7;
-    QLineEdit *lineEdit_8;
-    QLineEdit *lineEdit_9;
-    QLineEdit *lineEdit_10;
-    QLineEdit *lineEdit_11;
-    QLineEdit *lineEdit_12;
-    QRadioButton *radioButton;
-    QRadioButton *radioButton_2;
-    QLabel *label_18;
-    QLabel *label_8;
-    QLabel *label_19;
-    QLabel *label_20;
     QGroupBox *groupBox_2;
     QTableView *tableView;
     QGroupBox *groupBox_3;
-    QListWidget *listWidget_2;
+    QWidget *gridLayoutWidget_2;
+    QGridLayout *gridLayout_2;
+    QLabel *label_22;
+    QLabel *label_23;
+    QLabel *label_24;
+    QLabel *label_21;
+    QLineEdit *lineEdit_14;
+    QLabel *label_25;
+    QLineEdit *lineEdit_15;
+    QLineEdit *lineEdit_16;
+    QLineEdit *lineEdit_17;
+    QLineEdit *lineEdit_13;
     QGroupBox *groupBox_4;
     QTabWidget *tabWidget;
     QWidget *tab;
@@ -106,16 +90,21 @@ public:
     {
         if (CameraDtecte1Class->objectName().isEmpty())
             CameraDtecte1Class->setObjectName(QStringLiteral("CameraDtecte1Class"));
-        CameraDtecte1Class->resize(1339, 683);
+        CameraDtecte1Class->resize(1335, 683);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/CameraDtecte1/Resources/\345\205\254\345\217\270LOG.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         CameraDtecte1Class->setWindowIcon(icon);
         CameraDtecte1Class->setAutoFillBackground(true);
-        CameraDtecte1Class->setStyleSheet(QStringLiteral(""));
+        CameraDtecte1Class->setStyleSheet(QLatin1String("#centralWidget { \n"
+"border-image:url(:/CameraDtecte1/Resources/back2.jpg);\n"
+"}  \n"
+"# centralWidget * { \n"
+"border-image:url(); \n"
+"}"));
         centralWidget = new QWidget(CameraDtecte1Class);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setStyleSheet(QLatin1String("#centralWidget { \n"
-"border-image:url(:/CameraDtecte1/Resources/back2.jpg);\n"
+"border-image:url(:/CameraDtecte1/Resources/back4.jpg);\n"
 "}  \n"
 "# centralWidget * { \n"
 "border-image:url(); \n"
@@ -139,23 +128,12 @@ public:
 
         horizontalLayout->addWidget(toolButton_3);
 
-        toolButton_4 = new QToolButton(horizontalLayoutWidget);
-        toolButton_4->setObjectName(QStringLiteral("toolButton_4"));
-        toolButton_4->setStyleSheet(QStringLiteral(""));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/CameraDtecte1/Resources/stop.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        toolButton_4->setIcon(icon2);
-        toolButton_4->setIconSize(QSize(64, 64));
-        toolButton_4->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-        horizontalLayout->addWidget(toolButton_4);
-
         toolButton_6 = new QToolButton(horizontalLayoutWidget);
         toolButton_6->setObjectName(QStringLiteral("toolButton_6"));
         toolButton_6->setStyleSheet(QStringLiteral(""));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/CameraDtecte1/Resources/product.png"), QSize(), QIcon::Normal, QIcon::Off);
-        toolButton_6->setIcon(icon3);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/CameraDtecte1/Resources/product.png"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton_6->setIcon(icon2);
         toolButton_6->setIconSize(QSize(64, 64));
         toolButton_6->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
@@ -163,9 +141,9 @@ public:
 
         toolButton_2 = new QToolButton(horizontalLayoutWidget);
         toolButton_2->setObjectName(QStringLiteral("toolButton_2"));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/CameraDtecte1/Resources/motion.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        toolButton_2->setIcon(icon4);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/CameraDtecte1/Resources/motion.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton_2->setIcon(icon3);
         toolButton_2->setIconSize(QSize(64, 64));
         toolButton_2->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
@@ -173,9 +151,9 @@ public:
 
         toolButton = new QToolButton(horizontalLayoutWidget);
         toolButton->setObjectName(QStringLiteral("toolButton"));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/CameraDtecte1/Resources/algorithm.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        toolButton->setIcon(icon5);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/CameraDtecte1/Resources/algorithm.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton->setIcon(icon4);
         toolButton->setIconSize(QSize(64, 64));
         toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
@@ -183,165 +161,128 @@ public:
 
         toolButton_5 = new QToolButton(horizontalLayoutWidget);
         toolButton_5->setObjectName(QStringLiteral("toolButton_5"));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/CameraDtecte1/Resources/camera.png"), QSize(), QIcon::Normal, QIcon::Off);
-        toolButton_5->setIcon(icon6);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/CameraDtecte1/Resources/camera.png"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton_5->setIcon(icon5);
         toolButton_5->setIconSize(QSize(64, 64));
         toolButton_5->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
         horizontalLayout->addWidget(toolButton_5);
 
+        toolButton_7 = new QToolButton(horizontalLayoutWidget);
+        toolButton_7->setObjectName(QStringLiteral("toolButton_7"));
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/CameraDtecte1/Resources/back1.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton_7->setIcon(icon6);
+        toolButton_7->setIconSize(QSize(64, 64));
+        toolButton_7->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+
+        horizontalLayout->addWidget(toolButton_7);
+
+        toolButton_8 = new QToolButton(horizontalLayoutWidget);
+        toolButton_8->setObjectName(QStringLiteral("toolButton_8"));
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/CameraDtecte1/Resources/back2.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton_8->setIcon(icon7);
+        toolButton_8->setIconSize(QSize(64, 64));
+        toolButton_8->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+
+        horizontalLayout->addWidget(toolButton_8);
+
+        toolButton_4 = new QToolButton(horizontalLayoutWidget);
+        toolButton_4->setObjectName(QStringLiteral("toolButton_4"));
+        toolButton_4->setStyleSheet(QStringLiteral(""));
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/CameraDtecte1/Resources/stop.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton_4->setIcon(icon8);
+        toolButton_4->setIconSize(QSize(64, 64));
+        toolButton_4->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+
+        horizontalLayout->addWidget(toolButton_4);
+
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        groupBox = new QGroupBox(centralWidget);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(700, 280, 621, 161));
-        gridLayoutWidget = new QWidget(groupBox);
-        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(10, 30, 601, 121));
-        gridLayout = new QGridLayout(gridLayoutWidget);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
-        label_5 = new QLabel(gridLayoutWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
-
-        gridLayout->addWidget(label_5, 2, 0, 1, 1);
-
-        label_4 = new QLabel(gridLayoutWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-
-        gridLayout->addWidget(label_4, 4, 0, 1, 1);
-
-        radioButton_4 = new QRadioButton(gridLayoutWidget);
-        radioButton_4->setObjectName(QStringLiteral("radioButton_4"));
-        radioButton_4->setAutoExclusive(false);
-
-        gridLayout->addWidget(radioButton_4, 5, 1, 1, 1);
-
-        label_3 = new QLabel(gridLayoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-
-        gridLayout->addWidget(label_3, 5, 0, 1, 1);
-
-        label_6 = new QLabel(gridLayoutWidget);
-        label_6->setObjectName(QStringLiteral("label_6"));
-
-        gridLayout->addWidget(label_6, 3, 0, 1, 1);
-
-        radioButton_3 = new QRadioButton(gridLayoutWidget);
-        radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
-        radioButton_3->setAutoExclusive(false);
-
-        gridLayout->addWidget(radioButton_3, 4, 1, 1, 1);
-
-        lineEdit_4 = new QLineEdit(gridLayoutWidget);
-        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
-
-        gridLayout->addWidget(lineEdit_4, 2, 3, 1, 1);
-
-        lineEdit = new QLineEdit(gridLayoutWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-
-        gridLayout->addWidget(lineEdit, 2, 4, 1, 1);
-
-        lineEdit_2 = new QLineEdit(gridLayoutWidget);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-
-        gridLayout->addWidget(lineEdit_2, 2, 5, 1, 1);
-
-        lineEdit_3 = new QLineEdit(gridLayoutWidget);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-
-        gridLayout->addWidget(lineEdit_3, 3, 3, 1, 1);
-
-        lineEdit_5 = new QLineEdit(gridLayoutWidget);
-        lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
-
-        gridLayout->addWidget(lineEdit_5, 3, 4, 1, 1);
-
-        lineEdit_6 = new QLineEdit(gridLayoutWidget);
-        lineEdit_6->setObjectName(QStringLiteral("lineEdit_6"));
-
-        gridLayout->addWidget(lineEdit_6, 3, 5, 1, 1);
-
-        lineEdit_7 = new QLineEdit(gridLayoutWidget);
-        lineEdit_7->setObjectName(QStringLiteral("lineEdit_7"));
-
-        gridLayout->addWidget(lineEdit_7, 4, 3, 1, 1);
-
-        lineEdit_8 = new QLineEdit(gridLayoutWidget);
-        lineEdit_8->setObjectName(QStringLiteral("lineEdit_8"));
-
-        gridLayout->addWidget(lineEdit_8, 4, 4, 1, 1);
-
-        lineEdit_9 = new QLineEdit(gridLayoutWidget);
-        lineEdit_9->setObjectName(QStringLiteral("lineEdit_9"));
-
-        gridLayout->addWidget(lineEdit_9, 5, 3, 1, 1);
-
-        lineEdit_10 = new QLineEdit(gridLayoutWidget);
-        lineEdit_10->setObjectName(QStringLiteral("lineEdit_10"));
-
-        gridLayout->addWidget(lineEdit_10, 5, 4, 1, 1);
-
-        lineEdit_11 = new QLineEdit(gridLayoutWidget);
-        lineEdit_11->setObjectName(QStringLiteral("lineEdit_11"));
-
-        gridLayout->addWidget(lineEdit_11, 4, 5, 1, 1);
-
-        lineEdit_12 = new QLineEdit(gridLayoutWidget);
-        lineEdit_12->setObjectName(QStringLiteral("lineEdit_12"));
-
-        gridLayout->addWidget(lineEdit_12, 5, 5, 1, 1);
-
-        radioButton = new QRadioButton(gridLayoutWidget);
-        radioButton->setObjectName(QStringLiteral("radioButton"));
-        radioButton->setAutoExclusive(false);
-
-        gridLayout->addWidget(radioButton, 2, 1, 1, 1);
-
-        radioButton_2 = new QRadioButton(gridLayoutWidget);
-        radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
-        radioButton_2->setAutoExclusive(false);
-
-        gridLayout->addWidget(radioButton_2, 3, 1, 1, 1);
-
-        label_18 = new QLabel(gridLayoutWidget);
-        label_18->setObjectName(QStringLiteral("label_18"));
-
-        gridLayout->addWidget(label_18, 1, 3, 1, 1);
-
-        label_8 = new QLabel(gridLayoutWidget);
-        label_8->setObjectName(QStringLiteral("label_8"));
-
-        gridLayout->addWidget(label_8, 1, 1, 1, 1);
-
-        label_19 = new QLabel(gridLayoutWidget);
-        label_19->setObjectName(QStringLiteral("label_19"));
-
-        gridLayout->addWidget(label_19, 1, 4, 1, 1);
-
-        label_20 = new QLabel(gridLayoutWidget);
-        label_20->setObjectName(QStringLiteral("label_20"));
-
-        gridLayout->addWidget(label_20, 1, 5, 1, 1);
-
         groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(700, 20, 621, 251));
+        groupBox_2->setGeometry(QRect(700, 20, 611, 431));
         tableView = new QTableView(groupBox_2);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(0, 40, 621, 211));
+        tableView->setGeometry(QRect(0, 20, 621, 411));
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setGeometry(QRect(700, 470, 621, 141));
-        listWidget_2 = new QListWidget(groupBox_3);
-        listWidget_2->setObjectName(QStringLiteral("listWidget_2"));
-        listWidget_2->setGeometry(QRect(10, 20, 611, 121));
+        QFont font;
+        font.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        font.setPointSize(14);
+        font.setBold(true);
+        font.setWeight(75);
+        groupBox_3->setFont(font);
+        gridLayoutWidget_2 = new QWidget(groupBox_3);
+        gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
+        gridLayoutWidget_2->setGeometry(QRect(0, 20, 621, 121));
+        gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout_2->setContentsMargins(0, 0, 0, 0);
+        label_22 = new QLabel(gridLayoutWidget_2);
+        label_22->setObjectName(QStringLiteral("label_22"));
+
+        gridLayout_2->addWidget(label_22, 0, 0, 1, 1);
+
+        label_23 = new QLabel(gridLayoutWidget_2);
+        label_23->setObjectName(QStringLiteral("label_23"));
+
+        gridLayout_2->addWidget(label_23, 1, 0, 1, 1);
+
+        label_24 = new QLabel(gridLayoutWidget_2);
+        label_24->setObjectName(QStringLiteral("label_24"));
+
+        gridLayout_2->addWidget(label_24, 1, 2, 1, 1);
+
+        label_21 = new QLabel(gridLayoutWidget_2);
+        label_21->setObjectName(QStringLiteral("label_21"));
+
+        gridLayout_2->addWidget(label_21, 2, 0, 1, 1);
+
+        lineEdit_14 = new QLineEdit(gridLayoutWidget_2);
+        lineEdit_14->setObjectName(QStringLiteral("lineEdit_14"));
+
+        gridLayout_2->addWidget(lineEdit_14, 1, 1, 1, 1);
+
+        label_25 = new QLabel(gridLayoutWidget_2);
+        label_25->setObjectName(QStringLiteral("label_25"));
+        label_25->setStyleSheet(QLatin1String("#centralWidget { \n"
+"border-image:url(:/CameraDtecte1/Resources/back2.jpg);\n"
+"}  \n"
+"# centralWidget * { \n"
+"border-image:url(); \n"
+"}"));
+
+        gridLayout_2->addWidget(label_25, 2, 2, 1, 1);
+
+        lineEdit_15 = new QLineEdit(gridLayoutWidget_2);
+        lineEdit_15->setObjectName(QStringLiteral("lineEdit_15"));
+
+        gridLayout_2->addWidget(lineEdit_15, 1, 3, 1, 1);
+
+        lineEdit_16 = new QLineEdit(gridLayoutWidget_2);
+        lineEdit_16->setObjectName(QStringLiteral("lineEdit_16"));
+
+        gridLayout_2->addWidget(lineEdit_16, 2, 1, 1, 1);
+
+        lineEdit_17 = new QLineEdit(gridLayoutWidget_2);
+        lineEdit_17->setObjectName(QStringLiteral("lineEdit_17"));
+
+        gridLayout_2->addWidget(lineEdit_17, 2, 3, 1, 1);
+
+        lineEdit_13 = new QLineEdit(gridLayoutWidget_2);
+        lineEdit_13->setObjectName(QStringLiteral("lineEdit_13"));
+
+        gridLayout_2->addWidget(lineEdit_13, 0, 1, 1, 3);
+
         groupBox_4 = new QGroupBox(centralWidget);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
         groupBox_4->setGeometry(QRect(10, 120, 631, 491));
@@ -419,7 +360,7 @@ public:
         CameraDtecte1Class->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(CameraDtecte1Class);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1339, 23));
+        menuBar->setGeometry(QRect(0, 0, 1335, 23));
         CameraDtecte1Class->setMenuBar(menuBar);
         mainToolBar = new QToolBar(CameraDtecte1Class);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -437,6 +378,8 @@ public:
         QObject::connect(toolButton, SIGNAL(clicked()), CameraDtecte1Class, SLOT(AlgorithmSet()));
         QObject::connect(toolButton_5, SIGNAL(clicked()), CameraDtecte1Class, SLOT(CameraSet()));
         QObject::connect(tabWidget, SIGNAL(currentChanged(int)), CameraDtecte1Class, SLOT(tabchange(int)));
+        QObject::connect(toolButton_8, SIGNAL(clicked()), CameraDtecte1Class, SLOT(ReportForm()));
+        QObject::connect(toolButton_7, SIGNAL(clicked()), CameraDtecte1Class, SLOT(NumToZero()));
 
         tabWidget->setCurrentIndex(0);
 
@@ -448,26 +391,20 @@ public:
     {
         CameraDtecte1Class->setWindowTitle(QApplication::translate("CameraDtecte1Class", "CameraDtecte1", 0));
         toolButton_3->setText(QApplication::translate("CameraDtecte1Class", "\345\274\200\345\247\213", 0));
-        toolButton_4->setText(QApplication::translate("CameraDtecte1Class", "\345\201\234\346\255\242", 0));
         toolButton_6->setText(QApplication::translate("CameraDtecte1Class", "\344\272\247\345\223\201\350\256\276\345\256\232", 0));
         toolButton_2->setText(QApplication::translate("CameraDtecte1Class", "\350\277\220\345\212\250\350\256\276\345\256\232", 0));
         toolButton->setText(QApplication::translate("CameraDtecte1Class", "\347\256\227\346\263\225\350\256\276\345\256\232", 0));
         toolButton_5->setText(QApplication::translate("CameraDtecte1Class", "\347\233\270\346\234\272\350\256\276\345\256\232", 0));
-        groupBox->setTitle(QApplication::translate("CameraDtecte1Class", "GroupBox", 0));
-        label_5->setText(QApplication::translate("CameraDtecte1Class", "CCD1", 0));
-        label_4->setText(QApplication::translate("CameraDtecte1Class", "CCD3", 0));
-        radioButton_4->setText(QString());
-        label_3->setText(QApplication::translate("CameraDtecte1Class", "CCD4", 0));
-        label_6->setText(QApplication::translate("CameraDtecte1Class", "CCD2", 0));
-        radioButton_3->setText(QString());
-        radioButton->setText(QString());
-        radioButton_2->setText(QString());
-        label_18->setText(QApplication::translate("CameraDtecte1Class", "\350\211\257\345\223\201\346\225\260\351\207\217", 0));
-        label_8->setText(QApplication::translate("CameraDtecte1Class", "\347\212\266\346\200\201", 0));
-        label_19->setText(QApplication::translate("CameraDtecte1Class", "\350\211\257\345\223\201\346\225\260\351\207\217", 0));
-        label_20->setText(QApplication::translate("CameraDtecte1Class", "\350\211\257\345\223\201\346\225\260\351\207\217", 0));
-        groupBox_2->setTitle(QApplication::translate("CameraDtecte1Class", "GroupBox", 0));
-        groupBox_3->setTitle(QApplication::translate("CameraDtecte1Class", "GroupBox", 0));
+        toolButton_7->setText(QApplication::translate("CameraDtecte1Class", "\346\270\205\351\233\266", 0));
+        toolButton_8->setText(QApplication::translate("CameraDtecte1Class", "\346\212\245\350\241\250", 0));
+        toolButton_4->setText(QApplication::translate("CameraDtecte1Class", "\345\201\234\346\255\242", 0));
+        groupBox_2->setTitle(QString());
+        groupBox_3->setTitle(QString());
+        label_22->setText(QApplication::translate("CameraDtecte1Class", "\345\220\215\347\247\260", 0));
+        label_23->setText(QApplication::translate("CameraDtecte1Class", "\346\200\273\351\207\217", 0));
+        label_24->setText(QApplication::translate("CameraDtecte1Class", "\351\200\237\345\272\246", 0));
+        label_21->setText(QApplication::translate("CameraDtecte1Class", "\350\211\257\345\223\201\347\216\207", 0));
+        label_25->setText(QApplication::translate("CameraDtecte1Class", "\350\211\257\345\223\201\346\225\260", 0));
         groupBox_4->setTitle(QApplication::translate("CameraDtecte1Class", "GroupBox", 0));
         label->setText(QApplication::translate("CameraDtecte1Class", "1", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("CameraDtecte1Class", "CCD1", 0));

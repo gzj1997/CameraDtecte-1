@@ -34,6 +34,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>C:\Program Files\MVTec\HALCON-12.0\include\halconcpp;C:\Program Files\MVTec\HALCON-12.0\include;D:\local\boost_1_68_0;D:\Basler\Development\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\local\boost_1_68_0\libs;C:\Program Files\MVTec\HALCON-12.0\include;D:\Basler\Development\lib\Win32;C:\Program Files\MVTec\HALCON-12.0\lib\x86sse2-win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
     <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
@@ -120,6 +122,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AllNum.cpp" />
     <ClCompile Include="CameraDtecte1.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="chartdata.cpp" />
@@ -130,6 +133,7 @@
     <ClCompile Include="imagetools.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="nut.cpp" />
+    <ClCompile Include="OutBlack.cpp" />
     <ClCompile Include="outcircle.cpp" />
     <ClCompile Include="PathHelper.cpp" />
     <ClCompile Include="SetAlgorithm.cpp" />
@@ -158,9 +162,11 @@
     <QtRcc Include="CameraDtecte1.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AllNum.h" />
     <ClInclude Include="chartdata.h" />
     <ClInclude Include="imageresult.h" />
     <ClInclude Include="nut.h" />
+    <ClInclude Include="OutBlack.h" />
     <ClInclude Include="outcircle.h" />
     <ClInclude Include="sf1.h" />
     <ClInclude Include="toolresult.h" />

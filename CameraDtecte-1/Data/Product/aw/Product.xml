@@ -1,0 +1,39 @@
+
+<root>
+    <config id="iddd">
+        <CCD>CCD1</CCD>
+        <检测项>area</检测项>
+        <下限>0</下限>
+        <上限>400</上限>
+        <测量>6697</测量>
+        <OKorNG>OK</OKorNG>
+        <良率></良率>
+    </config>
+    <config id="iddd">
+        <CCD>CCD2</CCD>
+        <检测项>area</检测项>
+        <下限>0</下限>
+        <上限>11111111</上限>
+        <测量>2365</测量>
+        <OKorNG>OK</OKorNG>
+        <良率></良率>
+    </config>
+    <config id="iddd">
+        <CCD>CCD3</CCD>
+        <检测项>area</检测项>
+        <下限>0</下限>
+        <上限>111111111</上限>
+        <测量>5193</测量>
+        <OKorNG>OK</OKorNG>
+        <良率></良率>
+    </config>
+    <config id="iddd">
+        <CCD>CCD4</CCD>
+        <检测项>area</检测项>
+        <下限>0</下限>
+        <上限>1111111111</上限>
+        <测量>897</测量>
+        <OKorNG>OK</OKorNG>
+        <良率></良率>
+    </config>
+</root>

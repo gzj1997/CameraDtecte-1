@@ -12,6 +12,7 @@
 #include<qcheckbox.h>
 #include"PathHelper.h"
 #include"sf1.h"
+#include"OutBlack.h"
 #include"outcircle.h"
 #include"chartdata.h"
 class SetAlgorithm : public QDialog

@@ -248,6 +248,8 @@ public:
         QObject::connect(pushButton_3, SIGNAL(clicked()), SetCamera, SLOT(stop()));
         QObject::connect(pushButton_4, SIGNAL(clicked()), SetCamera, SLOT(saveset()));
         QObject::connect(lineEdit_gain, SIGNAL(editingFinished()), SetCamera, SLOT(changegain()));
+        QObject::connect(comboBox, SIGNAL(currentIndexChanged(int)), SetCamera, SLOT(changemode(int)));
+        QObject::connect(lineEdit_expose, SIGNAL(editingFinished()), SetCamera, SLOT(changeexpose()));
 
         QMetaObject::connectSlotsByName(SetCamera);
     } // setupUi

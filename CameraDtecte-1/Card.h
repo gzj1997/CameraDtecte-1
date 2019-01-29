@@ -13,7 +13,7 @@ public:
 	const static int outbitnum = 8;
 	const static int ON = 0;
 	const static int OFF = 1;
-	static const int  acc = 1;
+	static const int  acc = 50000;
 private:
 
 };

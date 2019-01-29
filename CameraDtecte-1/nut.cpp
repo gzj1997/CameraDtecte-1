@@ -4,18 +4,21 @@ nut::nut(int pos):initialPos(pos)
 {
 	//the fiste state
 	state = 0;
-	posNo = 0;
+	//posNo = 0;
 	outnum = 1;
 }
 
 nut::~nut()
 {
+
 }
 
 int nut::gethole()
 {
+	result << "\n";
 	if (state != cnum) {
-		return 1;
+		qDebug() << "this is for little image"<< state << initialPos;
+		return 3;
 	}
 	else
 	{
@@ -24,6 +27,7 @@ int nut::gethole()
 			return 2;
 		}
 		else {
+			qDebug() << "return1";
 			return 1;
 		}
 	}
@@ -31,7 +35,9 @@ int nut::gethole()
 
 cameranut::cameranut()
 {
-	initialPos = 0;
+	//initialPos = new list<int>();
+//	mut2 = new mutex();
+	initialPos = new QList<int>();
 	onwrite = false;
 }
 
