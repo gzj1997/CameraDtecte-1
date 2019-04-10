@@ -1,5 +1,6 @@
 #pragma once
 #include"para.h"
+#include<qinputdialog.h>
 #include<string.h>
 #include<qwindow.h>
 #include<iostream>

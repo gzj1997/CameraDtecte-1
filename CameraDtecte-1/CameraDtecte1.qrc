@@ -7,11 +7,27 @@
       <file>Resources/product.png</file>
       <file>Resources/algorithm.jpg</file>
       <file>Resources/motion.jpg</file>
+      <file>Resources/motion2.jpg</file>
       <file>Resources/background.jpg</file>
+      <file>Resources/setproduct.jpg</file>
+      <file>Resources/count.jpg</file>
       <file>Resources/back1.jpg</file>
       <file>Resources/back2.jpg</file>
       <file>Resources/back3.jpg</file>
       <file>Resources/back4.jpg</file>
+      <file>Resources/back6.jpg</file>
+      <file>Resources/back5.jpg</file>
+       
+        <file>Resources/icon5.jpg</file>
+        <file>Resources/icon6.jpg</file>
+        <file>Resources/icon7.jpg</file>
+        <file>Resources/icon4.jpg</file>
+        <file>Resources/back8.jpg</file>
+        <file>Resources/back9.jpg</file>
+        <file>Resources/back10.jpg</file>
+      <file>Resources/form.jpg</file>
+      <file>Resources/camera2.jpg</file>
+      <file>Resources/setsf.jpg</file>
       <file>Resources/green.jpg</file>
       <file>Resources/red.png</file>
     </qresource>

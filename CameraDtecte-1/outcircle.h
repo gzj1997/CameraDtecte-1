@@ -7,7 +7,7 @@ public:
 	~outcircle();
 	virtual void draw();
 	virtual void  action();
-
+	virtual void getsf();
 private:
 	friend class boost::serialization::access;
 

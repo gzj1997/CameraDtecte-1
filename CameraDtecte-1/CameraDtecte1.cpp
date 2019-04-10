@@ -16,6 +16,9 @@ CameraDtecte1::~CameraDtecte1()
 	}
 	savegird();
 	Pylon::PylonTerminate();
+
+	qDebug() << PathHelper::currentproductname;
+
 }
 void CameraDtecte1::intial()
 {
@@ -266,8 +269,8 @@ void CameraDtecte1::imageProgress(ImageResult* ir)
 							    model->item(rnum + j, 5)->setForeground(QBrush(QColor(255, 0, 0)));
 								isg = false;
 							}
-							goodper = goodnum / allnum;
-							model->setData(model->index(rnum + j, 6), goodper);
+							goodper = goodnum / allnum *100;
+							model->setData(model->index(rnum + j, 6), QString::number(goodper,10,4)+"%");
 							it->isgood = isg;
 							if (!isg)
 							{
@@ -367,16 +370,19 @@ void CameraDtecte1::testimage()
 	}
 }
 
-int cll = 9;
+
 
 void CameraDtecte1::initialgrid()
 {
+	int cll = 9;
 	
-	model = new QStandardItemModel(2, cll, this);
-
+	
 	
 	header << "CCD" << QString::fromLocal8Bit("检测项") << QString::fromLocal8Bit("下限") << QString::fromLocal8Bit("上限")
-		<< QString::fromLocal8Bit("测量") << "OKorNG" << QString::fromLocal8Bit("良率")<< QString::fromLocal8Bit("良品")<<QString::fromLocal8Bit("总数");
+		<< QString::fromLocal8Bit("测量") << "OK-NG" << QString::fromLocal8Bit("良率")<< QString::fromLocal8Bit("良品")<<QString::fromLocal8Bit("总数");
+	
+	cll = header.size();
+	model = new QStandardItemModel(2, cll, this);
 	for (int i = 0; i < cll; i++)
 	{
 		model->setHeaderData(i, Qt::Horizontal, header[i]);
@@ -385,15 +391,21 @@ void CameraDtecte1::initialgrid()
 	ui.tableView->setEditTriggers(QAbstractItemView::DoubleClicked);
 	for (int i = 0; i < cll; i++)
 	{
-		ui.tableView->setColumnWidth(i, 88);
+		ui.tableView->setColumnWidth(i, 50);
 		
 	}
+	ui.tableView->setColumnWidth(1, 100);
+	ui.tableView->setColumnWidth(4, 100);
+	ui.tableView->setColumnWidth(7, 80);
+	ui.tableView->setColumnWidth(8, 80);
 	for (int i = 0; i < cll; i++)
 	{
 		//设置字符颜色
 		model->setItem(0, i, new QStandardItem("2009441676"));
 		model->item(0, i)->setForeground(QBrush(QColor(255, 0, 0)));
 	}
+	
+//	ui.tableView->setAlternatingRowColors(true);
 	QList<QStandardItem*> itemlist;
 	QStandardItem *item;
 	item = new QStandardItem(CurrentCCD);
@@ -405,6 +417,7 @@ void CameraDtecte1::initialgrid()
 	QModelIndex ind = model->index(0,2);
 	model->setData(ind, "qq");
 	qDebug() << model->data(ind).toString()<<"QModelIndex";
+	
 	//model->removeRow(1);
 	//model->removeRow(1);
 	//savegird();
@@ -530,6 +543,25 @@ void CameraDtecte1::readshowdata()
 	turntable::instance->ResultName << "\n" << " ";
 	qDebug() << turntable::instance->ResultName;
 	turntable::instance->ONETXT = kk * 1000;
+
+	
+	for (int i = 0; i < model->rowCount(); i++)
+	{
+
+		QModelIndex ind = model->index(i, 0);
+		QString str = model->data(ind).toString();
+		int ccd = str.right(1).toInt();
+		if (ccd %2 ==1)
+		{
+			for (int j = 0; j < header.size(); j++)
+			{
+				model->item(i, j)->setBackground(QBrush(QColor(255, 235, 255)));
+			}
+			
+		}
+	}
+
+
 	if (reader.hasError()) {
 		qDebug() << "Error: Failed to parse file "
 			<< qPrintable(dpath) << ": "
@@ -574,6 +606,153 @@ void CameraDtecte1::savegird()
 	writer.writeEndDocument();//结束文档
 
 	file.close();
+}
+
+void CameraDtecte1::saveexcel()
+{
+
+	QString path1 = PathHelper::currentproductpath;
+	QDir dir(path1);
+	QStringList nameFilters;
+	nameFilters << "*.txt" << "*.png";
+	QStringList files = dir.entryList(nameFilters, QDir::Files | QDir::Readable, QDir::Name);
+	qDebug() << files;
+	for each (QString name in files)
+	{
+		if (name.left(4) != "Data")
+		{
+			continue;
+		}
+		QString path = path1 + "/" + name;
+		qDebug() << path;
+		QFile f(path);
+		if (!f.open(QIODevice::ReadOnly | QIODevice::Text))
+		{
+			/*	cout << "Open failed." << endl;
+			return -1;*/
+		}
+
+		QTextStream txtInput(&f);
+
+		QString astr = "";
+		QStringList alldata;
+
+		int numK = 0;
+		QList<QVariant> allRowData;
+		while (!txtInput.atEnd())
+		{
+			numK++;
+			QString lineStr;
+			QStringList linedata;
+			lineStr = txtInput.readLine();
+			//	astr.append(lineStr);
+
+			linedata = lineStr.split(" ");
+
+			/*	while (!linedata.isEmpty())
+			{
+			aRowData.append((linedata.front()));
+			linedata.pop_front();
+			}*/
+			allRowData.append(QVariant(linedata));
+		}
+		//alldata = astr.split(" ");
+
+
+		/*	for (int row = 1; row <= 1000; row++) {
+		QList<QVariant> aRowData;
+		for (int column = 1; column <= 2; column++) {
+		aRowData.append(QVariant(row*column));
+		}
+		allRowData.append(QVariant(aRowData));
+		}*/
+		f.close();
+		f.remove();
+		QAxWidget *excel = NULL;    //本例中，excel设定为Excel文件的操作对象
+		QAxObject *workbooks = NULL;
+		QAxObject *workbook = NULL;  //Excel操作对象
+		excel = new QAxWidget("Excel.Application");
+		excel->dynamicCall("SetVisible(bool)", false); //true 表示操作文件时可见，false表示为不可见
+		excel->setProperty("DisplayAlerts", false);
+		workbooks = excel->querySubObject("WorkBooks");
+
+		QString fileName = path1 + "/" + name.remove(".txt") + ".xlsx";
+		fileName.replace("/", "\\");
+
+		workbooks->dynamicCall("Add");
+		workbook = excel->querySubObject("ActiveWorkBook");
+		workbook->dynamicCall("SaveAs (const QString&,int,const QString&,const QString&,bool,bool)",
+			fileName, 51, QString(""), QString(""), false, false);
+
+		workbook = workbooks->querySubObject("Open(const QString &)", fileName);
+
+		//————————————————按文件路径打开文件————————————————————
+		//	workbook = workbooks->querySubObject("Open(QString&)", path1 + "/" + "a.xlsx");
+		// 获取打开的excel文件中所有的工作sheet
+		QAxObject * worksheets = workbook->querySubObject("WorkSheets");
+
+
+		//—————————————————Excel文件中表的个数:——————————————————
+		int iWorkSheet = worksheets->property("Count").toInt();
+
+
+		// ————————————————获取第n个工作表 querySubObject("Item(int)", n);——————————
+		QAxObject * worksheet = worksheets->querySubObject("Item(int)", 1);//本例获取第一个，最后参数填1
+
+																		   //QAxObject *range2 = worksheet->querySubObject("Range(QString)", "F3");
+																		   ////写入数据, 第6行，第6列
+																		   //range2->setProperty("Value", u8"中共十九大");
+																		   //    range2 = worksheet->querySubObject("Range(QString)", "F4");
+																		   ////写入数据, 第6行，第6列
+																		   //range2->setProperty("Value", u8"中共十九大");
+
+		int x = 1;
+		int y = 1;
+		QAxObject* range;
+		QString asd = "A1:E" + QString::number(numK);
+		range = worksheet->querySubObject("Range(const QString)", asd);
+		//批量写入
+		range->dynamicCall("SetValue(const QVariant&", QVariant(allRowData));
+		//设置字体大小
+		//range->querySubObject("Font")->setProperty("Size", 30);
+		//range->setProperty("Value", allRowData);
+		delete range;
+
+		/*while (!alldata.isEmpty())
+		{
+		QString as = alldata.front();
+		alldata.pop_front();
+		if (as.isEmpty())
+		{
+		x++;
+		y = 1;
+		continue;
+		}
+		else {
+
+		QAxObject* range = worksheet->querySubObject("Cells(int, int)", x, y);
+		range->setProperty("Value", as);
+		delete range;
+		y++;
+		}
+
+		}*/
+
+
+
+
+		//!!!!!!!一定要记得close，不然系统进程里会出现n个EXCEL.EXE进程
+		workbook->dynamicCall("Save()");
+		workbook->dynamicCall("Close()");
+		excel->dynamicCall("Quit()");
+		if (excel)
+		{
+			delete excel;
+			excel = NULL;
+		}
+
+
+	}
 }
 
 
@@ -626,7 +805,8 @@ void CameraDtecte1::StopBtn()
 		(*it)->Stop();
 	//	(*it)->Close();
 	}
-
+	
+	saveexcel();
 }
 
 void CameraDtecte1::AlgorithmSet()
@@ -691,7 +871,7 @@ void CameraDtecte1::MotionSet()
 	if (ret == QDialog::Accepted)
 	{
 		this->show();
-
+		
 		SM->close();
 	}
 	else if (ret == QDialog::Rejected)
@@ -765,6 +945,35 @@ void CameraDtecte1::ProductSet()
 	{
 		qDebug() << "reject";
 	}
+	if (PathHelper::Permission == 1)
+	{
+		ui.toolButton->setDisabled(true);
+		for (int i = 0; i <model->rowCount(); i++)
+		{
+			QStandardItem * item = model->item(i, 2);
+			item->setFlags(Qt::NoItemFlags); 
+			item = model->item(i, 3);
+			item->setFlags(Qt::NoItemFlags);
+			item = model->item(i, 3);
+			
+			
+			ui.tableView->setEditTriggers(QAbstractItemView::EditTrigger::AllEditTriggers);
+		}
+	}
+	else if (PathHelper::Permission == 2)
+	{
+		ui.toolButton->setDisabled(false);
+		
+		
+		for (int i = 0; i <model->rowCount(); i++)
+		{
+			Qt::ItemFlags tt = model->item(0, 0)->flags();
+			QStandardItem * item = model->item(i, 2);
+			item->setFlags(tt);
+			item = model->item(i, 3);
+			item->setFlags(tt);
+		}
+	}
 	delete SP;
 }
 
@@ -818,6 +1027,7 @@ void CameraDtecte1::ReportForm()
 		}
 		out << "\n";
 	}
+	out << "\n";
 	file.close();
 }
 int prenum = 0;
@@ -859,10 +1069,11 @@ void CameraDtecte1::OntimeShowResult()
 	{
 		d = b / k1;
 	}
+	d = d * 100;
 	int c = (a - prenum)*60;
 	ui.lineEdit_14->setText(QString::number(a));
-	ui.lineEdit_15->setText(QString::number(c));
-	ui.lineEdit_16->setText(QString::number(d));
+	ui.lineEdit_15->setText(QString::number(c)+u8"/分钟");
+	ui.lineEdit_16->setText(QString::number(d)+"%");
 	ui.lineEdit_17->setText(QString::number(b));
 	if (c == 0)
 	{

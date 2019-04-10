@@ -11,6 +11,7 @@
 #include <iostream> 
 #include <sstream> 
 #include <string> 
+#include<qwidget.h>
 using namespace HalconCpp;
 
 class ImageRegion
@@ -25,6 +26,7 @@ public:
 	chartdata *chartdata;
 	HalconCpp::HObject image;
 	HalconCpp::HObject region;
+	QWidget * parent;
 	int srcollnum;
 	bool color;
 

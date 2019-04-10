@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1335</width>
-    <height>683</height>
+    <width>1324</width>
+    <height>694</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,16 +22,22 @@
   </property>
   <property name="styleSheet">
    <string notr="true">#centralWidget { 
-border-image:url(:/CameraDtecte1/Resources/back2.jpg);
+border-image:url(:/CameraDtecte1/Resources/back8.jpg);
 }  
 # centralWidget * { 
 border-image:url(); 
 }</string>
   </property>
+  <property name="iconSize">
+   <size>
+    <width>64</width>
+    <height>64</height>
+   </size>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
     <string notr="true">#centralWidget { 
-border-image:url(:/CameraDtecte1/Resources/back4.jpg);
+border-image:url(:/CameraDtecte1/Resources/back5.jpg);
 }  
 # centralWidget * { 
 border-image:url(); 
@@ -40,9 +46,9 @@ border-image:url();
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>1171</width>
+      <x>10</x>
+      <y>0</y>
+      <width>641</width>
       <height>91</height>
      </rect>
     </property>
@@ -80,7 +86,7 @@ border-image:url();
        </property>
        <property name="icon">
         <iconset resource="CameraDtecte1.qrc">
-         <normaloff>:/CameraDtecte1/Resources/product.png</normaloff>:/CameraDtecte1/Resources/product.png</iconset>
+         <normaloff>:/CameraDtecte1/Resources/setproduct.jpg</normaloff>:/CameraDtecte1/Resources/setproduct.jpg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -120,7 +126,7 @@ border-image:url();
        </property>
        <property name="icon">
         <iconset resource="CameraDtecte1.qrc">
-         <normaloff>:/CameraDtecte1/Resources/algorithm.jpg</normaloff>:/CameraDtecte1/Resources/algorithm.jpg</iconset>
+         <normaloff>:/CameraDtecte1/Resources/setsf.jpg</normaloff>:/CameraDtecte1/Resources/setsf.jpg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -140,7 +146,7 @@ border-image:url();
        </property>
        <property name="icon">
         <iconset resource="CameraDtecte1.qrc">
-         <normaloff>:/CameraDtecte1/Resources/camera.png</normaloff>:/CameraDtecte1/Resources/camera.png</iconset>
+         <normaloff>:/CameraDtecte1/Resources/camera2.jpg</normaloff>:/CameraDtecte1/Resources/camera2.jpg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -160,7 +166,7 @@ border-image:url();
        </property>
        <property name="icon">
         <iconset resource="CameraDtecte1.qrc">
-         <normaloff>:/CameraDtecte1/Resources/back1.jpg</normaloff>:/CameraDtecte1/Resources/back1.jpg</iconset>
+         <normaloff>:/CameraDtecte1/Resources/count.jpg</normaloff>:/CameraDtecte1/Resources/count.jpg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -180,7 +186,7 @@ border-image:url();
        </property>
        <property name="icon">
         <iconset resource="CameraDtecte1.qrc">
-         <normaloff>:/CameraDtecte1/Resources/back2.jpg</normaloff>:/CameraDtecte1/Resources/back2.jpg</iconset>
+         <normaloff>:/CameraDtecte1/Resources/form.jpg</normaloff>:/CameraDtecte1/Resources/form.jpg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -216,28 +222,15 @@ border-image:url();
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
     </layout>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>20</y>
-      <width>611</width>
-      <height>431</height>
+      <x>670</x>
+      <y>110</y>
+      <width>631</width>
+      <height>331</height>
      </rect>
     </property>
     <property name="title">
@@ -248,8 +241,8 @@ border-image:url();
       <rect>
        <x>0</x>
        <y>20</y>
-       <width>621</width>
-       <height>411</height>
+       <width>631</width>
+       <height>311</height>
       </rect>
      </property>
     </widget>
@@ -257,10 +250,10 @@ border-image:url();
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>470</y>
-      <width>621</width>
-      <height>141</height>
+      <x>670</x>
+      <y>450</y>
+      <width>631</width>
+      <height>151</height>
      </rect>
     </property>
     <property name="font">
@@ -286,6 +279,14 @@ border-image:url();
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
        <widget class="QLabel" name="label_22">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>名称</string>
         </property>
@@ -293,6 +294,14 @@ border-image:url();
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_23">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>总量</string>
         </property>
@@ -300,6 +309,14 @@ border-image:url();
       </item>
       <item row="1" column="2">
        <widget class="QLabel" name="label_24">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>速度</string>
         </property>
@@ -307,16 +324,41 @@ border-image:url();
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_21">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>良品率</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_14"/>
+       <widget class="QLineEdit" name="lineEdit_14">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+       </widget>
       </item>
       <item row="2" column="2">
        <widget class="QLabel" name="label_25">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">#centralWidget { 
 border-image:url(:/CameraDtecte1/Resources/back2.jpg);
@@ -331,16 +373,52 @@ border-image:url();
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QLineEdit" name="lineEdit_15"/>
+       <widget class="QLineEdit" name="lineEdit_15">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+       </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_16"/>
+       <widget class="QLineEdit" name="lineEdit_16">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+       </widget>
       </item>
       <item row="2" column="3">
-       <widget class="QLineEdit" name="lineEdit_17"/>
+       <widget class="QLineEdit" name="lineEdit_17">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+       </widget>
       </item>
       <item row="0" column="1" colspan="3">
-       <widget class="QLineEdit" name="lineEdit_13"/>
+       <widget class="QLineEdit" name="lineEdit_13">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -349,13 +427,13 @@ border-image:url();
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>120</y>
+      <y>110</y>
       <width>631</width>
       <height>491</height>
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string/>
     </property>
     <widget class="QTabWidget" name="tabWidget">
      <property name="geometry">
@@ -367,7 +445,7 @@ border-image:url();
       </rect>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -563,8 +641,8 @@ border-image:url();
       <widget class="QLabel" name="label_14">
        <property name="geometry">
         <rect>
-         <x>400</x>
-         <y>10</y>
+         <x>390</x>
+         <y>0</y>
          <width>171</width>
          <height>201</height>
         </rect>
@@ -595,13 +673,89 @@ border-image:url();
      </widget>
     </widget>
    </widget>
+   <widget class="QToolButton" name="toolButton_10">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>610</y>
+      <width>1321</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="CameraDtecte1.qrc">
+      <normaloff>:/CameraDtecte1/Resources/icon6.jpg</normaloff>:/CameraDtecte1/Resources/icon6.jpg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>11111</width>
+      <height>222</height>
+     </size>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonIconOnly</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_11">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>0</y>
+      <width>651</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="CameraDtecte1.qrc">
+      <normaloff>:/CameraDtecte1/Resources/icon5.jpg</normaloff>:/CameraDtecte1/Resources/icon5.jpg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>11111</width>
+      <height>222</height>
+     </size>
+    </property>
+    <property name="autoExclusive">
+     <bool>true</bool>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonIconOnly</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1335</width>
+     <width>1324</width>
      <height>23</height>
     </rect>
    </property>
@@ -617,7 +771,6 @@ border-image:url();
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

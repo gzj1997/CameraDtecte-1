@@ -37,7 +37,7 @@ public:
     {
         if (GetSF->objectName().isEmpty())
             GetSF->setObjectName(QStringLiteral("GetSF"));
-        GetSF->resize(400, 300);
+        GetSF->resize(382, 300);
         gridLayoutWidget = new QWidget(GetSF);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(40, 50, 301, 201));
@@ -82,6 +82,7 @@ public:
         QObject::connect(pushButton_5, SIGNAL(clicked()), GetSF, SLOT(accept()));
         QObject::connect(pushButton_6, SIGNAL(clicked()), GetSF, SLOT(reject()));
         QObject::connect(pushButton_2, SIGNAL(clicked()), GetSF, SLOT(getname()));
+        QObject::connect(pushButton_4, SIGNAL(clicked()), GetSF, SLOT(getname()));
 
         QMetaObject::connectSlotsByName(GetSF);
     } // setupUi
@@ -92,7 +93,7 @@ public:
         pushButton->setText(QApplication::translate("GetSF", "sf1", 0));
         pushButton_2->setText(QApplication::translate("GetSF", "OutBlack", 0));
         pushButton_3->setText(QApplication::translate("GetSF", "outcircle", 0));
-        pushButton_4->setText(QApplication::translate("GetSF", "PushButton", 0));
+        pushButton_4->setText(QApplication::translate("GetSF", "sf2", 0));
         pushButton_5->setText(QApplication::translate("GetSF", "\347\241\256\345\256\232", 0));
         pushButton_6->setText(QApplication::translate("GetSF", "\345\217\226\346\266\210", 0));
     } // retranslateUi

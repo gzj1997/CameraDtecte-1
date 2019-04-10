@@ -10,7 +10,7 @@ public:
 	~OutBlack();
 	virtual void draw();
 	virtual void action();
-	
+	virtual void getsf();
 	double row;
 	double clonum;
 	double radius;

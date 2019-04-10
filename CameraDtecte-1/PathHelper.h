@@ -8,7 +8,7 @@ class PathHelper
 public:
 	PathHelper();
 	~PathHelper();
-
+	static int Permission;
 	static QString pastproductname;
 	static QString pastproductpath;
 
@@ -29,6 +29,7 @@ public:
 
 	static void GetAllFileFolder(std::vector<QString> &folder);
 	
+
 private:
 	static void intial();
 

@@ -1,6 +1,7 @@
 #include "SetAlgorithm.h"
 
 BOOST_CLASS_EXPORT(sf1)
+BOOST_CLASS_EXPORT(sf2)
 BOOST_CLASS_EXPORT(OutBlack)
 BOOST_CLASS_EXPORT(outcircle)
 SetAlgorithm::SetAlgorithm(QWidget *parent)
@@ -76,7 +77,10 @@ void SetAlgorithm::intial()
 
 	ui.horizontalSlider->setMinimum(0);
 	ui.horizontalSlider->setMaximum(255);
+	
 	scrollnum = 0;
+	ui.horizontalSlider->setValue(scrollnum);
+	
 	colortype = false;
 	ui.radioButton->setChecked(true);
 	
@@ -104,10 +108,23 @@ void SetAlgorithm::readhimage()
 {
 	QString title = QString::fromLocal8Bit("选择图片:");
 	QString filter = "image(*.jpg *.png *bmp)";
-	QString imagename = QFileDialog::getOpenFileName(this,
-		title, PathHelper::currentproductpath, filter);
-	HalconCpp::ReadImage(&CurrentImage, (HalconCpp::HTuple)(imagename.toStdString().c_str()));
-	display(CurrentImage);
+	try {
+		QString imagename = QFileDialog::getOpenFileName(this,
+			title, PathHelper::currentproductpath, filter);
+		if (! imagename.isEmpty())
+		{
+			
+			HalconCpp::ReadImage(&CurrentImage, (HalconCpp::HTuple)(imagename.toStdString().c_str()));
+			display(CurrentImage);
+		}
+		else {
+			return;
+		}
+	}
+	catch (exception ex) {
+
+	}
+	
 	//HTuple  hv_Radius, hv_Row, hv_Column;
 	//DrawCircle(hv_WindowID, &hv_Row, &hv_Column, &hv_Radius);
 }
@@ -122,6 +139,7 @@ void SetAlgorithm::selectsuanfa()
 	if (!CurrentImage.IsInitialized())
 	{
 		qDebug() << "no image";
+		QMessageBox::warning(this, "warning", u8"没有图片", QMessageBox::Ok, QMessageBox::NoButton);
 		return;
 	}
 	if (!isondetect)
@@ -133,60 +151,72 @@ void SetAlgorithm::selectsuanfa()
 		return;
 	}
 	
-	
-	//3
+	try {
+		//3
 
-	GetSF *Gs = new GetSF();
-	Qt::WindowFlags flags = Gs->windowFlags();
-	Gs->setWindowFlags(flags | Qt::MSWindowsFixedSizeDialogHint);
-	
-	int ret = Gs->exec();
-	bool isgood = true;
-	if (ret == QDialog::Accepted)
-	{
-		if (Gs->sfname =="sf1")
-		{
-			currettool = new sf1();
-		}
-		else if (Gs->sfname == "OutBlack")
-		{
-			currettool = new OutBlack();
-		}
-		else if (Gs->sfname == "outcircle")
-		{
-			currettool = new outcircle();
-		}
-		else 
-		{
-			isgood = false;
-		}
+		GetSF *Gs = new GetSF();
+		Qt::WindowFlags flags = Gs->windowFlags();
+		Gs->setWindowFlags(flags | Qt::MSWindowsFixedSizeDialogHint);
 
-		if (isgood)
+		int ret = Gs->exec();
+		bool isgood = true;
+		if (ret == QDialog::Accepted)
 		{
-			imageregion->chartdata = ct->cloner();
-
-			currettool->image = CurrentImage;
-			currettool->window = hv_WindowID;
-			currettool->imageregion = *(imageregion->cloner());
-			// get para and draw
-			currettool->draw();
-
-			currettool->action();
-
-			toolresult *tr = currettool->Toolresult.cloner();
-			ui.tableWidget_2->clearContents();
-			for (int i = 0; !tr->name[i].empty(); i++)
+			if (Gs->sfname == "sf1")
 			{
-				ui.tableWidget_2->setRowCount(i+1);
-				ui.tableWidget_2->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(tr->name[i])));
-				ui.tableWidget_2->setItem(i, 1, new QTableWidgetItem(QString::number(tr->data[i])));
-				QTableWidgetItem *item = new QTableWidgetItem();
-				item->setCheckState(Qt::Unchecked);
-				ui.tableWidget_2->setItem(i, 2, item);
+				currettool = new sf1();
 			}
-			tools->push_back(currettool);
+			else if (Gs->sfname == "sf2")
+			{
+				currettool = new sf2();
+			}
+			else if (Gs->sfname == "OutBlack")
+			{
+				currettool = new OutBlack();
+			}
+			else if (Gs->sfname == "outcircle")
+			{
+				currettool = new outcircle();
+			}
+			else
+			{
+				isgood = false;
+			}
+
+			if (isgood)
+			{
+				imageregion->chartdata = ct->cloner();
+
+				currettool->image = CurrentImage;
+				currettool->window = hv_WindowID;
+				currettool->imageregion = *(imageregion->cloner());
+				// get para and draw
+				currettool->draw();
+				currettool->getsf();
+				currettool->action();
+
+				toolresult *tr = currettool->Toolresult.cloner();
+				ui.tableWidget_2->clearContents();
+				for (int i = 0; !tr->name[i].empty(); i++)
+				{
+					ui.tableWidget_2->setRowCount(i + 1);
+					ui.tableWidget_2->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(tr->name[i])));
+					ui.tableWidget_2->setItem(i, 1, new QTableWidgetItem(QString::number(tr->data[i])));
+					QTableWidgetItem *item = new QTableWidgetItem();
+					item->setCheckState(Qt::Unchecked);
+					ui.tableWidget_2->setItem(i, 2, item);
+					
+				}
+				tools->push_back(currettool);
+			}
 		}
 	}
+	catch (exception ex) {
+
+	}
+
+	
+
 	isondetect = false;
 }
 
@@ -281,6 +311,7 @@ void SetAlgorithm::getrollnum(int kk)
 	imageregion->color = colortype;
 	imageregion->srcollnum = scrollnum;
 	imageregion->chartdata = ct;
+	imageregion->parent = this;
 	imageregion->draw();
 }
 

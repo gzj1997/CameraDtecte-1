@@ -5,7 +5,7 @@ QString PathHelper::currentproductname = "";
 QString PathHelper::currentproductpath = "";
 QString PathHelper::datapath = "";
 QString PathHelper::productPath = "";
-
+int PathHelper::Permission = 1;
 
 PathHelper::PathHelper()
 {

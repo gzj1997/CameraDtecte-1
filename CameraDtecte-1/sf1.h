@@ -9,10 +9,10 @@ public:
 	~sf1();
 
 	int mianji;
+
 	virtual void draw();
 	virtual void  action();
-
-
+	virtual void getsf();
 private:
 	friend class boost::serialization::access;
 

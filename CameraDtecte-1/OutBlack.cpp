@@ -69,3 +69,7 @@ void OutBlack::action()
 
 	}
 }
+
+void OutBlack::getsf()
+{
+}

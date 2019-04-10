@@ -56,7 +56,7 @@
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\basler\Development\include;C:\Program Files\MVTec\HALCON-12.0\include\halconcpp;C:\Program Files\MVTec\HALCON-12.0\include;.\GeneratedFiles;.;D:\Qt\5.6\msvc2015\include;.\GeneratedFiles\$(ConfigurationName);D:\Qt\5.6\msvc2015\include\QtCore;D:\Qt\5.6\msvc2015\include\QtGui;D:\Qt\5.6\msvc2015\include\QtANGLE;D:\Qt\5.6\msvc2015\include\QtWidgets;D:\Qt\5.6\msvc2015\include\QtXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\basler\Development\include;C:\Program Files\MVTec\HALCON-12.0\include\halconcpp;C:\Program Files\MVTec\HALCON-12.0\include;.\GeneratedFiles;.;D:\Qt\5.6\msvc2015\include;.\GeneratedFiles\$(ConfigurationName);D:\Qt\5.6\msvc2015\include\QtCore;D:\Qt\5.6\msvc2015\include\QtGui;D:\Qt\5.6\msvc2015\include\QtANGLE;D:\Qt\5.6\msvc2015\include\QtWidgets;D:\Qt\5.6\msvc2015\include\QtXml;D:\Qt\5.6\msvc2015\include\ActiveQt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -67,7 +67,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>D:\local\boost_1_68_0\lib32-msvc-14.0;D:\basler\Development\lib\Win32;C:\Program Files\MVTec\HALCON-12.0\lib\x86sse2-win32;D:\Qt\5.6\msvc2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>GCBase_MD_VC120_v3_0_Basler_pylon_v5_0.lib;GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib;PylonBase_MD_VC120_v5_0.lib;PylonC_MD_VC120.lib;PylonGUI_MD_VC120_v5_0.lib;PylonUtility_MD_VC120_v5_0.lib;DMC2210.lib;PCI408.lib;halconcpp.lib;halcon.lib;D:\Qt\5.6\msvc2015\lib\qtmaind.lib;D:\Qt\5.6\msvc2015\lib\Qt5Cored.lib;D:\Qt\5.6\msvc2015\lib\Qt5Guid.lib;D:\Qt\5.6\msvc2015\lib\Qt5Widgetsd.lib;D:\Qt\5.6\msvc2015\lib\Qt5Xmld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GCBase_MD_VC120_v3_0_Basler_pylon_v5_0.lib;GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib;PylonBase_MD_VC120_v5_0.lib;PylonC_MD_VC120.lib;PylonGUI_MD_VC120_v5_0.lib;PylonUtility_MD_VC120_v5_0.lib;DMC2210.lib;PCI408.lib;halconcpp.lib;halcon.lib;D:\Qt\5.6\msvc2015\lib\qtmaind.lib;D:\Qt\5.6\msvc2015\lib\Qt5Cored.lib;D:\Qt\5.6\msvc2015\lib\Qt5Guid.lib;D:\Qt\5.6\msvc2015\lib\Qt5Widgetsd.lib;D:\Qt\5.6\msvc2015\lib\Qt5Xmld.lib;D:\Qt\5.6\msvc2015\lib\Qt5AxContainerd.lib;D:\Qt\5.6\msvc2015\lib\Qt5AxBased.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -91,7 +91,7 @@
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_XML_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\basler\Development\include;C:\Program Files\MVTec\HALCON-12.0\include;C:\Program Files\MVTec\HALCON-12.0\include\halconcpp;.\GeneratedFiles;.;D:\Qt\5.6\msvc2015\include;.\GeneratedFiles\$(ConfigurationName);D:\Qt\5.6\msvc2015\include\QtCore;D:\Qt\5.6\msvc2015\include\QtGui;D:\Qt\5.6\msvc2015\include\QtANGLE;D:\Qt\5.6\msvc2015\include\QtWidgets;D:\Qt\5.6\msvc2015\include\QtXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\basler\Development\include;C:\Program Files\MVTec\HALCON-12.0\include;C:\Program Files\MVTec\HALCON-12.0\include\halconcpp;.\GeneratedFiles;.;D:\Qt\5.6\msvc2015\include;.\GeneratedFiles\$(ConfigurationName);D:\Qt\5.6\msvc2015\include\QtCore;D:\Qt\5.6\msvc2015\include\QtGui;D:\Qt\5.6\msvc2015\include\QtANGLE;D:\Qt\5.6\msvc2015\include\QtWidgets;D:\Qt\5.6\msvc2015\include\QtXml;D:\Qt\5.6\msvc2015\include\ActiveQt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -101,7 +101,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>C:\Program Files\MVTec\HALCON-12.0\lib\x86sse2-win32;D:\basler\Development\lib\Win32;D:\local\boost_1_68_0\lib32-msvc-14.0;D:\Qt\5.6\msvc2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>GCBase_MD_VC120_v3_0_Basler_pylon_v5_0.lib;GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib;PylonBase_MD_VC120_v5_0.lib;PylonC_MD_VC120.lib;PylonGUI_MD_VC120_v5_0.lib;PylonUtility_MD_VC120_v5_0.lib;DMC2210.lib;PCI408.lib;halconcpp.lib;halcon.lib;D:\Qt\5.6\msvc2015\lib\qtmain.lib;D:\Qt\5.6\msvc2015\lib\Qt5Core.lib;D:\Qt\5.6\msvc2015\lib\Qt5Gui.lib;D:\Qt\5.6\msvc2015\lib\Qt5Widgets.lib;D:\Qt\5.6\msvc2015\lib\Qt5Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GCBase_MD_VC120_v3_0_Basler_pylon_v5_0.lib;GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib;PylonBase_MD_VC120_v5_0.lib;PylonC_MD_VC120.lib;PylonGUI_MD_VC120_v5_0.lib;PylonUtility_MD_VC120_v5_0.lib;DMC2210.lib;PCI408.lib;halconcpp.lib;halcon.lib;D:\Qt\5.6\msvc2015\lib\qtmain.lib;D:\Qt\5.6\msvc2015\lib\Qt5Core.lib;D:\Qt\5.6\msvc2015\lib\Qt5Gui.lib;D:\Qt\5.6\msvc2015\lib\Qt5Widgets.lib;D:\Qt\5.6\msvc2015\lib\Qt5Xml.lib;D:\Qt\5.6\msvc2015\lib\Qt5AxContainer.lib;D:\Qt\5.6\msvc2015\lib\Qt5AxBase.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -141,6 +141,7 @@
     <ClCompile Include="SetMotion.cpp" />
     <ClCompile Include="SetProduct.cpp" />
     <ClCompile Include="sf1.cpp" />
+    <ClCompile Include="sf2.cpp" />
     <ClCompile Include="toolresult.cpp" />
     <ClCompile Include="turntable.cpp" />
   </ItemGroup>
@@ -169,6 +170,7 @@
     <ClInclude Include="OutBlack.h" />
     <ClInclude Include="outcircle.h" />
     <ClInclude Include="sf1.h" />
+    <ClInclude Include="sf2.h" />
     <ClInclude Include="toolresult.h" />
     <ClInclude Include="turntable.h" />
     <QtMoc Include="CCamera.h">
@@ -221,6 +223,7 @@
   <ItemGroup>
     <Image Include="..\..\公司LOG.ico" />
     <Image Include="icon1.ico" />
+    <Image Include="公司LOG.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

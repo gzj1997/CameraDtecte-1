@@ -21,8 +21,6 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QToolBar>
@@ -45,7 +43,6 @@ public:
     QToolButton *toolButton_7;
     QToolButton *toolButton_8;
     QToolButton *toolButton_4;
-    QSpacerItem *horizontalSpacer;
     QGroupBox *groupBox_2;
     QTableView *tableView;
     QGroupBox *groupBox_3;
@@ -82,36 +79,38 @@ public:
     QLabel *label_13;
     QLabel *label_14;
     QLabel *label_17;
+    QToolButton *toolButton_10;
+    QToolButton *toolButton_11;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *CameraDtecte1Class)
     {
         if (CameraDtecte1Class->objectName().isEmpty())
             CameraDtecte1Class->setObjectName(QStringLiteral("CameraDtecte1Class"));
-        CameraDtecte1Class->resize(1335, 683);
+        CameraDtecte1Class->resize(1324, 694);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/CameraDtecte1/Resources/\345\205\254\345\217\270LOG.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         CameraDtecte1Class->setWindowIcon(icon);
         CameraDtecte1Class->setAutoFillBackground(true);
         CameraDtecte1Class->setStyleSheet(QLatin1String("#centralWidget { \n"
-"border-image:url(:/CameraDtecte1/Resources/back2.jpg);\n"
+"border-image:url(:/CameraDtecte1/Resources/back8.jpg);\n"
 "}  \n"
 "# centralWidget * { \n"
 "border-image:url(); \n"
 "}"));
+        CameraDtecte1Class->setIconSize(QSize(64, 64));
         centralWidget = new QWidget(CameraDtecte1Class);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setStyleSheet(QLatin1String("#centralWidget { \n"
-"border-image:url(:/CameraDtecte1/Resources/back4.jpg);\n"
+"border-image:url(:/CameraDtecte1/Resources/back5.jpg);\n"
 "}  \n"
 "# centralWidget * { \n"
 "border-image:url(); \n"
 "}"));
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(20, 20, 1171, 91));
+        horizontalLayoutWidget->setGeometry(QRect(10, 0, 641, 91));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -132,7 +131,7 @@ public:
         toolButton_6->setObjectName(QStringLiteral("toolButton_6"));
         toolButton_6->setStyleSheet(QStringLiteral(""));
         QIcon icon2;
-        icon2.addFile(QStringLiteral(":/CameraDtecte1/Resources/product.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QStringLiteral(":/CameraDtecte1/Resources/setproduct.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton_6->setIcon(icon2);
         toolButton_6->setIconSize(QSize(64, 64));
         toolButton_6->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
@@ -152,7 +151,7 @@ public:
         toolButton = new QToolButton(horizontalLayoutWidget);
         toolButton->setObjectName(QStringLiteral("toolButton"));
         QIcon icon4;
-        icon4.addFile(QStringLiteral(":/CameraDtecte1/Resources/algorithm.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        icon4.addFile(QStringLiteral(":/CameraDtecte1/Resources/setsf.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton->setIcon(icon4);
         toolButton->setIconSize(QSize(64, 64));
         toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
@@ -162,7 +161,7 @@ public:
         toolButton_5 = new QToolButton(horizontalLayoutWidget);
         toolButton_5->setObjectName(QStringLiteral("toolButton_5"));
         QIcon icon5;
-        icon5.addFile(QStringLiteral(":/CameraDtecte1/Resources/camera.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon5.addFile(QStringLiteral(":/CameraDtecte1/Resources/camera2.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton_5->setIcon(icon5);
         toolButton_5->setIconSize(QSize(64, 64));
         toolButton_5->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
@@ -172,7 +171,7 @@ public:
         toolButton_7 = new QToolButton(horizontalLayoutWidget);
         toolButton_7->setObjectName(QStringLiteral("toolButton_7"));
         QIcon icon6;
-        icon6.addFile(QStringLiteral(":/CameraDtecte1/Resources/back1.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        icon6.addFile(QStringLiteral(":/CameraDtecte1/Resources/count.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton_7->setIcon(icon6);
         toolButton_7->setIconSize(QSize(64, 64));
         toolButton_7->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
@@ -182,7 +181,7 @@ public:
         toolButton_8 = new QToolButton(horizontalLayoutWidget);
         toolButton_8->setObjectName(QStringLiteral("toolButton_8"));
         QIcon icon7;
-        icon7.addFile(QStringLiteral(":/CameraDtecte1/Resources/back2.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        icon7.addFile(QStringLiteral(":/CameraDtecte1/Resources/form.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton_8->setIcon(icon7);
         toolButton_8->setIconSize(QSize(64, 64));
         toolButton_8->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
@@ -200,19 +199,15 @@ public:
 
         horizontalLayout->addWidget(toolButton_4);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer);
-
         groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(700, 20, 611, 431));
+        groupBox_2->setGeometry(QRect(670, 110, 631, 331));
         tableView = new QTableView(groupBox_2);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(0, 20, 621, 411));
+        tableView->setGeometry(QRect(0, 20, 631, 311));
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        groupBox_3->setGeometry(QRect(700, 470, 621, 141));
+        groupBox_3->setGeometry(QRect(670, 450, 631, 151));
         QFont font;
         font.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
         font.setPointSize(14);
@@ -229,31 +224,42 @@ public:
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
         label_22 = new QLabel(gridLayoutWidget_2);
         label_22->setObjectName(QStringLiteral("label_22"));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Agency FB"));
+        font1.setPointSize(14);
+        font1.setBold(true);
+        font1.setWeight(75);
+        label_22->setFont(font1);
 
         gridLayout_2->addWidget(label_22, 0, 0, 1, 1);
 
         label_23 = new QLabel(gridLayoutWidget_2);
         label_23->setObjectName(QStringLiteral("label_23"));
+        label_23->setFont(font1);
 
         gridLayout_2->addWidget(label_23, 1, 0, 1, 1);
 
         label_24 = new QLabel(gridLayoutWidget_2);
         label_24->setObjectName(QStringLiteral("label_24"));
+        label_24->setFont(font1);
 
         gridLayout_2->addWidget(label_24, 1, 2, 1, 1);
 
         label_21 = new QLabel(gridLayoutWidget_2);
         label_21->setObjectName(QStringLiteral("label_21"));
+        label_21->setFont(font1);
 
         gridLayout_2->addWidget(label_21, 2, 0, 1, 1);
 
         lineEdit_14 = new QLineEdit(gridLayoutWidget_2);
         lineEdit_14->setObjectName(QStringLiteral("lineEdit_14"));
+        lineEdit_14->setFont(font1);
 
         gridLayout_2->addWidget(lineEdit_14, 1, 1, 1, 1);
 
         label_25 = new QLabel(gridLayoutWidget_2);
         label_25->setObjectName(QStringLiteral("label_25"));
+        label_25->setFont(font1);
         label_25->setStyleSheet(QLatin1String("#centralWidget { \n"
 "border-image:url(:/CameraDtecte1/Resources/back2.jpg);\n"
 "}  \n"
@@ -265,27 +271,31 @@ public:
 
         lineEdit_15 = new QLineEdit(gridLayoutWidget_2);
         lineEdit_15->setObjectName(QStringLiteral("lineEdit_15"));
+        lineEdit_15->setFont(font1);
 
         gridLayout_2->addWidget(lineEdit_15, 1, 3, 1, 1);
 
         lineEdit_16 = new QLineEdit(gridLayoutWidget_2);
         lineEdit_16->setObjectName(QStringLiteral("lineEdit_16"));
+        lineEdit_16->setFont(font1);
 
         gridLayout_2->addWidget(lineEdit_16, 2, 1, 1, 1);
 
         lineEdit_17 = new QLineEdit(gridLayoutWidget_2);
         lineEdit_17->setObjectName(QStringLiteral("lineEdit_17"));
+        lineEdit_17->setFont(font1);
 
         gridLayout_2->addWidget(lineEdit_17, 2, 3, 1, 1);
 
         lineEdit_13 = new QLineEdit(gridLayoutWidget_2);
         lineEdit_13->setObjectName(QStringLiteral("lineEdit_13"));
+        lineEdit_13->setFont(font1);
 
         gridLayout_2->addWidget(lineEdit_13, 0, 1, 1, 3);
 
         groupBox_4 = new QGroupBox(centralWidget);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        groupBox_4->setGeometry(QRect(10, 120, 631, 491));
+        groupBox_4->setGeometry(QRect(10, 110, 631, 491));
         tabWidget = new QTabWidget(groupBox_4);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tabWidget->setGeometry(QRect(10, 20, 611, 461));
@@ -350,25 +360,46 @@ public:
         label_13->setAutoFillBackground(true);
         label_14 = new QLabel(tab_7);
         label_14->setObjectName(QStringLiteral("label_14"));
-        label_14->setGeometry(QRect(400, 10, 171, 201));
+        label_14->setGeometry(QRect(390, 0, 171, 201));
         label_14->setAutoFillBackground(true);
         label_17 = new QLabel(tab_7);
         label_17->setObjectName(QStringLiteral("label_17"));
         label_17->setGeometry(QRect(400, 230, 171, 201));
         label_17->setAutoFillBackground(true);
         tabWidget->addTab(tab_7, QString());
+        toolButton_10 = new QToolButton(centralWidget);
+        toolButton_10->setObjectName(QStringLiteral("toolButton_10"));
+        toolButton_10->setGeometry(QRect(0, 610, 1321, 61));
+        toolButton_10->setContextMenuPolicy(Qt::NoContextMenu);
+        toolButton_10->setStyleSheet(QStringLiteral(""));
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/CameraDtecte1/Resources/icon6.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton_10->setIcon(icon9);
+        toolButton_10->setIconSize(QSize(11111, 222));
+        toolButton_10->setAutoExclusive(true);
+        toolButton_10->setToolButtonStyle(Qt::ToolButtonIconOnly);
+        toolButton_10->setAutoRaise(true);
+        toolButton_11 = new QToolButton(centralWidget);
+        toolButton_11->setObjectName(QStringLiteral("toolButton_11"));
+        toolButton_11->setGeometry(QRect(660, 0, 651, 101));
+        toolButton_11->setContextMenuPolicy(Qt::NoContextMenu);
+        toolButton_11->setStyleSheet(QStringLiteral(""));
+        QIcon icon10;
+        icon10.addFile(QStringLiteral(":/CameraDtecte1/Resources/icon5.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        toolButton_11->setIcon(icon10);
+        toolButton_11->setIconSize(QSize(11111, 222));
+        toolButton_11->setAutoExclusive(true);
+        toolButton_11->setToolButtonStyle(Qt::ToolButtonIconOnly);
+        toolButton_11->setAutoRaise(true);
         CameraDtecte1Class->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(CameraDtecte1Class);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1335, 23));
+        menuBar->setGeometry(QRect(0, 0, 1324, 23));
         CameraDtecte1Class->setMenuBar(menuBar);
         mainToolBar = new QToolBar(CameraDtecte1Class);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
         mainToolBar->setStyleSheet(QStringLiteral("background-color:transparent"));
         CameraDtecte1Class->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(CameraDtecte1Class);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        CameraDtecte1Class->setStatusBar(statusBar);
 
         retranslateUi(CameraDtecte1Class);
         QObject::connect(toolButton_3, SIGNAL(clicked()), CameraDtecte1Class, SLOT(StartBtn()));
@@ -381,7 +412,7 @@ public:
         QObject::connect(toolButton_8, SIGNAL(clicked()), CameraDtecte1Class, SLOT(ReportForm()));
         QObject::connect(toolButton_7, SIGNAL(clicked()), CameraDtecte1Class, SLOT(NumToZero()));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(6);
 
 
         QMetaObject::connectSlotsByName(CameraDtecte1Class);
@@ -405,7 +436,7 @@ public:
         label_24->setText(QApplication::translate("CameraDtecte1Class", "\351\200\237\345\272\246", 0));
         label_21->setText(QApplication::translate("CameraDtecte1Class", "\350\211\257\345\223\201\347\216\207", 0));
         label_25->setText(QApplication::translate("CameraDtecte1Class", "\350\211\257\345\223\201\346\225\260", 0));
-        groupBox_4->setTitle(QApplication::translate("CameraDtecte1Class", "GroupBox", 0));
+        groupBox_4->setTitle(QString());
         label->setText(QApplication::translate("CameraDtecte1Class", "1", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("CameraDtecte1Class", "CCD1", 0));
         label_2->setText(QApplication::translate("CameraDtecte1Class", "TextLabel2", 0));
@@ -425,6 +456,8 @@ public:
         label_14->setText(QApplication::translate("CameraDtecte1Class", "3", 0));
         label_17->setText(QApplication::translate("CameraDtecte1Class", "6", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_7), QApplication::translate("CameraDtecte1Class", "\346\211\200\346\234\211", 0));
+        toolButton_10->setText(QString());
+        toolButton_11->setText(QString());
     } // retranslateUi
 
 };

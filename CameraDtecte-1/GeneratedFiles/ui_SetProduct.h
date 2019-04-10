@@ -31,6 +31,7 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_6;
+    QPushButton *pushButton_7;
     QGroupBox *groupBox_2;
     QWidget *widget;
     QLabel *label;
@@ -40,10 +41,15 @@ public:
     QComboBox *comboBox;
     QPushButton *pushButton_4;
     QPushButton *pushButton_5;
+    QWidget *widget_3;
+    QComboBox *comboBox_2;
+    QLabel *label_5;
+    QPushButton *pushButton_8;
     QGroupBox *groupBox_3;
     QLabel *label_2;
-    QGroupBox *groupBox_4;
     QLabel *label_3;
+    QLabel *label_4;
+    QLabel *label_6;
 
     void setupUi(QDialog *SetProduct)
     {
@@ -58,7 +64,7 @@ public:
         SetProduct->setFont(font);
         groupBox = new QGroupBox(SetProduct);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(20, 80, 151, 251));
+        groupBox->setGeometry(QRect(20, 80, 151, 261));
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -82,21 +88,26 @@ public:
         groupBox->setAlignment(Qt::AlignCenter);
         pushButton = new QPushButton(groupBox);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(10, 20, 121, 61));
+        pushButton->setGeometry(QRect(10, 10, 121, 61));
         pushButton->setFont(font);
         pushButton_2 = new QPushButton(groupBox);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(10, 110, 121, 51));
+        pushButton_2->setGeometry(QRect(10, 80, 121, 51));
         pushButton_2->setFont(font);
         pushButton_2->setStyleSheet(QStringLiteral(""));
         pushButton_6 = new QPushButton(groupBox);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        pushButton_6->setGeometry(QRect(10, 180, 121, 51));
+        pushButton_6->setGeometry(QRect(10, 200, 121, 51));
         pushButton_6->setFont(font);
         pushButton_6->setStyleSheet(QStringLiteral(""));
+        pushButton_7 = new QPushButton(groupBox);
+        pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
+        pushButton_7->setGeometry(QRect(10, 140, 121, 51));
+        pushButton_7->setFont(font);
+        pushButton_7->setStyleSheet(QStringLiteral(""));
         groupBox_2 = new QGroupBox(SetProduct);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(200, 80, 391, 251));
+        groupBox_2->setGeometry(QRect(190, 80, 401, 261));
         groupBox_2->setStyleSheet(QLatin1String("QGroupBox{\n"
 "border:1px solid#999999;\n"
 "border -radius:10px; \n"
@@ -146,18 +157,51 @@ public:
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
         pushButton_5->setGeometry(QRect(50, 140, 121, 51));
         pushButton_5->setFont(font);
+        widget_3 = new QWidget(groupBox_2);
+        widget_3->setObjectName(QStringLiteral("widget_3"));
+        widget_3->setGeometry(QRect(10, 10, 371, 231));
+        comboBox_2 = new QComboBox(widget_3);
+        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+        comboBox_2->setGeometry(QRect(190, 30, 161, 41));
+        comboBox_2->setFont(font);
+        label_5 = new QLabel(widget_3);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(40, 30, 111, 41));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Agency FB"));
+        font1.setPointSize(18);
+        font1.setBold(true);
+        font1.setWeight(75);
+        label_5->setFont(font1);
+        pushButton_8 = new QPushButton(widget_3);
+        pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
+        pushButton_8->setGeometry(QRect(110, 150, 141, 51));
+        pushButton_8->setFont(font);
         groupBox_3 = new QGroupBox(SetProduct);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        groupBox_3->setGeometry(QRect(30, 10, 551, 61));
+        groupBox_3->setGeometry(QRect(20, 10, 561, 61));
+        groupBox_3->setFont(font1);
         label_2 = new QLabel(groupBox_3);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(70, 10, 131, 41));
-        groupBox_4 = new QGroupBox(groupBox_3);
-        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        groupBox_4->setGeometry(QRect(370, 40, 551, 61));
+        label_2->setGeometry(QRect(10, 10, 131, 41));
+        QFont font2;
+        font2.setFamily(QStringLiteral("Agency FB"));
+        label_2->setFont(font2);
         label_3 = new QLabel(groupBox_3);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(280, 10, 111, 41));
+        label_3->setGeometry(QRect(120, 10, 151, 41));
+        label_3->setFont(font2);
+        label_4 = new QLabel(groupBox_3);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(290, 10, 111, 41));
+        label_4->setFont(font1);
+        label_6 = new QLabel(groupBox_3);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(400, 10, 151, 41));
+        label_6->setFont(font2);
+        groupBox_2->raise();
+        groupBox->raise();
+        groupBox_3->raise();
         QWidget::setTabOrder(pushButton_2, pushButton);
         QWidget::setTabOrder(pushButton, lineEdit);
         QWidget::setTabOrder(lineEdit, pushButton_3);
@@ -172,6 +216,8 @@ public:
         QObject::connect(pushButton, SIGNAL(clicked()), SetProduct, SLOT(newproduct()));
         QObject::connect(pushButton_3, SIGNAL(clicked()), SetProduct, SLOT(savenewproduct()));
         QObject::connect(pushButton_6, SIGNAL(clicked()), SetProduct, SLOT(reject()));
+        QObject::connect(pushButton_7, SIGNAL(clicked()), SetProduct, SLOT(selectRole()));
+        QObject::connect(pushButton_8, SIGNAL(clicked()), SetProduct, SLOT(saveselectRole()));
 
         QMetaObject::connectSlotsByName(SetProduct);
     } // setupUi
@@ -183,15 +229,19 @@ public:
         pushButton->setText(QApplication::translate("SetProduct", "\346\226\260\344\272\247\345\223\201", 0));
         pushButton_2->setText(QApplication::translate("SetProduct", "\351\200\211\346\213\251\344\272\247\345\223\201", 0));
         pushButton_6->setText(QApplication::translate("SetProduct", "\351\200\200\345\207\272", 0));
+        pushButton_7->setText(QApplication::translate("SetProduct", "\351\200\211\346\213\251\347\224\250\346\210\267", 0));
         groupBox_2->setTitle(QString());
         label->setText(QApplication::translate("SetProduct", "\344\272\247\345\223\201\345\220\215\347\247\260:", 0));
         pushButton_3->setText(QApplication::translate("SetProduct", "\344\277\235\345\255\230", 0));
         pushButton_4->setText(QApplication::translate("SetProduct", "\347\241\256\345\256\232", 0));
         pushButton_5->setText(QApplication::translate("SetProduct", "\345\210\240\351\231\244", 0));
+        label_5->setText(QApplication::translate("SetProduct", "\351\200\211\346\213\251\347\224\250\346\210\267", 0));
+        pushButton_8->setText(QApplication::translate("SetProduct", "\347\241\256\345\256\232", 0));
         groupBox_3->setTitle(QString());
         label_2->setText(QApplication::translate("SetProduct", "\345\275\223\345\211\215\344\272\247\345\223\201", 0));
-        groupBox_4->setTitle(QString());
         label_3->setText(QString());
+        label_4->setText(QApplication::translate("SetProduct", "\345\275\223\345\211\215\347\224\250\346\210\267", 0));
+        label_6->setText(QString());
     } // retranslateUi
 
 };

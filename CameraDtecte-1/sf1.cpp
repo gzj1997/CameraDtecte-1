@@ -19,6 +19,7 @@ void sf1::draw()
 			mianji = imageregion.chartdata->minlist[i].toInt();
 		}
 	}
+
 }
 
 void sf1::action()
@@ -100,6 +101,11 @@ void sf1::action()
 	//	//	showlist->result.push_back(*aa);
 	//	}
 	//}
+
+}
+
+void sf1::getsf()
+{
 
 }
 

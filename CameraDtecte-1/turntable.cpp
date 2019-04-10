@@ -346,8 +346,8 @@ void turntable::saveonetxt()
 {
 	SYSTEMTIME sys;
 	GetLocalTime(&sys);
-	QString str = QString::number(sys.wDay)+"-" + QString::number(sys.wHour) + "-" + QString::number(sys.wMinute) + "-" + QString::number(sys.wSecond)+".txt";
-	QString path =  PathHelper::currentproductpath +"/" +str;
+	QString str =  QString::number(sys.wDay)+"-" + QString::number(sys.wHour) + "-" + QString::number(sys.wMinute) + "-" + QString::number(sys.wSecond)+".txt";
+	QString path =  PathHelper::currentproductpath +"/Data" +str;
 	QFile file(path);
 	file.open(QIODevice::ReadWrite | QIODevice::Append);
 	QTextStream out(&file);
@@ -358,5 +358,6 @@ void turntable::saveonetxt()
 	SaveResult.clear();
 	SaveToOne = true;
 }
+
 
 

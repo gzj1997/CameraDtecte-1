@@ -10,8 +10,10 @@
 #include<qfiledialog.h>
 #include<qcombobox.h>
 #include<qcheckbox.h>
+#include<qmessagebox.h>
 #include"PathHelper.h"
 #include"sf1.h"
+#include"sf2.h"
 #include"OutBlack.h"
 #include"outcircle.h"
 #include"chartdata.h"

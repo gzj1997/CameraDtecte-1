@@ -62,6 +62,9 @@
     <ClCompile Include="OutBlack.cpp">
       <Filter>Source Files\tools</Filter>
     </ClCompile>
+    <ClCompile Include="sf2.cpp">
+      <Filter>Source Files\tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -209,6 +212,9 @@
     <ClInclude Include="OutBlack.h">
       <Filter>Header Files\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="sf2.h">
+      <Filter>Header Files\Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CameraDtecte-1.rc" />
@@ -216,5 +222,6 @@
   <ItemGroup>
     <Image Include="icon1.ico" />
     <Image Include="..\..\公司LOG.ico" />
+    <Image Include="公司LOG.ico" />
   </ItemGroup>
 </Project>

@@ -218,6 +218,12 @@ void CCamera::gettools()
 		std::ifstream file(pt.toStdString());
 		boost::archive::text_iarchive ia(file);
 		ia >> tools;
+		list<imagetools*>::iterator it;
+
+		for (it = tools->begin(); it != tools->end(); it++)
+		{
+			(*it)->getsf();
+		}
 	}catch(exception e){}
 }
 

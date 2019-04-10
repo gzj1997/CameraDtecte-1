@@ -16,7 +16,8 @@
 #include<qdir.h>
 #include<qxmlstream.h>
 #include<qstandarditemmodel.h>
-
+#include<ActiveQt\qaxobject.h>
+#include<ActiveQt/qaxwidget.h>
 class CameraDtecte1 : public QMainWindow
 {
 	Q_OBJECT
@@ -29,7 +30,7 @@ private:
 	Ui::CameraDtecte1Class ui;
 
 	QTimer *m_pTimer;
-
+//	QAxObject *pApplication;
 	turntable *TurnTable;
 	
 	QStandardItemModel  *model;
@@ -58,6 +59,7 @@ private:
 	void readshowdata();
 	//void updatecamera(QString ccd);
 	void savegird();
+	void saveexcel();
 private slots:
 void imageProgress(ImageResult* image);
 void imageProgress2(int image);

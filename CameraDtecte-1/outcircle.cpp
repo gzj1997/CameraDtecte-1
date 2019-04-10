@@ -34,3 +34,7 @@ void outcircle::action()
 	Toolresult.name[0] = "radius";
 	Toolresult.data[0] = hv_Radius[0].D();
 }
+
+void outcircle::getsf()
+{
+}

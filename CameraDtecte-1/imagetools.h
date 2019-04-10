@@ -22,11 +22,15 @@ public:
 
 	toolresult Toolresult;
 	ImageRegion imageregion;
+
+
 	HalconCpp::HObject  image;
 	HTuple result;
 	HTuple window;
 	virtual void action() = 0;
 	virtual void draw() = 0;
+	virtual void getsf() = 0;
+	//virtual void getsf();
 private:
 	friend class boost::serialization::access;
 
